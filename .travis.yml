@@ -62,6 +62,7 @@ jobs:
 
       script:
           - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+          - mkdir zips
           - zip -r zips/quilt.zip quilt_lang
           - tar -zcvf zips/quilt.tar.gz quilt_lang
 
