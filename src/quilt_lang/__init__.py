@@ -57,9 +57,8 @@ def userinput(prompttext=""):
     if sys.version_info > (3, 0):
         # Python 3 code in this block
         return input(str(prompttext))
-    else:
-        # Python 2 code in this block
-        return raw_input(str(prompttext))
+    # Python 2 code in this block
+    return raw_input(str(prompttext))
 
 
 # Show a shell based input line and return command and parameters
@@ -78,9 +77,9 @@ def shellinput(initialtext='>> ', splitpart=' '):
 
     try:
         str(initialtext)
-    except BaseException:
-        raise BaseException("Cannot convert type " + str(type(initialtext)) +
-                            "to str")
+    except RuntimeError:
+        raise RuntimeError("Cannot convert type " + str(type(initialtext)) +
+                           "to str")
     shelluserinput = userinput(str(initialtext))
     if splitpart == '' or splitpart is None:
         return shelluserinput
@@ -123,7 +122,7 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
         return c.saturation
     elif destinationtype.lower() == 'lum':
         return c.luminance
-    raise BaseException("Destination colour code not specified correctly")
+    raise RuntimeError("Destination colour code not specified correctly")
 
 
 def changecolour(colourcode, action, amount=100):
@@ -328,21 +327,11 @@ def shapesides(inputtocheck, inputtype='shape'):
         return "ngon"
 
 
-# Check If A Value Is Able To Be Converted To A Number (Decimal And Integer)
-
-
-def _isnum(value):
-    try:
-        return bool(isinstance(value, int) or isinstance(value, float))
-    except BaseException:
-        return False
-
-
 # Compare 2 Numbers
 
 
 def comparenum(value1, value2, comparison):
-    if _isnum(value1) and _isnum(value2):
+    if isnum(value1) and isnum(value2):
         comparison = comparison.lower()
         if comparison == 'equals':
             return value1 == value2
@@ -412,7 +401,7 @@ def convertstring(value):
 def opposite(boolean):
     try:
         return not boolean
-    except BaseException:
+    except RuntimeError:
         raise RuntimeError(
             'An Error Has Occurred: Nor A Bool Or Len Was Provided (0014)')
 
@@ -574,12 +563,12 @@ def convertbinary(value, argument):
     if argument == 'to':
         try:
             return bin(value)
-        except BaseException:
+        except RuntimeError:
             raise RuntimeError('Invalid Value (0016)')
     elif argument == 'from':
         try:
             return format(value)
-        except BaseException:
+        except RuntimeError:
             raise RuntimeError('Invalid Value (0016)')
 
 
@@ -1022,7 +1011,7 @@ def average(numbers, averagetype='mean'):
     averagetype = averagetype.lower()
     try:
         statistics.mean(numbers)
-    except BaseException:
+    except RuntimeError:
         raise RuntimeError('An Error Has Occured: List Not Specified (0018)')
     if averagetype == 'mean':
         return statistics.mean(numbers)
@@ -1100,7 +1089,7 @@ def isfalse(variable):
 def less_or_equal(number):
     try:
         return math.floor(number)
-    except BaseException:
+    except RuntimeError:
         raise RuntimeError('An Error Has Occured: Number Not Provided (0016)')
 
 
@@ -1109,16 +1098,14 @@ def less_or_equal(number):
 
 def compare(value1, value2, comparison):
     if not isinstance(comparison, str):
-        raise BaseException("ERROR: comparison argument must be a string")
-    if comparison not in ['is', 'or', 'and']:
-        raise BaseException(
-            "ERROR: comparison argument must be 'is', 'or' or 'and'")
+        raise RuntimeError("ERROR: comparison argument must be a string.")
     if comparison == 'is':
-        return operator.is_(value1, value2)
+        return value1 == value2
     elif comparison == 'or':
-        return operator.or_(value1, value2)
+        return value1 or value2
     elif comparison == 'and':
-        return operator.and_(value1, value2)
+        return value1 and value2
+    raise RuntimeError("Invalid comparison operator specified.")
 
 
 # Find all the factors of a number
@@ -1164,10 +1151,8 @@ def randomnum(minimum=1, maximum=2):
     if isnum(minimum):
         if isnum(maximum):
             return random.randint(minimum, maximum)
-        else:
-            raise RuntimeError('Invalid Value (0016)')
-    else:
-        raise RuntimeError('Invalid Value (0016)')
+        raise RuntimeError("Maximum number is not a number.")
+    raise RuntimeError('Minimum number is not a number.')
 
 
 def isfib(number):
@@ -1237,7 +1222,7 @@ def isnum(value):
 
     try:
         return bool(isinstance(value, (float, int)))
-    except BaseException:
+    except RuntimeError:
         return False
 
 
@@ -1256,10 +1241,9 @@ def quadrant(xcoord, ycoord):
         if yneg is False:
             return 2
         return 3
-    elif xneg is False:
-        if yneg is False:
-            return 1
-        return 4
+    if yneg is False:
+        return 1
+    return 4
 
 
 def flipcoords(xcoord, ycoord, axis):
@@ -1281,6 +1265,9 @@ def flipcoords(xcoord, ycoord, axis):
             return str(xcoord + abs(xcoord) * 2) + ', ' + str(ycoord)
         elif xcoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
+        raise RuntimeError(
+            "The X coordinate is neither larger, smaller or the same as 0.")
+
     elif axis == 'x':
         if ycoord > 0:
             return str(xcoord) + ', ' + str(ycoord - ycoord - ycoord)
@@ -1288,6 +1275,9 @@ def flipcoords(xcoord, ycoord, axis):
             return str(ycoord + abs(ycoord) * 2) + ', ' + str(xcoord)
         elif ycoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
+        raise RuntimeError(
+            "The Y coordinate is neither larger, smaller or the same as 0.")
+    raise RuntimeError("Invalid axis. Neither x nor y was specified.")
 
 
 def lcm(num1, num2):
@@ -1474,6 +1464,8 @@ def case(text, format='sentence'):
         return str(text[0].upper()) + str(text[1:])
     elif format == 'caterpillar':
         return str(text.lower().replace(" ", "_"))
+    else:
+        raise RuntimeError("Invalid text format specified")
 
 
 """
@@ -1635,16 +1627,15 @@ def loglevel(leveltype=None, isequal=False):
             return leveltype == logging.getEffectiveLevel()
         elif leveltype in loglevels:
             return loglevels[leveltype] == logging.getEffectiveLevel()
-        else:
-            raise BaseException(
-                "Incorrect input provided. It should be none, debug, info, warning, error or critical"
-            )
+        raise RuntimeError(
+            "Incorrect input provided. It should be none, debug, info, warning, error or critical"
+        )
     if leveltype in loglevels.values():
         logging.basicConfig(level=leveltype)
     elif leveltype in loglevels:
         logging.basicConfig(level=loglevels[leveltype])
     else:
-        raise BaseException(
+        raise RuntimeError(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical"
         )
 
@@ -1658,13 +1649,13 @@ def logfile(targetfile="ros.log"):
 
     try:
         str(targetfile)
-    except BaseException:
-        raise BaseException("Cannot convert type " + str(type(targetfile)) +
-                            "to str")
+    except RuntimeError:
+        raise RuntimeError("Cannot convert type " + str(type(targetfile)) +
+                           "to str")
     try:
         logging.basicConfig(filename=str(targetfile))
-    except BaseException:
-        raise BaseException("Invalid target file specified")
+    except RuntimeError:
+        raise RuntimeError("Invalid target file specified")
 
 
 # Gets, sets, appends or preceeds the clipboard contents
@@ -1679,6 +1670,8 @@ def clipaction(action='get', text=None):
         clipboard.copy(str(clipboard.paste) + str(text))
     elif action == 'preceed':
         clipboard.copy(str(text) + str(clipboard.paste))
+    else:
+        raise RuntimeError("Invalid clipboard action specified.")
 
 
 # Tools For Text Files
@@ -1728,17 +1721,16 @@ def dayofweek(day, month, year, formatresult=True):
     """
     if formatresult is False:
         return calendar.weekday(year, month, day) + 1
-    else:
-        days = {
-            0: 'Monday',
-            1: "Tuesday",
-            2: "Wednesday",
-            3: "Thursday",
-            4: "Friday",
-            5: "Saturday",
-            6: "Sunday"
-        }
-        return days[calendar.weekday(year, month, day)]
+    days = {
+        0: 'Monday',
+        1: "Tuesday",
+        2: "Wednesday",
+        3: "Thursday",
+        4: "Friday",
+        5: "Saturday",
+        6: "Sunday"
+    }
+    return days[calendar.weekday(year, month, day)]
 
 
 def leapyear(year):
@@ -1804,6 +1796,8 @@ def converttime(time, currentformat, newformat):
             return time / 60 / 60 / 24 / 365 / 100
         elif newformat == 'millenniums':
             return time / 60 / 60 / 24 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'minutes':
         if newformat == 'milliseconds':
             return time * 60 * 1000
@@ -1825,6 +1819,8 @@ def converttime(time, currentformat, newformat):
             return time / 60 / 24 / 365 / 100
         elif newformat == 'millenniums':
             return time / 60 / 24 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'hours':
         if newformat == 'milliseconds':
             return time * 60 * 60 * 1000
@@ -1846,6 +1842,8 @@ def converttime(time, currentformat, newformat):
             return time / 24 / 365 / 100
         elif newformat == 'millenniums':
             return time / 24 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'days':
         if newformat == 'milliseconds':
             return time * 24 * 60 * 60 * 1000
@@ -1867,6 +1865,8 @@ def converttime(time, currentformat, newformat):
             return time / 7 / 365 / 100
         elif newformat == 'millenniums':
             return time / 7 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'weeks':
         if newformat == 'milliseconds':
             return time * 7 * 24 * 60 * 60 * 1000
@@ -1886,6 +1886,8 @@ def converttime(time, currentformat, newformat):
             return time * 7 / 365 / 100
         elif newformat == 'millenniums':
             return time * 7 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'fortnights':
         if newformat == 'milliseconds':
             return time * 14 * 24 * 60 * 60 * 1000
@@ -1905,6 +1907,8 @@ def converttime(time, currentformat, newformat):
             return time * 14 / 365 / 100
         elif newformat == 'millenniums':
             return time * 14 / 365 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'years':
         if newformat == 'milliseconds':
             return time * 365 * 24 * 60 * 60 * 1000
@@ -1926,6 +1930,8 @@ def converttime(time, currentformat, newformat):
             return time / 100
         elif newformat == 'millenniums':
             return time / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'decades':
         if newformat == 'milliseconds':
             return time * 10 * 365 * 24 * 60 * 60 * 1000
@@ -1947,6 +1953,8 @@ def converttime(time, currentformat, newformat):
             return time * 10 / 100
         elif newformat == 'millenniums':
             return time * 10 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'centuaries':
         if newformat == 'milliseconds':
             return time * 100 * 365 * 24 * 60 * 60 * 1000
@@ -1968,6 +1976,8 @@ def converttime(time, currentformat, newformat):
             return time * 100 / 10
         elif newformat == 'millenniums':
             return time * 100 / 1000
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
     elif currentformat == 'millenniums':
         if newformat == 'milliseconds':
             return time * 1000 * 365 * 24 * 60 * 60 * 1000
@@ -1989,6 +1999,10 @@ def converttime(time, currentformat, newformat):
             return time * 1000 / 10
         elif newformat == 'centuaries':
             return time * 1000 / 100
+        else:
+            raise RuntimeError("Incorrect new time format specified.")
+    else:
+        raise RuntimeError("Incorrect old time format specified.")
 
 
 def minyear():
@@ -2080,6 +2094,8 @@ def getdatetime(timedateformat='complete'):
         return ((str(
             datetime.datetime.now())).split('.')[0]).split(' ')[1] + ' ' + (
                 (str(datetime.datetime.now())).split('.')[0]).split(' ')[0]
+    else:
+        raise RuntimeError("Invalid time date format used.")
 
 
 def timeit(command, round=True):
@@ -2177,7 +2193,7 @@ def newtab(url):
 def getbrowser():
     try:
         webbrowser.get(using=None)
-    except BaseException:
+    except RuntimeError:
         return None
 
 
@@ -2189,7 +2205,7 @@ def filedownload(source, destination):
         if not isempty(destination):
             try:
                 urllib.request.urlretrieve(source, destination)
-            except BaseException:
+            except RuntimeError:
                 raise RuntimeError(
                     'An Error Has Occured: File Download Error (0010)')
         else:
