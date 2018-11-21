@@ -22,7 +22,6 @@ import clipboard
 
 # Math modules
 import math
-import operator
 import statistics
 import random
 
