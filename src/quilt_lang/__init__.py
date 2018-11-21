@@ -761,35 +761,6 @@ def decintfix(decorint=0):
     return float(decorint)
 
 
-# License Information
-
-
-def roslicense(raw=False):
-    if raw is False:
-        print('ROS Code is licensed under the Apache License 2.0')
-        print(
-            u'\u2714' +
-            ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
-        )
-        print(u'\u274c' +
-              ' Limitations: Trademark use, Liability And Warranty')
-        print(u'\u2139' +
-              ' Conditions: License and copyright notice And State changes')
-        print(
-            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
-        )
-    else:
-        print('ROS Code Is licensed Under The Apache License 2.0')
-        print(
-            'Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
-        )
-        print('Limitations: Trademark use, Liability And Warranty')
-        print('Conditions: License and copyright notice And State changes')
-        print(
-            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
-        )
-
-
 """
 Maths
 """
@@ -2199,3 +2170,35 @@ def filedownload(source, destination):
     else:
         raise RuntimeWarning(
             'An Error Has Occured: Source Or Destination Invalid (0011)')
+
+"""
+Copyright
+"""
+
+# License Information
+
+
+def quiltlicense(raw=False):
+    if raw is False:
+        print('Quilt is licensed under the Apache License 2.0')
+        print(
+            u'\u2714' +
+            ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
+        )
+        print(u'\u274c' +
+              ' Limitations: Trademark use, Liability And Warranty')
+        print(u'\u2139' +
+              ' Conditions: License and copyright notice And State changes')
+        print(
+            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
+        )
+    else:
+        print('Quilt Is licensed Under The Apache License 2.0')
+        print(
+            'Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
+        )
+        print('Limitations: Trademark use, Liability And Warranty')
+        print('Conditions: License and copyright notice And State changes')
+        print(
+            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
+        )
