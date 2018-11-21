@@ -237,10 +237,8 @@ def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
 # Generate a string of Lorem Ipsum
 
 
-def genipsum():
-    # TODO: Make this work.
-    # https://loremipsum.readthedocs.io/en/latest/#api
-    pass
+def genipsum(sentences=1):
+    return loremipsum.get_sentences(sentences)
 
 
 # Convert 0 or 1 to False or True
