@@ -73,6 +73,9 @@ jobs:
           - zip -r zips/quilt.zip quilt_lang
           - tar -zcvf zips/quilt.tar.gz quilt_lang
 
+      before_deploy:
+          - echo Deployment tag: $(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')
+
       deploy:
           provider:         releases
           api_key:          "$github_token"
