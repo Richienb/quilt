@@ -1,17 +1,17 @@
-language:             python
+language:                   python
 
-python:               3.6.6
+python:                     3.6.6
 
-cache:                pip
+cache:                      pip
 
 jobs:
   include:
-    - stage:          Testing
+    - stage:                Testing
 
       script:
           - python src/test.py
 
-    - stage:          Deployment
+    - stage:                Deployment
 
       install:
           - pip install pyminifier
@@ -28,7 +28,7 @@ jobs:
             password:       $pypi_password
             skip_cleanup:   true
             server:         https://test.pypi.org/legacy/
-            distributions: "sdist bdist_wheel"
+            distributions:  "sdist bdist_wheel"
             on:
                 branch:     master
 
@@ -36,6 +36,26 @@ jobs:
             user:           "Richienb"
             password:       "$pypi_password"
             skip_cleanup:   true
-            distributions: "sdist bdist_wheel"
+            distributions:  "sdist bdist_wheel"
             on:
                 branch:     master
+
+    -
+      install:
+          - pip install pyminifier
+
+      before_script:
+          - cd src
+
+      script:
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+
+      deploy:
+          provider:         releases
+          api_key:          "$github_token"
+          file_glob:        true
+          file:             "$TRAVIS_BUILD_DIR/src/quilt_lang/*"
+          skip_cleanup:     true
+          on:
+              branch:       master
+              tags:         true
