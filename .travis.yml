@@ -91,7 +91,7 @@ jobs:
           github_token:     $github_token
           name:             "ROS Bot"
           email:            "richiebendall@gmail.com"
-          fqdn:             quilt-lang.richie-bendall.ml
+          fqdn:             "quilt-lang.richie-bendall.ml"
           local_dir:        site
           on:
               branch:       master
