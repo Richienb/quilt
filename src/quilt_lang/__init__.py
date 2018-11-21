@@ -78,8 +78,8 @@ def shellinput(initialtext='>> ', splitpart=' '):
     try:
         str(initialtext)
     except RuntimeError:
-        raise RuntimeError("Cannot convert type " + str(type(initialtext)) +
-                           "to str")
+        raise RuntimeWarning("Cannot convert type " + str(type(initialtext)) +
+                             "to str")
     shelluserinput = userinput(str(initialtext))
     if splitpart == '' or splitpart is None:
         return shelluserinput
@@ -122,7 +122,7 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
         return c.saturation
     elif destinationtype.lower() == 'lum':
         return c.luminance
-    raise RuntimeError("Destination colour code not specified correctly")
+    raise RuntimeWarning("Destination colour code not specified correctly")
 
 
 def changecolour(colourcode, action, amount=100):
@@ -355,22 +355,7 @@ def comparenum(value1, value2, comparison):
 
 
 def throwerror(errortext):
-    raise RuntimeError("Forced Error: " + str(errortext))
-
-
-# Store A Value In The __ros_stored__ Variable
-
-
-def store(value):
-    global __ros_stored__
-    __ros_stored__ = value
-
-
-# Get The Stored Variable
-
-
-def getstored():
-    return __ros_stored__
+    raise RuntimeWarning("Forced Error: " + str(errortext))
 
 
 # Delay For A Specific Amount Of Seconds
@@ -402,7 +387,7 @@ def opposite(boolean):
     try:
         return not boolean
     except RuntimeError:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occurred: Nor A Bool Or Len Was Provided (0014)')
 
 
@@ -482,7 +467,7 @@ def length(value):
     try:
         return len(convertstring(value))
     except OverflowError:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: The length of the object exceeds \
         the limit of {0}'.format(str((charlimit()))))
 
@@ -564,12 +549,12 @@ def convertbinary(value, argument):
         try:
             return bin(value)
         except RuntimeError:
-            raise RuntimeError('Invalid Value (0016)')
+            raise RuntimeWarning('Invalid Value (0016)')
     elif argument == 'from':
         try:
             return format(value)
         except RuntimeError:
-            raise RuntimeError('Invalid Value (0016)')
+            raise RuntimeWarning('Invalid Value (0016)')
 
 
 # Make The Text Forwards Or Backwards
@@ -638,14 +623,14 @@ def convertascii(value, command='to'):
         try:
             return chr(value)
         except ValueError:
-            raise RuntimeError('Invalid Symbol Value (0014)')
+            raise RuntimeWarning('Invalid Symbol Value (0014)')
     elif command == 'from':
         try:
             return ord(value)
         except ValueError:
-            raise RuntimeError('Invalid Symbol (0015)')
+            raise RuntimeWarning('Invalid Symbol (0015)')
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occurred: Invalid Operation Entered (0008)')
 
 
@@ -670,7 +655,7 @@ def availchar(charactertype):
     elif charactertype == 'whitespace':
         return string.whitespace
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occurred: Invalid Operation Entered (0008)')
 
 
@@ -869,7 +854,7 @@ def autohard(equation):
 
 def equation(operation, firstnum, secondnum):
     if not isnum(firstnum) and isnum(secondnum):
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: One Of The Values Specified Is Not A Number (0002)'
         )
     if operation == 'plus':
@@ -882,7 +867,7 @@ def equation(operation, firstnum, secondnum):
         if not secondnum == 0:
             return (firstnum / secondnum)
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: You Entered An Invalid Operation (0003)')
 
 
@@ -1012,7 +997,7 @@ def average(numbers, averagetype='mean'):
     try:
         statistics.mean(numbers)
     except RuntimeError:
-        raise RuntimeError('An Error Has Occured: List Not Specified (0018)')
+        raise RuntimeWarning('An Error Has Occured: List Not Specified (0018)')
     if averagetype == 'mean':
         return statistics.mean(numbers)
     elif averagetype == 'mode':
@@ -1026,7 +1011,7 @@ def average(numbers, averagetype='mean'):
     elif averagetype == 'range':
         return max(numbers) - min(numbers)
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: You Entered An Invalid Operation (0003)')
 
 
@@ -1090,7 +1075,8 @@ def less_or_equal(number):
     try:
         return math.floor(number)
     except RuntimeError:
-        raise RuntimeError('An Error Has Occured: Number Not Provided (0016)')
+        raise RuntimeWarning(
+            'An Error Has Occured: Number Not Provided (0016)')
 
 
 # Compare 2 Values
@@ -1098,14 +1084,14 @@ def less_or_equal(number):
 
 def compare(value1, value2, comparison):
     if not isinstance(comparison, str):
-        raise RuntimeError("ERROR: comparison argument must be a string.")
+        raise RuntimeWarning("ERROR: comparison argument must be a string.")
     if comparison == 'is':
         return value1 == value2
     elif comparison == 'or':
         return value1 or value2
     elif comparison == 'and':
         return value1 and value2
-    raise RuntimeError("Invalid comparison operator specified.")
+    raise RuntimeWarning("Invalid comparison operator specified.")
 
 
 # Find all the factors of a number
@@ -1151,8 +1137,8 @@ def randomnum(minimum=1, maximum=2):
     if isnum(minimum):
         if isnum(maximum):
             return random.randint(minimum, maximum)
-        raise RuntimeError("Maximum number is not a number.")
-    raise RuntimeError('Minimum number is not a number.')
+        raise RuntimeWarning("Maximum number is not a number.")
+    raise RuntimeWarning('Minimum number is not a number.')
 
 
 def isfib(number):
@@ -1265,7 +1251,7 @@ def flipcoords(xcoord, ycoord, axis):
             return str(xcoord + abs(xcoord) * 2) + ', ' + str(ycoord)
         elif xcoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
-        raise RuntimeError(
+        raise RuntimeWarning(
             "The X coordinate is neither larger, smaller or the same as 0.")
 
     elif axis == 'x':
@@ -1275,9 +1261,9 @@ def flipcoords(xcoord, ycoord, axis):
             return str(ycoord + abs(ycoord) * 2) + ', ' + str(xcoord)
         elif ycoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
-        raise RuntimeError(
+        raise RuntimeWarning(
             "The Y coordinate is neither larger, smaller or the same as 0.")
-    raise RuntimeError("Invalid axis. Neither x nor y was specified.")
+    raise RuntimeWarning("Invalid axis. Neither x nor y was specified.")
 
 
 def lcm(num1, num2):
@@ -1441,10 +1427,10 @@ def randomstr(valuelist):
     try:
         return random.choice(valuelist)
     except IndexError:
-        raise RuntimeError('An Error Has Occured: List Not Specified (0018)')
+        raise RuntimeWarning('An Error Has Occured: List Not Specified (0018)')
 
 
-def case(text, format='sentence'):
+def case(text, casing_format='sentence'):
     """
 
     Change the casing of some text
@@ -1452,20 +1438,20 @@ def case(text, format='sentence'):
     text:
     The text to change the casing of
 
-    format:
+    casing_format:
     The format of casing to apply to the text. Default is sentence.
 
     """
-    if format == 'uppercase':
+    if casing_format == 'uppercase':
         return str(text.upper())
-    elif format == 'lowercase':
+    elif casing_format == 'lowercase':
         return str(text.lower())
-    elif format == 'sentence':
+    elif casing_format == 'sentence':
         return str(text[0].upper()) + str(text[1:])
-    elif format == 'caterpillar':
+    elif casing_format == 'caterpillar':
         return str(text.lower().replace(" ", "_"))
     else:
-        raise RuntimeError("Invalid text format specified")
+        raise RuntimeWarning("Invalid text format specified")
 
 
 """
@@ -1507,7 +1493,7 @@ def dirtool(operation, directory):
         return bool(os.path.exists(directory))
     if operation == 'create':
         if os.path.exists(directory):
-            raise RuntimeError(
+            raise RuntimeWarning(
                 'An Error Has Occured: Directory Already Exists (0007)')
         else:
             os.makedirs(directory)
@@ -1515,10 +1501,10 @@ def dirtool(operation, directory):
         if os.path.exists(directory):
             os.rmdir(directory)
         else:
-            raise RuntimeError(
+            raise RuntimeWarning(
                 'An Error Has Occured: Directory Doesn\'t Exist (0009)')
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: Invalid Operation Entered (0008)')
 
 
@@ -1533,24 +1519,24 @@ def file(operation, path):
         if os.path.isfile(path):
             with open(path, 'r') as f:
                 return [line.strip() for line in f]
-        raise RuntimeError('An Error Has Occured: File Not Found (0012)')
+        raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
     elif operation == 'delete':
         if os.path.isfile(path):
             os.remove(path)
         else:
-            raise RuntimeError('An Error Has Occured: File Not Found (0012)')
+            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
     elif operation == 'create':
         if not file('exists', path):
             open(path, 'w').close()
         else:
-            raise RuntimeError(
+            raise RuntimeWarning(
                 'An Error Has Occured: File Already Exists (0013)')
     elif operation == 'clear':
         if os.path.isfile(path):
             open(path, 'w').close()
-        raise RuntimeError('An Error Has Occured: File Not Found (0012)')
+        raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: Invalid Operation Entered (0008)')
 
 
@@ -1627,7 +1613,7 @@ def loglevel(leveltype=None, isequal=False):
             return leveltype == logging.getEffectiveLevel()
         elif leveltype in loglevels:
             return loglevels[leveltype] == logging.getEffectiveLevel()
-        raise RuntimeError(
+        raise RuntimeWarning(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical"
         )
     if leveltype in loglevels.values():
@@ -1635,7 +1621,7 @@ def loglevel(leveltype=None, isequal=False):
     elif leveltype in loglevels:
         logging.basicConfig(level=loglevels[leveltype])
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical"
         )
 
@@ -1650,12 +1636,12 @@ def logfile(targetfile="ros.log"):
     try:
         str(targetfile)
     except RuntimeError:
-        raise RuntimeError("Cannot convert type " + str(type(targetfile)) +
-                           "to str")
+        raise RuntimeWarning("Cannot convert type " + str(type(targetfile)) +
+                             "to str")
     try:
         logging.basicConfig(filename=str(targetfile))
     except RuntimeError:
-        raise RuntimeError("Invalid target file specified")
+        raise RuntimeWarning("Invalid target file specified")
 
 
 # Gets, sets, appends or preceeds the clipboard contents
@@ -1671,7 +1657,7 @@ def clipaction(action='get', text=None):
     elif action == 'preceed':
         clipboard.copy(str(text) + str(clipboard.paste))
     else:
-        raise RuntimeError("Invalid clipboard action specified.")
+        raise RuntimeWarning("Invalid clipboard action specified.")
 
 
 # Tools For Text Files
@@ -1684,13 +1670,13 @@ def text(operation, path, argument):
             fh = open(path, 'w')
             fh.write(argument)
         else:
-            raise RuntimeError('An Error Has Occured: File Not Found (0012)')
+            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
     elif operation == 'append':
         if os.path.isfile(path):
             fh = open(path, 'a')
             fh.write(argument)
         else:
-            raise RuntimeError('An Error Has Occured: File Not Found (0012)')
+            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
 
 
 """
@@ -1797,7 +1783,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time / 60 / 60 / 24 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'minutes':
         if newformat == 'milliseconds':
             return time * 60 * 1000
@@ -1820,7 +1806,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time / 60 / 24 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'hours':
         if newformat == 'milliseconds':
             return time * 60 * 60 * 1000
@@ -1843,7 +1829,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time / 24 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'days':
         if newformat == 'milliseconds':
             return time * 24 * 60 * 60 * 1000
@@ -1866,7 +1852,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time / 7 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'weeks':
         if newformat == 'milliseconds':
             return time * 7 * 24 * 60 * 60 * 1000
@@ -1887,7 +1873,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time * 7 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'fortnights':
         if newformat == 'milliseconds':
             return time * 14 * 24 * 60 * 60 * 1000
@@ -1908,7 +1894,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time * 14 / 365 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'years':
         if newformat == 'milliseconds':
             return time * 365 * 24 * 60 * 60 * 1000
@@ -1931,7 +1917,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'decades':
         if newformat == 'milliseconds':
             return time * 10 * 365 * 24 * 60 * 60 * 1000
@@ -1954,7 +1940,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time * 10 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'centuaries':
         if newformat == 'milliseconds':
             return time * 100 * 365 * 24 * 60 * 60 * 1000
@@ -1977,7 +1963,7 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'millenniums':
             return time * 100 / 1000
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     elif currentformat == 'millenniums':
         if newformat == 'milliseconds':
             return time * 1000 * 365 * 24 * 60 * 60 * 1000
@@ -2000,9 +1986,9 @@ def converttime(time, currentformat, newformat):
         elif newformat == 'centuaries':
             return time * 1000 / 100
         else:
-            raise RuntimeError("Incorrect new time format specified.")
+            raise RuntimeWarning("Incorrect new time format specified.")
     else:
-        raise RuntimeError("Incorrect old time format specified.")
+        raise RuntimeWarning("Incorrect old time format specified.")
 
 
 def minyear():
@@ -2095,10 +2081,10 @@ def getdatetime(timedateformat='complete'):
             datetime.datetime.now())).split('.')[0]).split(' ')[1] + ' ' + (
                 (str(datetime.datetime.now())).split('.')[0]).split(' ')[0]
     else:
-        raise RuntimeError("Invalid time date format used.")
+        raise RuntimeWarning("Invalid time date format used.")
 
 
-def timeit(command, round=True):
+def timeit(command, round_result=True):
     """
 
     Time how long a command takes to execute
@@ -2106,14 +2092,14 @@ def timeit(command, round=True):
     command:
     The command to time.
 
-    round:
+    round_result:
     Whether or not to round the number to an integer. Default is True.
 
     """
     t1 = time.clock()
     exec(command)
     t2 = time.clock()
-    if round is True:
+    if round_result is True:
         return int(t2 - t1)
     return t2 - t1
 
@@ -2164,7 +2150,7 @@ def openurl(url):
     try:
         webbrowser.open(url)
     except webbrowser.Error:
-        raise RuntimeError('An Error Has Occured: Unable To Open URL (0017)')
+        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
 
 
 # Open A Link In A New Window Of A Web Browser
@@ -2174,7 +2160,7 @@ def newwindow(url):
     try:
         webbrowser.open_new(url)
     except webbrowser.Error:
-        raise RuntimeError('An Error Has Occured: Unable To Open URL (0017)')
+        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
 
 
 # Open A Link In A New Tab Of A Web Browser
@@ -2184,7 +2170,7 @@ def newtab(url):
     try:
         webbrowser.open_new_tab(url)
     except webbrowser.Error:
-        raise RuntimeError('An Error Has Occured: Unable To Open URL (0017)')
+        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
 
 
 # Get The Name Of The Browser Currently Being Used
@@ -2206,11 +2192,11 @@ def filedownload(source, destination):
             try:
                 urllib.request.urlretrieve(source, destination)
             except RuntimeError:
-                raise RuntimeError(
+                raise RuntimeWarning(
                     'An Error Has Occured: File Download Error (0010)')
         else:
-            raise RuntimeError(
+            raise RuntimeWarning(
                 'An Error Has Occured: Source Or Destination Invalid (0011)')
     else:
-        raise RuntimeError(
+        raise RuntimeWarning(
             'An Error Has Occured: Source Or Destination Invalid (0011)')
