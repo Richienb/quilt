@@ -30,7 +30,7 @@ jobs:
 
     - stage:                Deployment
     
-      if:                   type = pull_request
+      if:                   type != pull_request
 
       install:
           - pip install pyminifier
@@ -60,6 +60,9 @@ jobs:
                 branch:     master
 
     -
+
+      if:                   type != pull_request
+
       install:
           - pip install pyminifier
 
@@ -84,6 +87,9 @@ jobs:
               branch:       master
 
     -
+
+      if:                   type != pull_request
+
       install:
           - pip install mkdocs mkdocs-material pymdown-extensions pygments
 
