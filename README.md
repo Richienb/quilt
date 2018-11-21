@@ -1,5 +1,5 @@
 # Quilt Python Library
-A Python library that lets you write less code to do more things
+A Python library that lets you write less code to do more things. For more information, visit [this website](https://quilt-lang.richie-bendall.ml/).
 
 ## How to use
 ### Install via pip
