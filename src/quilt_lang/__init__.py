@@ -1,9 +1,6 @@
 """
 This is the one and only Quilt Lang file.
 """
-"""
-Uncatagorised
-"""
 # Python modules
 import warnings
 import keyword
@@ -18,6 +15,9 @@ import textwrap
 # External Modules
 import loremipsum
 import colour
+"""
+Uncatagorised
+"""
 
 # Show a shell based input line and return command and parameters
 
