@@ -20,8 +20,8 @@ jobs:
           - pip install bumpversion
           - bumpversion patch
           - git add .bumpversion.cfg src/setup.py
-          - git commit -m "Bump Version [skip ci]"
-          - until git push origin HEAD:master;do git pull --no-edit;git commit --amend -m "$(git log -1 --pretty=%B)";done
+          - git commit -m "Bump version [skip ci]"
+          - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
 
     - stage:                Deployment
 
@@ -86,9 +86,11 @@ jobs:
 
       deploy:
           provider:         pages
-          github_commit:    "CI | Built Documentation [skip ci]"
           skip_cleanup:     true
+          github_commit:    "CI | Built documentation [skip ci]"
           github_token:     $github_token
+          name:             "ROS Bot"
+          email:            "richiebendall@gmail.com"
           fqdn:             quilt-lang.richie-bendall.ml
           local_dir:        site
           on:
