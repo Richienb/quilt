@@ -65,14 +65,11 @@ jobs:
           - zip -r zips/quilt.zip quilt_lang
           - tar -zcvf zips/quilt.tar.gz quilt_lang
 
-      before_deploy:
-          - export TRAVIS_TAG=$(sed -n '2p' .bumpversion.cfg | awk '{print $3}')
-          - git tag $TRAVIS_TAG
-
       deploy:
           provider:         releases
           api_key:          "$github_token"
-          name:             "Edge Build"
+          name:             "Edge Release"
+          tag_name:         "$(sed -n '2p' .bumpversion.cfg | awk '{print $3}')"
           file_glob:        true
           file:             "$TRAVIS_BUILD_DIR/src/zips/*"
           skip_cleanup:     true
