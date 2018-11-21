@@ -19,14 +19,12 @@ jobs:
           - python src/test.py
 
       after_script:
-          - if [ $TRAVIS_PULL_REQUEST = false ]; \
-             then pip install bumpversion;bumpversion patch; \ 
-             git add .bumpversion.cfg src/setup.py; \
-             git commit -m "Bump version [skip ci]"; \
-             until git push origin HEAD:master;do git pull --no-edit; \
-             git commit --amend -m "$(git log -1 --pretty=%B)"; \
-             done; \
-             fi
+          - if [ $TRAVIS_PULL_REQUEST != false ]; then travis_terminate 0; fi
+          - pip install bumpversion
+          - bumpversion patch
+          - git add .bumpversion.cfg src/setup.py
+          - git commit -m "Bump version [skip ci]"
+          - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
 
     - stage:                Deployment
     
