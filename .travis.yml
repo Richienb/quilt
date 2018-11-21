@@ -58,7 +58,6 @@ jobs:
 
       before_script:
           - cd src
-          - current_version=$(sed -n '2p' .bumpversion.cfg | awk '{print $3}')
 
       script:
           - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
@@ -66,11 +65,13 @@ jobs:
           - zip -r zips/quilt.zip quilt_lang
           - tar -zcvf zips/quilt.tar.gz quilt_lang
 
+      before_deploy:
+          - git tag $(sed -n '2p' .bumpversion.cfg | awk '{print $3}')
+
       deploy:
           provider:         releases
           api_key:          "$github_token"
           name:             "Edge Build"
-          tag_name:         "$current_version"
           file_glob:        true
           file:             "$TRAVIS_BUILD_DIR/src/zips/*"
           skip_cleanup:     true
