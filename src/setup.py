@@ -16,6 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Richienb/quilt",
     packages=setuptools.find_packages(),
+    install_requires=['clipboard', 'colour', 'loremipsum'],
     classifiers=(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
