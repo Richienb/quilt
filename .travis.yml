@@ -8,6 +8,8 @@ before_install:
     - git remote set-url origin https://Richienb:${github_token}@github.com/Richienb/quilt.git
     - git config --global user.name "ROS Bot"
     - git config --global user.email "richiebendall@gmail.com"
+    
+if: tag IS blank
 
 jobs:
   include:
@@ -17,13 +19,18 @@ jobs:
           - python src/test.py
 
       after_script:
-          - pip install bumpversion
-          - bumpversion patch
-          - git add .bumpversion.cfg src/setup.py
-          - git commit -m "Bump version [skip ci]"
-          - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
+          - if [ $TRAVIS_PULL_REQUEST = false ]; \
+            then pip install bumpversion;bumpversion patch; \ 
+            git add .bumpversion.cfg src/setup.py; \
+            git commit -m "Bump version [skip ci]"; \
+            until git push origin HEAD:master;do git pull --no-edit; \
+            git commit --amend -m "$(git log -1 --pretty=%B)"; \
+            done; \
+            fi
 
     - stage:                Deployment
+    
+      if:                   type = pull_request
 
       install:
           - pip install pyminifier
