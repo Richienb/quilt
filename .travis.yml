@@ -69,7 +69,7 @@ jobs:
           provider:         releases
           api_key:          "$github_token"
           name:             "Edge Release"
-          tag_name:         "$(sed -n '2p' .bumpversion.cfg | awk '{print $3}')"
+          tag_name:         "$(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')"
           file_glob:        true
           file:             "$TRAVIS_BUILD_DIR/src/zips/*"
           skip_cleanup:     true
