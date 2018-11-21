@@ -1,0 +1,6 @@
+language: python
+
+python: 3.6.6
+
+script:
+    - python src/quilt_lang/__init__.py

@@ -19,7 +19,7 @@ setuptools.setup(
     classifiers=(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: Apache Software License",
         "Natural Language :: English",
         "Programming Language :: Python",
         "Operating System :: OS Independent",
