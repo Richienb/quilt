@@ -273,6 +273,8 @@ def warnconfig(action='default'):
         warnings.filterwarnings('module')
     elif action == 'once':
         warnings.filterwarnings('once')
+    else:
+        raise RuntimeWarning("Invalid action specified.")
 
 
 # Print a console message
