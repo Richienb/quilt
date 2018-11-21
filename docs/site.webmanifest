@@ -1,0 +1,21 @@
+{
+    "short_name": "Quilt",
+    "name": "Quilt Programming Language",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/?utm_source=homescreen",
+    "background_color": "#3F51B5",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3F51B5"
+}

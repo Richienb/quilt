@@ -1,0 +1,66 @@
+# Project information
+site_name:                'Quilt Programming Language'
+site_description:         'A Material Design theme for MkDocs'
+site_author:              'Richie Bendall'
+site_url:                 'https://quilt-lang.richie-bendall.ml'
+
+# Repository
+repo_name:                'Richienb/quilt'
+repo_url:                 'https://github.com/Richienb/quilt'
+
+# Copyright
+copyright:                'Copyright &copy; 2018 Richie Bendall'
+
+# Navigation
+nav:
+    - Home:               index.md
+
+# Configuration
+theme:
+    name:                 'material'
+    favicon:              'favicon.ico'
+    logo:                 'favicon-white.ico'
+    language:             'en'
+    palette:
+        primary:          'indigo'
+        accent:           'red'
+    font:
+        text:             'Roboto'
+        code:             'Roboto Mono'
+
+extra_css:
+    - 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'
+
+extra_javascript:
+    - 'https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js'
+
+# Customization
+extra:
+    manifest:             'site.webmanifest'
+    social:
+        - type:           'github'
+          link:           'https://github.com/Richienb'
+
+# Extensions
+markdown_extensions:
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable:     all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_generator:  !!python/name:pymdownx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+        custom_checkbox:  true
+    - pymdownx.tilde
+    - admonition
+    - codehilite:
+        guess_lang:       false
+    - toc:
+        permalink:        true

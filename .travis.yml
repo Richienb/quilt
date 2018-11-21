@@ -4,12 +4,24 @@ python:                     3.6.6
 
 cache:                      pip
 
+before_install:
+    - git remote set-url origin https://Richienb:${github_token}@github.com/Richienb/quilt.git
+    - git config --global user.name "ROS Bot"
+    - git config --global user.email "richiebendall@gmail.com"
+
 jobs:
   include:
     - stage:                Testing
 
       script:
           - python src/test.py
+
+      after_script:
+          - pip install bumpversion
+          - bumpversion patch
+          - git add .bumpversion.cfg src/setup.py
+          - git commit -m "Bump Version [skip ci]"
+          - until git push origin HEAD:master;do git pull --no-edit;git commit --amend -m "$(git log -1 --pretty=%B)";done
 
     - stage:                Deployment
 
@@ -46,16 +58,46 @@ jobs:
 
       before_script:
           - cd src
+          - current_version=$(sed -n '2p' .bumpversion.cfg | awk '{print $3}')
 
       script:
           - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+          - zip -r zips/quilt.zip quilt_lang
+          - tar -zcvf zips/quilt.tar.gz quilt_lang
 
       deploy:
           provider:         releases
           api_key:          "$github_token"
+          name:             "Edge Build"
+          tag_name:         "$current_version"
           file_glob:        true
-          file:             "$TRAVIS_BUILD_DIR/src/quilt_lang/*"
+          file:             "$TRAVIS_BUILD_DIR/src/zips/*"
           skip_cleanup:     true
           on:
               branch:       master
               tags:         true
+
+    -
+      install:
+          - pip install mkdocs mkdocs-material pymdown-extensions pygments
+
+      script:
+          - mkdocs build --verbose --clean --strict
+
+      deploy:
+          provider:         pages
+          github_commit:    "CI | Built Documentation [skip ci]"
+          skip_cleanup:     true
+          github_token:     $github_token
+          fqdn:             quilt-lang.richie-bendall.ml
+          local_dir:        site
+          on:
+              branch:       master
+
+      after_deploy:
+          - |
+            curl -X DELETE "https://api.cloudflare.com/client/v4/zones/${cf_zone_id}/purge_cache" \
+             -H "X-Auth-Email: richiebendall@gmail.com" \
+             -H "X-Auth-Key: ${cf_api_key}" \
+             -H "Content-Type: application/json" \
+             --data '{"purge_everything":true}'
