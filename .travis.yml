@@ -1,6 +1,41 @@
-language: python
+language:             python
 
-python: 3.6.6
+python:               3.6.6
 
-script:
-    - python src/test.py
+cache:                pip
+
+jobs:
+  include:
+    - stage:          Testing
+
+      script:
+          - python src/test.py
+
+    - stage:          Deployment
+
+      install:
+          - pip install pyminifier
+
+      before_script:
+          - cd src
+
+      script:
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+
+      deploy:
+          - provider:       pypi
+            user:           "Richienb"
+            password:       $pypi_password
+            skip_cleanup:   true
+            server:         https://test.pypi.org/legacy/
+            distributions: "sdist bdist_wheel"
+            on:
+                branch:     master
+
+          - provider:       pypi
+            user:           "Richienb"
+            password:       "$pypi_password"
+            skip_cleanup:   true
+            distributions: "sdist bdist_wheel"
+            on:
+                branch:     master
