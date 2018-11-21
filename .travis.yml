@@ -19,7 +19,7 @@ jobs:
           - python src/test.py
 
       after_script:
-          - if [ $TRAVIS_PULL_REQUEST != false ]; then travis_terminate 0; fi
+          - if [ $TRAVIS_PULL_REQUEST = false ]; then travis_terminate 0; fi
           - pip install bumpversion
           - bumpversion patch
           - git add .bumpversion.cfg src/setup.py
