@@ -12,12 +12,55 @@ import pprint
 import secrets
 import textwrap
 
+# System modules
+import subprocess
+import os
+import sys
+import logging
+import pkg_resources
+import clipboard
+
+# Math modules
+import math
+import operator
+import statistics
+import random
+
+# Time modules
+import datetime
+import time
+import calendar
+
+# Web modules
+import webbrowser
+import urllib
+
 # External Modules
 import loremipsum
 import colour
 """
 Uncatagorised
 """
+
+# Get User input
+
+
+def userinput(prompttext=""):
+    """
+
+    Get the input of the user via a universally secure method
+
+    prompttext:
+    The text to display while receiving the data. The default is "".
+
+    """
+    if sys.version_info > (3, 0):
+        # Python 3 code in this block
+        return input(str(prompttext))
+    else:
+        # Python 2 code in this block
+        return raw_input(str(prompttext))
+
 
 # Show a shell based input line and return command and parameters
 
@@ -38,7 +81,7 @@ def shellinput(initialtext='>> ', splitpart=' '):
     except BaseException:
         raise BaseException("Cannot convert type " + str(type(initialtext)) +
                             "to str")
-    shelluserinput = input(str(initialtext))
+    shelluserinput = userinput(str(initialtext))
     if splitpart == '' or splitpart is None:
         return shelluserinput
     commands = []
@@ -355,7 +398,7 @@ def delay(seconds):
 
 def wait_enter(times=1):
     for _ in range(times):
-        input('')
+        userinput('')
 
 
 # Convert A Variable To A String
@@ -569,26 +612,6 @@ def replacetext(string, texttofind, texttoreplace):
     return string.replace(texttofind, texttoreplace)
 
 
-# Get User input
-
-
-def userinput(prompttext=""):
-    """
-
-    Get the input of the user via a universally secure method
-
-    prompttext:
-    The text to display while receiving the data. The default is "".
-
-    """
-    if sys.version_info > (3, 0):
-        # Python 3 code in this block
-        return input(str(prompttext))
-    else:
-        # Python 2 code in this block
-        return raw_input(str(prompttext))
-
-
 # Evaluate A Expression Or Operation
 
 
@@ -799,12 +822,6 @@ def roslicense(raw=False):
 """
 Maths
 """
-
-# Math modules
-import math
-import operator
-import statistics
-import random
 
 # Automatically solve a simple maths problem
 
@@ -1465,14 +1482,6 @@ def case(text, format='sentence'):
 System
 """
 
-# System modules
-import subprocess
-import os
-import sys
-import logging
-import pkg_resources
-import clipboard
-
 # Get The Current Platform
 
 
@@ -1696,12 +1705,6 @@ def text(operation, path, argument):
 """
 Time
 """
-"""
-All commands based around time functions
-"""
-import datetime
-import time
-import calendar
 
 
 def dayofweek(day, month, year, formatresult=True):
@@ -2104,10 +2107,6 @@ def timeit(command, round=True):
 """
 Web
 """
-
-# Web modules
-import webbrowser
-import urllib
 
 # Generate And Run MailTo
 
