@@ -25,7 +25,7 @@ jobs:
           - bumpversion patch
           - git add .bumpversion.cfg src/setup.py
           - git commit -m "Bump version [skip ci]"
-          - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
+          - until git push origin HEAD:master; do git fetch; git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
 
     - stage:                Deployment
 
