@@ -96,6 +96,9 @@ jobs:
 
       script:
           - mkdocs build --verbose --clean --strict
+          - cd src
+          - python -m pydoc -w quilt_lang
+          - mv quilt_lang.html $TRAVIS_BUILD_DIR/commands/index.html
 
       deploy:
           provider:         pages
