@@ -9,8 +9,6 @@ before_install:
     - git config --global user.name "ROS Bot"
     - git config --global user.email "richiebendall@gmail.com"
 
-if: tag IS blank
-
 jobs:
   include:
     - stage:                Testing
