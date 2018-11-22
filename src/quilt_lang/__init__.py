@@ -42,7 +42,7 @@ Uncatagorised
 """
 
 
-def userinput(prompttext=""):
+def userinput(prompttext="": str) -> str:
     """
     Get the input of the user via a universally secure method
 
@@ -58,7 +58,7 @@ def userinput(prompttext=""):
     return raw_input(str(prompttext))
 
 
-def shellinput(initialtext='>> ', splitpart=' '):
+def shellinput(initialtext='>> ': str, splitpart=' ': str):
     """
     Give the user a shell-like interface to enter commands which are returned as a multi-part list containing the command and each of the arguments
 
@@ -97,7 +97,7 @@ def shellinput(initialtext='>> ', splitpart=' '):
     return commands
 
 
-def colourcode(startcolourcode, destinationtype, longhex=False):
+def colourcode(startcolourcode: str, destinationtype: str, longhex=False: bool) -> str:
     """
     Convert a colour code from one format to another.
 
@@ -169,7 +169,7 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
     raise RuntimeWarning("Invalid destination code specified.")
 
 
-def changecolour(colourcode, action, amount=100):
+def changecolour(colourcode: str, action: str, amount=100: int) -> str:
     """
     Modify a parameter of a colour code.
 
@@ -240,7 +240,7 @@ def changecolour(colourcode, action, amount=100):
     raise RuntimeWarning("Invalid action specified.")
 
 
-def leadingzero(number, minlength):
+def leadingzero(number: int, minlength: int) -> str:
     """
     Add leading zeros to a number.
 
@@ -267,7 +267,7 @@ def absolutenum(number):
     return abs(number)
 
 
-def splitstring(string, split_character=' ', part=None):
+def splitstring(string: str, split_character=' ': str, part=None: bool):
     """
     Split a string based on a character and get the parts as a list.
 
@@ -290,7 +290,7 @@ def splitstring(string, split_character=' ', part=None):
     return str(string).split(split_character)[part]
 
 
-def sort(listtosort, key=None, reversesort=False):
+def sort(listtosort: list, key=None, reversesort=False) -> list:
     """
     Sort a list alphabetically.
 
@@ -308,7 +308,7 @@ def sort(listtosort, key=None, reversesort=False):
     return sorted(listtosort, key=key, reverse=reversesort)
 
 
-def pykeyword(operation='list', keywordtotest=None):
+def pykeyword(operation='list': str, keywordtotest=None: str):
     """
     Check if a keyword exists in the Python keyword dictionary.
 
@@ -336,7 +336,7 @@ def pykeyword(operation='list', keywordtotest=None):
     raise RuntimeWarning("Invalid operation specified.")
 
 
-def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
+def prettyprinter(listtoprint: str, stream=None, indent=1: int, width=80: int, depth=None):
     """
     Pretty Print a list.
 
@@ -364,7 +364,7 @@ def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
     pprint.pprint(listtoprint, stream, indent, width, depth)
 
 
-def genipsum(sentences=1):
+def genipsum(sentences=1: int) -> list:
     """
     Generate an array of Lorem Ipsum
 
@@ -414,7 +414,7 @@ def modulereload(modulename):
     importlib.reload(modulename)
 
 
-def warnconfig(action='default'):
+def warnconfig(action='default': str):
     """
     Configure the Python warnings.
 
@@ -458,7 +458,7 @@ def warnconfig(action='default'):
     raise RuntimeWarning("Invalid action specified.")
 
 
-def message_print(text, amount=1):
+def message_print(text: str, amount=1: int):
     """
     Print out a console message.
 
