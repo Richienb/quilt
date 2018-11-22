@@ -18,7 +18,6 @@ import os
 import sys
 import logging
 import pkg_resources
-import clipboard
 
 # Math modules
 import math
@@ -37,295 +36,443 @@ import urllib
 # External Modules
 import loremipsum
 import colour
+import clipboard
 """
 Uncatagorised
 """
 
-# Get User input
-
 
 def userinput(prompttext=""):
     """
-
     Get the input of the user via a universally secure method
 
     prompttext:
-    The text to display while receiving the data. The default is "".
-
+    The text to display while receiving the data. The default is: "".
     """
-    if sys.version_info > (3, 0):
+    # Check if the Python version is 3.x or newer
+    if sys.version_info >= (3, 0):
         # Python 3 code in this block
         return input(str(prompttext))
-    # Python 2 code in this block
+
+    # Python 2 code here
     return raw_input(str(prompttext))
-
-
-# Show a shell based input line and return command and parameters
 
 
 def shellinput(initialtext='>> ', splitpart=' '):
     """
     Give the user a shell-like interface to enter commands which are returned as a multi-part list containing the command and each of the arguments
+
     initialtext:
-    Set the text to be displayed as the prompt. Default is '>>'.
+    Set the text to be displayed as the prompt. Default is: '>>'.
+
     splitpart:
     The character to split when generating the list item.
-    The default is ' '.
+    The default is: ' '.
     Set to '' or None to skip splitting.
     """
 
     try:
-        str(initialtext)
+        # Convert shell user input to a string and set it to a variable
+        shelluserinput = userinput(str(initialtext))
     except RuntimeError:
+        # If it fails then raise a warning
         raise RuntimeWarning("Cannot convert type " + str(type(initialtext)) +
                              "to str")
-    shelluserinput = userinput(str(initialtext))
+
+    # If the part to split doesn't exist
     if splitpart == '' or splitpart is None:
+        # Return the text
         return shelluserinput
+
+    # Create en empty list object
     commands = []
+
+    # For each item after splitting the output
     for item in enumerate(shelluserinput.split(splitpart)):
+
+        # Append it to the list
         commands.append(item[1])
+
+    # Return the command arguments
     return commands
 
 
 def colourcode(startcolourcode, destinationtype, longhex=False):
     """
-    Convert a colour code from one format to another
+    Convert a colour code from one format to another.
+
     startcolourcode:
-    Set the colour code to convert from
+    Set the colour code to convert from.
+
     destinationtype:
-    Set the colour code type to convert to. Possible options are HEX, HSL, RGB, red, blue, green, hue, sat and lum
+    Set the colour code type to convert to. Possible options are HEX, HSL, RGB, red, blue, green, hue, sat and lum.
+
     longhex:
     If converting to hex, provided the long and unsimplified version.
-    The default is False.
+    The default is: False.
     """
 
+    # Create a colour object
     c = colour.Color(str(startcolourcode))
+
+    # If the lowercase version of the destination type is 'hex'
     if destinationtype.lower() == 'hex':
+        # If the long hex variable is True
         if longhex is True:
+            # Return the long hex
             return c.hex_l
+
+        # Return the hex
         return c.hex
+
+    # If the lowercase version of the destination type is 'hsl'
     elif destinationtype.lower() == 'hsl':
+        # Return the HSL
         return c.hsl
+
+    # If the lowercase version of the destination type is 'rgb'
     elif destinationtype.lower() == 'rgb':
+        # Return the RGB
         return c.rgb
+
+    # If the lowercase version of the destination type is 'red'
     elif destinationtype.lower() == 'red':
+        # Return the red amount
         return c.red
+
+    # If the lowercase version of the destination type is 'blue'
     elif destinationtype.lower() == 'blue':
+        # Return the blue amount
         return c.blue
+
+    # If the lowercase version of the destination type is 'green'
     elif destinationtype.lower() == 'green':
+        # Return the green amount
         return c.green
+
+    # If the lowercase version of the destination type is 'hue'
     elif destinationtype.lower() == 'hue':
+        # Return the hue amount
         return c.hue
+
+    # If the lowercase version of the destination type is 'sat'
     elif destinationtype.lower() == 'sat':
+        # Return the saturation amount
         return c.saturation
+
+    # If the lowercase version of the destination type is 'lum'
     elif destinationtype.lower() == 'lum':
+        # Return the luminance amount
         return c.luminance
-    raise RuntimeWarning("Destination colour code not specified correctly")
+
+    # If nothing matches raise a warning
+    raise RuntimeWarning("Invalid destination code specified.")
 
 
 def changecolour(colourcode, action, amount=100):
     """
-    Modify a parameter of a colour code
+    Modify a parameter of a colour code.
+
     colourcode:
     The colour code representing the colour to convert from.
+
     action:
     The action to perform on the colour.
     Possible options are red, blue, green, hue, sat and lum.
+
     amount:
-    The percentage of the action to perform. For example, 100 means apply 100% of the colour (no change).
-    The default is 100.
+    The percentage of the action to perform.
+    For example, 100 means apply 100% of the colour (no change).
+    The default is: 100.
     """
 
+    # Create a colour object
     c = colour.Color(colourcode)
-    if action == 'red':
+
+    # If the lowercase version of the action is 'red'
+    if action.lower() == 'red':
+        # Modify the redness
         c.red = amount / 100
+
+        # Return the result
         return c
-    elif action == 'blue':
+
+    # If the lowercase version of the action is 'blue'
+    elif action.lower() == 'blue':
+        # Modify the blueness
         c.blue = amount / 100
+
+        # Return the result
         return c
-    elif action == 'green':
+
+    # If the lowercase version of the action is 'green'
+    elif action.lower() == 'green':
+        # Modify the greenness
         c.green = amount / 100
+
+        # Return the result
         return c
-    elif action == 'hue':
+
+    # If the lowercase version of the action is 'hue'
+    elif action.lower() == 'hue':
+        # Modify the hue
         c.hue = amount / 100
+
+        # Return the result
         return c
-    elif action == 'sat':
+
+    # If the lowercase version of the action is 'sat'
+    elif action.lower() == 'sat':
+        # Modify the saturation
         c.saturation = amount / 100
+
+        # Return the result
         return c
-    elif action == 'lum':
+
+    # If the lowercase version of the action is 'lum'
+    elif action.lower() == 'lum':
+        # Modify the luminance
         c.luminance = amount / 100
+
+        # Return the result
         return c
+
+    raise RuntimeWarning("Invalid action specified.")
 
 
 def leadingzero(number, minlength):
     """
-    Add leading zeros to a number
+    Add leading zeros to a number.
+
     number:
-    The number to add the leading zeros to
+    The number to add the leading zeros to.
+
     minlength:
-    If the number is shorter than this length than add leading zeros to make the length correct
+    If the number is shorter than this length than add leading zeros to make the length correct.
     """
 
+    # Return the number as a string with the filled number
     return str(number).zfill(int(minlength))
 
 
 def absolutenum(number):
     """
-    Get the absolute value for a number
+    Get the absolute value for a number.
+
     number:
-    The number to get the absolute value for
+    The number to get the absolute value for.
     """
 
+    # Return the absolute number
     return abs(number)
 
 
 def splitstring(string, split_character=' ', part=None):
     """
-    Split a string based on a character and get the parts as a list
+    Split a string based on a character and get the parts as a list.
+
     string:
-    The string to split
+    The string to split.
+
     split_character:
-    The character to split for the string. The default is ' '.
+    The character to split for the string. The default is: ' '.
+
     part:
-    Get a specific part of the list. The default is None.
+    Get a specific part of the list. The default is: None.
     """
 
-    if part is None:
+    # If the part is empty
+    if part in [None, '']:
+        # Return an array of the splitted text
         return str(string).split(split_character)
+
+    # Return an array of the splitted text with a specific part
     return str(string).split(split_character)[part]
 
 
 def sort(listtosort, key=None, reversesort=False):
     """
-    Sort a list alphabetically
+    Sort a list alphabetically.
+
     listtosort:
-    The list which will be sorted
+    The list which will be sorted.
+
     key:
-    The key to use when sorting. The default is None.
+    The key to use when sorting. The default is: None.
+
     reverse:
-    If to sort backwards. The default is False.
+    If to sort backwards. The default is: False.
     """
 
+    # Return the sorted version of a list
     return sorted(listtosort, key=key, reverse=reversesort)
 
 
 def pykeyword(operation='list', keywordtotest=None):
     """
-    Check if a keyword exists in the Python keyword dictionary
+    Check if a keyword exists in the Python keyword dictionary.
+
     operation:
-    Whether to list or check the keywords. Possible options are list and check. The default is 'list'.
+    Whether to list or check the keywords.
+    Possible options are 'list' and 'check'.
+    The default is: 'list'.
+
     keywordtotest:
-    The keyword to test for if the operation is 'check'. The default is None.
+    The keyword to check.
+    The default is None.
     """
 
+    # If the operation was 'list'
     if operation == 'list':
+        # Return an array of keywords
         return str(keyword.kwlist)
+
+    # If the operation was 'check'
     elif operation == 'check':
+        # Return a boolean for if the string was a keyword
         return keyword.iskeyword(str(keywordtotest))
 
-
-# Pretty print a list
+    # Raise a warning
+    raise RuntimeWarning("Invalid operation specified.")
 
 
 def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
+    """
+    Pretty Print a list.
+
+    listtoprint:
+    The list to pretty print.
+
+    stream:
+    The stream to use.
+    Default is: None.
+
+    indent:
+    The indention to use.
+    Default is: 1.
+
+    width:
+    The width to use.
+    Default is: 80.
+
+    depth:
+    The depth to use.
+    Default is: None.
+    """
+
+    # Pretty print the array
     pprint.pprint(listtoprint, stream, indent, width, depth)
 
 
-# Generate a string of Lorem Ipsum
-
-
 def genipsum(sentences=1):
-    return loremipsum.get_sentences(sentences)
+    """
+    Generate an array of Lorem Ipsum
+
+    sentences:
+    The amount of sentences to generate.
+    Default is: 1.
+    """
+
+    # Return the generated ipsum
+    return loremipsum.get_sentences(int(sentences))
 
 
-# Convert 0 or 1 to False or True
+def binboolflip(item):
+    """
+    Convert 0 or 1 to False or True (or vice versa).
+    The converter works as follows:
 
+    - 0 > False
+    - False > 0
+    - 1 > True
+    - True > 1
 
-def bintobool(integer):
-    if isinteger(integer) and integer < 2 and integer > -1:
-        if integer == 0:
-            return False
-        elif integer == 1:
-            return True
+    item:
+    The item to convert.
+    """
 
+    # Set the keys for coversion
+    keys = {0: False, False: 0, 1: True, True: 1}
 
-# Reload a module
+    try:
+        # Try to return the converted value
+        return keys[item]
+    except RuntimeError:
+        # Raise a warning
+        raise RuntimeWarning("Invalid item specified.")
 
 
 def modulereload(modulename):
+    """
+    Reload a module.
+
+    modulename:
+    Name of module to reload.
+    """
+
+    # Reload the module
     importlib.reload(modulename)
 
 
-# Configure the Python warnings
-
-
 def warnconfig(action='default'):
-    if action == 'default':
+    """
+    Configure the Python warnings.
+
+    action:
+    The configuration to set.
+    Options are: 'default', 'error', 'ignore', 'always', 'module' and 'once'.
+    Default is: 'default'.
+    """
+
+    # If action is 'default'
+    if action.lower() == 'default':
+        # Change warning settings
         warnings.filterwarnings('default')
-    elif action == 'error':
+
+    # If action is 'error'
+    elif action.lower() == 'error':
+        # Change warning settings
         warnings.filterwarnings('error')
-    elif action == 'ignore':
+
+    # If action is 'ignore'
+    elif action.lower() == 'ignore':
+        # Change warning settings
         warnings.filterwarnings('ignore')
-    elif action == 'always':
+
+    # If action is 'always'
+    elif action.lower() == 'always':
+        # Change warning settings
         warnings.filterwarnings('always')
-    elif action == 'module':
+
+    # If action is 'module'
+    elif action.lower() == 'module':
+        # Change warning settings
         warnings.filterwarnings('module')
-    elif action == 'once':
+
+    # If action is 'once'
+    elif action.lower() == 'once':
+        # Change warning settings
         warnings.filterwarnings('once')
-    else:
-        raise RuntimeWarning("Invalid action specified.")
 
-
-# Print a console message
+    # Raise runtime warning
+    raise RuntimeWarning("Invalid action specified.")
 
 
 def message_print(text, amount=1):
+    """
+    Print out a console message.
+
+    text:
+    The text to print out.
+
+    amount:
+    The amount of times to print it out.
+    """
+
+    # Repeat for value of amount
     for _ in range(amount):
+        # Print the text
         print(text)
-
-
-# Get The Sides Of A Shape
-
-
-def shapesides(inputtocheck, inputtype='shape'):
-    inputtocheck = inputtocheck.lower()
-    shapestosides = {
-        'triangle': 3,
-        'square': 4,
-        'pentagon': 5,
-        'hexagon': 6,
-        'heptagon': 7,
-        'octagon': 8,
-        'nonagon': 9,
-        'decagon': 10,
-        'hendecagon': 11,
-        'dodecagon': 12,
-        'triskaidecagon': 13,
-        'tetrakaidecagon': 14,
-        'pentadecagon': 15,
-        'hexakaidecagon': 16,
-        'heptadecagon': 17,
-        'octakaidecagon': 18,
-        'enneadecagon': 19,
-        'Icosagon': 20,
-        'triacontagon': 30,
-        'tetracontagon': 40,
-        'pentacontagon': 50,
-        'hexacontagon': 60,
-        'heptacontagon': 70,
-        'octacontagon': 80,
-        'enneacontagon': 90,
-        'hectagon': 100,
-        'chiliagon': 1000,
-        'myriagon': 10000,
-        'megagon': 1000000,
-        'googolgon': pow(10, 100)
-    }
-    if inputtype == 'shape':
-        if inputtocheck in shapestosides:
-            return shapestosides[inputtocheck]
-        return "ngon"
 
 
 # Compare 2 Numbers
@@ -522,15 +669,6 @@ def onlist(listtocheck, item):
 
 def jointext(firststring, secondstring):
     return str(firststring) + str(secondstring)
-
-
-# About Information
-
-
-def about():
-    print('You Are Using ROS Code')
-    print('ROS Code Is licensed Under The Apache License 2.0')
-    print('Type "ros.license()" To Read The license')
 
 
 # Get the value of __name__
@@ -766,6 +904,82 @@ def decintfix(decorint=0):
 """
 Maths
 """
+
+
+def shapesides(inputtocheck, inputtype='shape'):
+    """
+    Get the sides of a shape.
+
+    inputtocheck:
+    The amount of sides or the shape to be checked,
+    depending on the value of inputtype.
+
+    inputtype:
+    The type of input provided.
+    Can be: 'shape', 'sides'.
+    Default is: 'shape'.
+    """
+
+    # Define the array of sides to a shape
+    shapestosides = {
+        'triangle': 3,
+        'square': 4,
+        'pentagon': 5,
+        'hexagon': 6,
+        'heptagon': 7,
+        'octagon': 8,
+        'nonagon': 9,
+        'decagon': 10,
+        'hendecagon': 11,
+        'dodecagon': 12,
+        'triskaidecagon': 13,
+        'tetrakaidecagon': 14,
+        'pentadecagon': 15,
+        'hexakaidecagon': 16,
+        'heptadecagon': 17,
+        'octakaidecagon': 18,
+        'enneadecagon': 19,
+        'icosagon': 20,
+        'triacontagon': 30,
+        'tetracontagon': 40,
+        'pentacontagon': 50,
+        'hexacontagon': 60,
+        'heptacontagon': 70,
+        'octacontagon': 80,
+        'enneacontagon': 90,
+        'hectagon': 100,
+        'chiliagon': 1000,
+        'myriagon': 10000,
+        'megagon': 1000000,
+        'googolgon': pow(10, 100),
+        'ngon': 'n'
+    }
+
+    # Define an array with the flipped version of the sides to a shape
+    sidestoshapes = dictflip(shapestosides)
+
+    # If the lowercase version of the input type is 'shape'
+    if inputtype.lower() == 'shape':
+        # If the lowercase version of the shape is in the array
+        if inputtocheck.lower() in shapestosides:
+            # Return the corresponding sides
+            return shapestosides[inputtocheck.lower()]
+
+        # Return 'n'
+        return shapestosides['n']
+
+    if inputtype.lower() == 'sides':
+        # If the lowercase version of the shape is in the array
+        if inputtocheck.lower() in sidestoshapes:
+            # Return the corresponding sides
+            return sidestoshapes[inputtocheck.lower()]
+
+        # Return 'ngon'
+        return sidestoshapes['ngon']
+
+    # Raise a warning
+    raise RuntimeWarning("Invalid input type.")
+
 
 # Automatically solve a simple maths problem
 
@@ -1047,8 +1261,7 @@ def less_or_equal(number):
     try:
         return math.floor(number)
     except RuntimeError:
-        raise RuntimeWarning(
-            'An Error Has Occured: Number Not Provided (0016)')
+        raise RuntimeWarning('An Error Has Occured: Number Not Provided (0016)')
 
 
 # Compare 2 Values
@@ -1101,9 +1314,9 @@ def randomnum(minimum=1, maximum=2):
     """
     Generate a random number
     minimum:
-    The minimum number to generate. Default is 1.
+    The minimum number to generate. Default is: 1.
     maximum:
-    The maximum number to generate. Default is 10.
+    The maximum number to generate. Default is: 10.
     """
 
     if isnum(minimum):
@@ -1154,7 +1367,7 @@ def convertbase(number, base=10):
     number:
     The number to convert
     base:
-    The base to convert to. Default is 10.
+    The base to convert to. Default is: 10.
     """
 
     integer = number
@@ -1298,7 +1511,7 @@ def randstring(length=1):
     Generate a random string consisting of letters, digits and punctuation
 
     length:
-    The length of the generated string. Default is 1
+    The length of the generated string. Default is: 1
 
     """
     charstouse = string.ascii_letters + string.digits + string.punctuation
@@ -1322,6 +1535,31 @@ String
 """
 
 
+def dictflip(dictionary):
+    """
+    Flip the names and keys in a dictionary.
+
+    This means that this:
+    {'key1': 'value1', 'key2': 'value2'}
+    will be converted into this:
+    {'value1': 'key1', 'value2': 'key2'}
+
+    dictionary:
+    The dictionary to flip.
+    """
+
+    # Check if the Python version is 3.x or newer
+    if sys.version_info >= (3, 0):
+        # Python 3 code in this block
+        return {v: k for k, v in my_map.items()}
+    elif sys.version_info >= (2, 7):
+        # Python 2.7.x code in this block
+        return {v: k for k, v in my_map.iteritems()}
+
+    # Python 2 code here
+    return {v: k for k, v in my_map.items()}
+
+
 def catwalk(text):
     """
     Replace multiple spaces with a single space
@@ -1339,7 +1577,7 @@ def converttabs(text, spaces=4):
     text:
     The text to convert tabs to spaces on
     spaces:
-    The amount of spaces to replace tabs to. Default is 4.
+    The amount of spaces to replace tabs to. Default is: 4.
     """
 
     return text.replace('\t', ' ' * spaces)
@@ -1353,7 +1591,7 @@ def shortentext(text, minlength, placeholder='...'):
     minlength:
     The minimum length before a shortening will occur
     placeholder:
-    The text to append after removing protruding text. Default is '...'.
+    The text to append after removing protruding text. Default is: '...'.
     """
 
     return textwrap.shorten(text, minlength, placeholder=str(placeholder))
@@ -1385,7 +1623,7 @@ def paraspace(paragraphspaces=1):
     """
     Print 1 or more paragraph spaces in the terminal output
     paragraphspaces:
-    The amount of paragraph spaces to print. Default is 1.
+    The amount of paragraph spaces to print. Default is: 1.
     """
 
     for _ in range(paragraphspaces):
@@ -1411,7 +1649,7 @@ def case(text, casing_format='sentence'):
     The text to change the casing of
 
     casing_format:
-    The format of casing to apply to the text. Default is sentence.
+    The format of casing to apply to the text. Default is: sentence.
 
     """
     if casing_format == 'uppercase':
@@ -1549,13 +1787,6 @@ def pyexec():
     return sys.executable
 
 
-# Print Python copyright information
-
-
-def pycopyright():
-    return sys.copyright
-
-
 # Set logging status dependant on if debug is enabled
 
 
@@ -1628,8 +1859,7 @@ def clipaction(action='get', text=None):
         clipboard.copy(str(clipboard.paste) + str(text))
     elif action == 'preceed':
         clipboard.copy(str(text) + str(clipboard.paste))
-    else:
-        raise RuntimeWarning("Invalid clipboard action specified.")
+    raise RuntimeWarning("Invalid clipboard action specified.")
 
 
 # Tools For Text Files
@@ -1674,7 +1904,7 @@ def dayofweek(day, month, year, formatresult=True):
     Whether or not to format the result.
     A formatted date would look like: "Monday".
     A non formatted date would look like: 1.
-    Default is True.
+    Default is: True.
 
     """
     if formatresult is False:
@@ -2007,8 +2237,8 @@ def getdatetime(timedateformat='complete'):
 
     timedateformat:
     The type of date to query for.
-    Can be day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.
-    Default is "complete".
+    Can be: day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.
+    Default is: "complete".
 
     """
     timedateformat = timedateformat.lower()
@@ -2020,30 +2250,30 @@ def getdatetime(timedateformat='complete'):
         return ((str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[0]
+               ).split(':')[0]
     elif timedateformat == 'minute':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[1]
+               ).split(':')[1]
     elif timedateformat == 'second':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[2]
+               ).split(':')[2]
     elif timedateformat == 'millisecond':
         return (str(datetime.datetime.now())).split('.')[1]
     elif timedateformat == 'yearmonthday':
         return (str(datetime.datetime.now())).split(' ')[0]
     elif timedateformat == 'daymonthyear':
-        return ((str(datetime.datetime.now(
-        ))).split(' ')[0]).split('-')[2] + '-' + ((str(
-            datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
-                (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
+        return ((str(datetime.datetime.now())).split(' ')[0]).split(
+            '-')[2] + '-' + ((str(
+                datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
+                    (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hourminutesecond':
         return ((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
     elif timedateformat == 'secondminutehour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
-                    ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
-                        ((str(datetime.datetime.now())).split(' ')[1]
-                         ).split('.')[0]).split(':')[0]
+               ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
+                   ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
+                       ((str(datetime.datetime.now())).split(' ')[1]
+                       ).split('.')[0]).split(':')[0]
     elif timedateformat == 'complete':
         return str(datetime.datetime.now())
     elif timedateformat == 'datetime':
@@ -2065,7 +2295,7 @@ def timeit(command, round_result=True):
     The command to time.
 
     round_result:
-    Whether or not to round the number to an integer. Default is True.
+    Whether or not to round the number to an integer. Default is: True.
 
     """
     t1 = time.clock()
@@ -2173,6 +2403,7 @@ def filedownload(source, destination):
         raise RuntimeWarning(
             'An Error Has Occured: Source Or Destination Invalid (0011)')
 
+
 """
 Copyright
 """
@@ -2180,20 +2411,36 @@ Copyright
 # License Information
 
 
+def about():
+    """
+
+    Print the about information.
+
+    """
+    print('You are using the Quilt Lang Programming Library')
+    print('Quilt is licensed under Apache License 2.0')
+
+
 def quiltlicense(raw=False):
+    """
+
+    Print the Quilt Lang license.
+
+    raw:
+    Set to True in order to print the raw text only leveraging ASCII charactersself.
+    Default is: False.
+
+    """
     if raw is False:
         print('Quilt is licensed under the Apache License 2.0')
         print(
             u'\u2714' +
             ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
         )
-        print(u'\u274c' +
-              ' Limitations: Trademark use, Liability And Warranty')
+        print(u'\u274c' + ' Limitations: Trademark use, Liability And Warranty')
         print(u'\u2139' +
               ' Conditions: License and copyright notice And State changes')
-        print(
-            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
-        )
+        print('To view the full license, go to https://git.io/fp4x2')
     else:
         print('Quilt Is licensed Under The Apache License 2.0')
         print(
@@ -2201,6 +2448,12 @@ def quiltlicense(raw=False):
         )
         print('Limitations: Trademark use, Liability And Warranty')
         print('Conditions: License and copyright notice And State changes')
-        print(
-            'To View, The Full license, Go To https://rosurl.ga/ROS-Code-license'
-        )
+        print('To view the full license, go to https://git.io/fp4x2')
+
+
+def pycopyright():
+    """
+    Return the Python copyright information.
+    """
+
+    return sys.copyright

@@ -8,7 +8,7 @@ before_install:
     - git remote set-url origin https://Richienb:${github_token}@github.com/Richienb/quilt.git
     - git config --global user.name "ROS Bot"
     - git config --global user.email "richiebendall@gmail.com"
-    
+
 if: tag IS blank
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
 
     - stage:                Deployment
-    
+
       if:                   type != pull_request
 
       install:
@@ -37,7 +37,7 @@ jobs:
           - cd src
 
       script:
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
 
       deploy:
           - provider:       pypi
@@ -68,7 +68,7 @@ jobs:
           - cd src
 
       script:
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --outfile="{}" "{}" \;
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
           - mkdir zips
           - zip -r zips/quilt.zip quilt_lang
           - tar -zcvf zips/quilt.tar.gz quilt_lang
