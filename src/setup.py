@@ -7,7 +7,7 @@ with open("../README.md", "r") as fh:
 
 setuptools.setup(
     name="quilt-lang",
-    version="0.2.3",
+    version="0.2.4",
     author="Richie Bendall",
     author_email="richiebendall@gmail.com",
     description=
