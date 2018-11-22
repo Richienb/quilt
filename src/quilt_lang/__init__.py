@@ -2403,6 +2403,26 @@ def filedownload(source, destination):
         raise RuntimeWarning(
             'An Error Has Occured: Source Or Destination Invalid (0011)')
 
+        
+ class DictObject(object):
+
+    def __init__(self, _dict):
+        """
+        Fancier way of converting nested dictionary to an object!
+
+        Parameters
+        ----------
+        _dict: dictionary
+            Already defined dictionary
+        Returns
+        -------
+        object: dictionary object
+        """
+        for key, value in _dict.items():
+            if isinstance(value, (list, tuple)):
+                setattr(self, key, [obj(x) if isinstance(x, dict) else x for x in value])
+            else:
+                setattr(self, key, obj(value) if isinstance(value, dict) else value)
 
 """
 Copyright
