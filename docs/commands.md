@@ -1,0 +1,3 @@
+# Hmm...
+
+You shouldn't be seeing this. You should [open an issue on GitHub](https://github.com/Richienb/quilt/issues/new).
