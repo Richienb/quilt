@@ -2418,7 +2418,7 @@ def filedownload(source, destination):
             'An Error Has Occured: Source Or Destination Invalid (0011)')
 
         
- class DictObject(object):
+class DictObject(object):
 
     def __init__(self, _dict):
         """
@@ -2434,9 +2434,11 @@ def filedownload(source, destination):
         """
         for key, value in _dict.items():
             if isinstance(value, (list, tuple)):
-                setattr(self, key, [obj(x) if isinstance(x, dict) else x for x in value])
+                setattr(self, key,
+                        [obj(x) if isinstance(x, dict) else x for x in value])
             else:
-                setattr(self, key, obj(value) if isinstance(value, dict) else value)
+                setattr(self, key,
+                        obj(value) if isinstance(value, dict) else value)
 
 """
 Copyright
