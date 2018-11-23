@@ -1,2 +1,2 @@
-import unittest
-import quilt_lang
+import quilt_lang as _
+_.pingtest()

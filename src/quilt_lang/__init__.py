@@ -47,15 +47,9 @@ def userinput(prompttext=""):
     Get the input of the user via a universally secure method
 
     prompttext:
-    The text to display while receiving the data. The default is: "".
+    The text to display while receiving the data.
     """
-    # Check if the Python version is 3.x or newer
-    if sys.version_info >= (3, 0):
-        # Python 3 code in this block
-        return input(str(prompttext))
-
-    # Python 2 code here
-    return raw_input(str(prompttext))
+    return input(str(prompttext))
 
 
 def shellinput(initialtext='>> ', splitpart=' '):
@@ -63,10 +57,10 @@ def shellinput(initialtext='>> ', splitpart=' '):
     Give the user a shell-like interface to enter commands which are returned as a multi-part list containing the command and each of the arguments
 
     :type initialtext: string
-    :param initialtext: Set the text to be displayed as the prompt. Default is: '>>'.
+    :param initialtext: Set the text to be displayed as the prompt.
 
     :type splitpart: string
-    :param splitpart: The character to split when generating the list item. The default is: ' '. Set to '' or None to skip splitting.
+    :param splitpart: The character to split when generating the list item.
     """
 
     try:
@@ -99,15 +93,14 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
     """
     Convert a colour code from one format to another.
 
-    startcolourcode:
-    Set the colour code to convert from.
+    :type startcolourcode: string
+    :param startcolourcode: Set the colour code to convert from.
 
-    destinationtype:
-    Set the colour code type to convert to. Possible options are HEX, HSL, RGB, red, blue, green, hue, sat and lum.
+    :type destinationtype: string
+    :param destinationtype: Set the colour code type to convert to. Possible options are HEX, HSL, RGB, red, blue, green, hue, sat and lum.
 
-    longhex:
-    If converting to hex, provided the long and unsimplified version.
-    The default is: False.
+    :type longhex: boolean
+    :param longhex: If converting to hex, provided the long and unsimplified version.
     """
 
     # Create a colour object
@@ -171,17 +164,14 @@ def changecolour(colourcode, action, amount=100):
     """
     Modify a parameter of a colour code.
 
-    colourcode:
-    The colour code representing the colour to convert from.
+    :type colourcode: string
+    :param colourcode: The colour code representing the colour to convert from.
 
-    action:
-    The action to perform on the colour.
-    Possible options are red, blue, green, hue, sat and lum.
+    :type action: string
+    :param action: The action to perform on the colour. Possible options are red, blue, green, hue, sat and lum.
 
-    amount:
-    The percentage of the action to perform.
-    For example, 100 means apply 100% of the colour (no change).
-    The default is: 100.
+    :type amount: integer
+    :param amount: The percentage of the action to perform. For example, 100 means apply 100% of the colour (no change).
     """
 
     # Create a colour object
@@ -242,11 +232,11 @@ def leadingzero(number, minlength):
     """
     Add leading zeros to a number.
 
-    number:
-    The number to add the leading zeros to.
+    :type number: number
+    :param number: The number to add the leading zeros to.
 
-    minlength:
-    If the number is shorter than this length than add leading zeros to make the length correct.
+    :type minlength: integer
+    :param minlength: If the number is shorter than this length than add leading zeros to make the length correct.
     """
 
     # Return the number as a string with the filled number
@@ -257,35 +247,38 @@ def absolutenum(number):
     """
     Get the absolute value for a number.
 
-    number:
-    The number to get the absolute value for.
+    :type number: number
+    :param number: The number to get the absolute value for.
+
+    >>> quilt_lang.absolutenum(-1)
+    1
     """
 
     # Return the absolute number
     return abs(number)
 
 
-def splitstring(string, split_character=' ', part=None):
+def splitstring(string, splitcharacter=' ', part=None):
     """
     Split a string based on a character and get the parts as a list.
 
     string:
     The string to split.
 
-    split_character:
-    The character to split for the string. The default is: ' '.
+    splitcharacter:
+    The character to split for the string.
 
     part:
-    Get a specific part of the list. The default is: None.
+    Get a specific part of the list.
     """
 
     # If the part is empty
     if part in [None, '']:
         # Return an array of the splitted text
-        return str(string).split(split_character)
+        return str(string).split(splitcharacter)
 
     # Return an array of the splitted text with a specific part
-    return str(string).split(split_character)[part]
+    return str(string).split(splitcharacter)[part]
 
 
 def sort(listtosort, key=None, reversesort=False):
@@ -296,10 +289,10 @@ def sort(listtosort, key=None, reversesort=False):
     The list which will be sorted.
 
     key:
-    The key to use when sorting. The default is: None.
+    The key to use when sorting.
 
     reverse:
-    If to sort backwards. The default is: False.
+    If to sort backwards.
     """
 
     # Return the sorted version of a list
@@ -313,11 +306,9 @@ def pykeyword(operation='list', keywordtotest=None):
     operation:
     Whether to list or check the keywords.
     Possible options are 'list' and 'check'.
-    The default is: 'list'.
 
     keywordtotest:
     The keyword to check.
-    The default is None.
     """
 
     # If the operation was 'list'
@@ -343,19 +334,15 @@ def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
 
     stream:
     The stream to use.
-    Default is: None.
 
     indent:
     The indention to use.
-    Default is: 1.
 
     width:
     The width to use.
-    Default is: 80.
 
     depth:
     The depth to use.
-    Default is: None.
     """
 
     # Pretty print the array
@@ -368,7 +355,6 @@ def genipsum(sentences=1):
 
     sentences:
     The amount of sentences to generate.
-    Default is: 1.
     """
 
     # Return the generated ipsum
@@ -419,7 +405,6 @@ def warnconfig(action='default'):
     action:
     The configuration to set.
     Options are: 'default', 'error', 'ignore', 'always', 'module' and 'once'.
-    Default is: 'default'.
     """
 
     # If action is 'default'
@@ -456,7 +441,7 @@ def warnconfig(action='default'):
     raise RuntimeWarning("Invalid action specified.")
 
 
-def message_print(text, amount=1):
+def printmessage(text, amount=1):
     """
     Print out a console message.
 
@@ -514,7 +499,7 @@ def delay(seconds):
 # Waits For The User To Press Enter
 
 
-def wait_enter(times=1):
+def waitenter(times=1):
     for _ in range(times):
         userinput('')
 
@@ -554,7 +539,7 @@ def isstring(variable):
 # Check If A Variable Is A Specific Type
 
 
-def istype(variable, typeexpected):
+def istypematch(variable, typeexpected):
     return bool(isinstance(variable, typeexpected))
 
 
@@ -774,26 +759,64 @@ def convertascii(value, command='to'):
 # Get All Available Characters For A Type
 
 
-def availchar(charactertype):
-    if charactertype == 'letters':
+def availchars(charactertype):
+    """
+    Get all the available characters for a specific type.
+
+    :type charactertype: string
+    :param charactertype: The characters to get. Can be 'letters', 'lowercase, 'uppercase', 'digits', 'hexdigits', 'punctuation', 'printable', 'whitespace' or 'all'.
+
+    >>> quilt_lang.availchars("lowercase")
+    'abcdefghijklmnopqrstuvwxyz'
+    """
+
+    # If the lowercase version of the character type is 'letters'
+    if charactertype.lower() == 'letters':
+        # Return the result
         return string.ascii_letters
-    elif charactertype == 'lowercase':
+
+    # If the lowercase version of the character type is 'lowercase'
+    elif charactertype.lower() == 'lowercase':
+        # Return the result
         return string.ascii_lowercase
-    elif charactertype == 'uppercase':
+
+    # If the lowercase version of the character type is 'uppercase'
+    elif charactertype.lower() == 'uppercase':
+        # Return the result
         return string.ascii_uppercase
-    elif charactertype == 'digits':
+
+    # If the lowercase version of the character type is 'digits'
+    elif charactertype.lower() == 'digits':
+        # Return the result
         return string.digits
-    elif charactertype == 'hexdigits':
+
+    # If the lowercase version of the character type is 'hexdigits'
+    elif charactertype.lower() == 'hexdigits':
+        # Return the result
         return string.hexdigits
-    elif charactertype == 'punctuation':
+
+    # If the lowercase version of the character type is 'punctuation'
+    elif charactertype.lower() == 'punctuation':
+        # Return the result
         return string.punctuation
-    elif charactertype == 'printable':
+
+    # If the lowercase version of the character type is 'printable'
+    elif charactertype.lower() == 'printable':
+        # Return the result
         return string.printable
-    elif charactertype == 'whitespace':
+
+    # If the lowercase version of the character type is 'whitespace'
+    elif charactertype.lower() == 'whitespace':
+        # Return the result
         return string.whitespace
-    else:
-        raise RuntimeWarning(
-            'An Error Has Occurred: Invalid Operation Entered (0008)')
+
+    # If the lowercase version of the character type is 'all'
+    elif charactertype.lower() == 'all':
+        # Return the result
+        return string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.hexdigits + string.punctuation + string.printable + string.whitespace
+
+    # Raise a warning
+    raise RuntimeWarning("Invalid character type provided.")
 
 
 # Get The Value Of A Word
@@ -833,8 +856,8 @@ def textbetween(variable,
 
 def letternum(letter):
     if len(letter) == 1 and isstring(letter):
-        letter = letter.lower
-        alphaletters = availchar('lowercase')
+        letter = letter.lower()
+        alphaletters = string.ascii_lowercase
         for i in range(len(alphaletters)):
             if getletter(letter, 1) == getletter(alphaletters, i + 1):
                 return i + 1
@@ -915,7 +938,6 @@ def shapesides(inputtocheck, inputtype='shape'):
     inputtype:
     The type of input provided.
     Can be: 'shape', 'sides'.
-    Default is: 'shape'.
     """
 
     # Define the array of sides to a shape
@@ -979,61 +1001,139 @@ def shapesides(inputtocheck, inputtype='shape'):
     raise RuntimeWarning("Invalid input type.")
 
 
-# Automatically solve a simple maths problem
-
-
 def autosolve(equation):
+    """
+    Automatically solve an easy maths problem.
+
+    :type equation: string
+    :param equation: The equation to calculate.
+
+    >>> quilt_lang.autosolve("300 + 600")
+    900
+    """
+
     try:
+        # Try to set a variable to an integer
         num1 = int(equation.split(" ")[0])
+
     except ValueError:
+        # Try to set a variable to a decimal
         num1 = float(equation.split(" ")[0])
+
     try:
+        # Try to set a variable to an integer
         num2 = int(equation.split(" ")[2])
+
     except ValueError:
+        # Try to set a variable to a decimal
         num2 = float(equation.split(" ")[2])
-    if equation.split(" ")[1] in ["+", "plus", "add"]:
+
+    # If the lowercase version of the operator is '+', 'plus' or 'add'
+    if equation.split(" ")[1].lower() in ["+", "plus", "add"]:
+
+        # Return the answer
         return num1 + num2
-    elif equation.split(" ")[1] in ["-", "minus", "subtract"]:
+
+    # If the lowercase version of the operator is '-', 'minus' or 'subtract'
+    elif equation.split(" ")[1].lower() in ["-", "minus", "subtract"]:
+
+        # Return the answer
         return num1 - num2
-    elif equation.split(" ")[1] in ["*", "times", "multiply"]:
+
+    # If the lowercase version of the operator is '*', 'times', 'multiply'
+    elif equation.split(" ")[1].lower() in ["*", "times", "multiply"]:
+
+        # Return the answer
         return num1 * num2
-    elif equation.split(" ")[1] in ["/", "divide", "quotient"]:
+
+    # If the lowercase version of the operator is '/', 'divide' or 'quotient'
+    elif equation.split(" ")[1].lower() in ["/", "divide", "quotient"]:
+
+        # Return the answer
         return num1 / num2
-    elif equation.split(" ")[1] in ["%", "remainder", "rem"]:
+
+    # If the lowercase version of the operator is '%, 'remainder' or 'rem'
+    elif equation.split(" ")[1].lower() in ["%", "remainder", "rem"]:
+
+        # Return the answer
         return num1 % num2
 
-
-# Automatically solve a hard maths problem
+    # Raise a warning
+    raise RuntimeWarning("Invalid operation provided.")
 
 
 def autohard(equation):
+    """
+    Automatically solve a hard maths problem.
+
+    :type equation: string
+    :param equation: The equation to solve.
+
+    >>> quilt_lang.autohard("log 10")
+    2.302585092994046
+    """
+
     try:
+        # Try to set a variable to an integer
         num1 = int(equation.split(" ")[1])
+
     except ValueError:
+        # Try to set a variable to a decimal
         num1 = float(equation.split(" ")[1])
-    if equation.split(" ")[0] == "log":
+
+    # If the lowercase version of the operation equals 'log'
+    if equation.split(" ")[0].lower() == "log":
+        # Return the answer
         return math.log(num1)
-    elif equation.split(" ")[0] == "acos":
+
+    # If the lowercase version of the operation equals 'acos'
+    elif equation.split(" ")[0].lower() == "acos":
+        # Return the answer
         return math.acos(num1)
-    elif equation.split(" ")[0] == "asin":
+
+    # If the lowercase version of the operation equals 'asin'
+    elif equation.split(" ")[0].lower() == "asin":
+        # Return the answer
         return math.asin(num1)
-    elif equation.split(" ")[0] == "atan":
+
+    # If the lowercase version of the operation equals 'atan'
+    elif equation.split(" ")[0].lower() == "atan":
+        # Return the answer
         return math.atan(num1)
-    elif equation.split(" ")[0] == "cos":
+
+    # If the lowercase version of the operation equals 'cos'
+    elif equation.split(" ")[0].lower() == "cos":
+        # Return the answer
         return math.cos(num1)
-    elif equation.split(" ")[0] == "hypot":
+
+    # If the lowercase version of the operation equals 'hypot'
+    elif equation.split(" ")[0].lower() == "hypot":
         try:
+            # Try to set a variable to an integer
             num2 = int(equation.split(" ")[2])
+
         except ValueError:
+            # Try to set a variable to an decimal
             num2 = float(equation.split(" ")[2])
+
+        # Return the answer
         return math.hypot(num1, num2)
-    elif equation.split(" ")[0] == "sin":
+
+    # If the lowercase version of the operation equals 'sin'
+    elif equation.split(" ")[0].lower() == "sin":
+        # Return the answer
         return math.sin(num1)
-    elif equation.split(" ")[0] == "tan":
+
+    # If the lowercase version of the operation equals 'tan'
+    elif equation.split(" ")[0].lower() == "tan":
+        # Return the answer
         return math.tan(num1)
 
+    # Raise a warning
+    raise RuntimeWarning("Invalid operation entered.")
 
-# Solve a simple maths equation manually (May be deprecated)
+
+# Solve a simple maths equation manually
 
 
 def equation(operation, firstnum, secondnum):
@@ -1120,14 +1220,34 @@ def circleconvert(amount, currentformat, newformat):
             return amount / math.pi
 
 
-# Get The Amount Of Numbers Divisible By A Number
-
-
 def amountdiv(number, minnum, maxnum):
+    """
+    Get the amount of numbers divisable by a number.
+
+    :type number: number
+    :param number: The number to use.
+
+    :type minnum: integer
+    :param minnum: The minimum number to check.
+
+    :type maxnum: integer
+    :param maxnum: The maximum number to check.
+
+    >>> quilt_lang.amountdiv(20, 1, 15)
+    5
+    """
+
+    # Set the amount to 0
     amount = 0
+
+    # For each item in range of minimum and maximum
     for i in range(minnum, maxnum + 1):
+        # If the remainder of the divided number is 0
         if number % i == 0:
+            # Add 1 to the total amount
             amount += 1
+
+    # Return the result
     return amount
 
 
@@ -1173,30 +1293,60 @@ def factorial(n):
     return n * factorial(n - 1)
 
 
-# Do An Average Command
-
-
 def average(numbers, averagetype='mean'):
-    averagetype = averagetype.lower()
+    """
+    Find the average of a list of numbers
+
+    :type numbers: list
+    :param numbers: The list of numbers to find the average of.
+
+    :type averagetype: string
+    :param averagetype: The type of average to find.
+
+    >>> quilt_lang.average([1, 2, 3, 4, 5], 'median')
+    3
+    """
+
     try:
+        # Try to get the mean of the numbers
         statistics.mean(numbers)
+
     except RuntimeError:
-        raise RuntimeWarning('An Error Has Occured: List Not Specified (0018)')
-    if averagetype == 'mean':
+        # Raise a warning
+        raise RuntimeWarning('Unable to parse the list.')
+
+    # If the lowercase version of the average type is 'mean'
+    if averagetype.lower() == 'mean':
+        # Return the answer
         return statistics.mean(numbers)
-    elif averagetype == 'mode':
+
+    # If the lowercase version of the average type is 'mode'
+    elif averagetype.lower() == 'mode':
+        # Return the answer
         return statistics.mode(numbers)
-    elif averagetype == 'median':
+
+    # If the lowercase version of the average type is 'median'
+    elif averagetype.lower() == 'median':
+        # Return the answer
         return statistics.median(numbers)
-    elif averagetype == 'min':
+
+    # If the lowercase version of the average type is 'min'
+    elif averagetype.lower() == 'min':
+        # Return the answer
         return min(numbers)
-    elif averagetype == 'max':
+
+    # If the lowercase version of the average type is 'max'
+    elif averagetype.lower() == 'max':
+        # Return the answer
         return max(numbers)
-    elif averagetype == 'range':
+
+    # If the lowercase version of the average type is 'range'
+    elif averagetype.lower() == 'range':
+        # Return the answer
         return max(numbers) - min(numbers)
-    else:
-        raise RuntimeWarning(
-            'An Error Has Occured: You Entered An Invalid Operation (0003)')
+
+    # Raise a warning
+    raise RuntimeWarning('Invalid average type provided.')
 
 
 # Check If A Number Is A Type
@@ -1255,7 +1405,7 @@ def isfalse(variable):
 # Get The Largest Integer Less Than Or Equal To
 
 
-def less_or_equal(number):
+def lessorequal(number):
     try:
         return math.floor(number)
     except RuntimeError:
@@ -1313,9 +1463,9 @@ def randomnum(minimum=1, maximum=2):
     """
     Generate a random number
     minimum:
-    The minimum number to generate. Default is: 1.
+    The minimum number to generate.
     maximum:
-    The maximum number to generate. Default is: 10.
+    The maximum number to generate.
     """
 
     if isnum(minimum):
@@ -1366,7 +1516,7 @@ def convertbase(number, base=10):
     number:
     The number to convert
     base:
-    The base to convert to. Default is: 10.
+    The base to convert to.
     """
 
     integer = number
@@ -1510,7 +1660,7 @@ def randstring(length=1):
     Generate a random string consisting of letters, digits and punctuation
 
     length:
-    The length of the generated string. Default is: 1
+    The length of the generated string.
 
     """
     charstouse = string.ascii_letters + string.digits + string.punctuation
@@ -1547,16 +1697,7 @@ def dictflip(dictionary):
     The dictionary to flip.
     """
 
-    # Check if the Python version is 3.x or newer
-    if sys.version_info >= (3, 0):
-        # Python 3 code in this block
-        return {v: k for k, v in my_map.items()}
-    elif sys.version_info >= (2, 7):
-        # Python 2.7.x code in this block
-        return {v: k for k, v in my_map.iteritems()}
-
-    # Python 2 code here
-    return {v: k for k, v in my_map.items()}
+    return {v: k for k, v in dictionary.items()}
 
 
 def catwalk(text):
@@ -1576,7 +1717,7 @@ def converttabs(text, spaces=4):
     text:
     The text to convert tabs to spaces on
     spaces:
-    The amount of spaces to replace tabs to. Default is: 4.
+    The amount of spaces to replace tabs to.
     """
 
     return text.replace('\t', ' ' * spaces)
@@ -1590,7 +1731,7 @@ def shortentext(text, minlength, placeholder='...'):
     minlength:
     The minimum length before a shortening will occur
     placeholder:
-    The text to append after removing protruding text. Default is: '...'.
+    The text to append after removing protruding text.
     """
 
     return textwrap.shorten(text, minlength, placeholder=str(placeholder))
@@ -1622,7 +1763,7 @@ def paraspace(paragraphspaces=1):
     """
     Print 1 or more paragraph spaces in the terminal output
     paragraphspaces:
-    The amount of paragraph spaces to print. Default is: 1.
+    The amount of paragraph spaces to print.
     """
 
     for _ in range(paragraphspaces):
@@ -1648,7 +1789,7 @@ def case(text, casing_format='sentence'):
     The text to change the casing of
 
     casing_format:
-    The format of casing to apply to the text. Default is: sentence.
+    The format of casing to apply to the text.
 
     """
     if casing_format == 'uppercase':
@@ -1672,8 +1813,8 @@ def absolutedir(relativedirectory):
     """
     Convert a relative directory to an absolute directory.
 
-    relativedirectory:
-    The directory path to convert.
+    :type relativedirectory: string
+    :param relativedirectory: The directory path to convert.
     """
 
     # Return the absolute version of the directory
@@ -1767,7 +1908,7 @@ def file(operation, path):
 # Exit the current execution
 
 
-def exitexecution(arguments=0):
+def exitexec(arguments=0):
     sys.exit(arguments)
 
 
@@ -1847,7 +1988,7 @@ def logfile(targetfile="ros.log"):
     """
     Set the file for ROS Code to log to
     targetfile:
-    Change the file to log to. By default it is ros.log
+    Change the file to log to.
     """
 
     try:
@@ -1918,7 +2059,6 @@ def dayofweek(day, month, year, formatresult=True):
     Whether or not to format the result.
     A formatted date would look like: "Monday".
     A non formatted date would look like: 1.
-    Default is: True.
 
     """
     if formatresult is False:
@@ -2246,14 +2386,11 @@ def timesince():
 
 def getdatetime(timedateformat='complete'):
     """
-
     Get the current date or time in a specific format
 
     timedateformat:
     The type of date to query for.
     Can be: day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.
-    Default is: "complete".
-
     """
     timedateformat = timedateformat.lower()
     if timedateformat == 'day':
@@ -2309,7 +2446,7 @@ def timeit(command, round_result=True):
     The command to time.
 
     round_result:
-    Whether or not to round the number to an integer. Default is: True.
+    Whether or not to round the number to an integer.
 
     """
     t1 = time.clock()
@@ -2425,9 +2562,11 @@ Copyright
 
 def about():
     """
-
     Print the about information.
 
+    >>> quilt_lang.about()
+    You are using the Quilt Lang Programming Library
+    Quilt is licensed under Apache License 2.0
     """
     print('You are using the Quilt Lang Programming Library')
     print('Quilt is licensed under Apache License 2.0')
@@ -2435,13 +2574,10 @@ def about():
 
 def quiltlicense(raw=False):
     """
-
     Print the Quilt Lang license.
 
     raw:
     Set to True in order to print the raw text only leveraging ASCII charactersself.
-    Default is: False.
-
     """
     if raw is False:
         print('Quilt is licensed under the Apache License 2.0')

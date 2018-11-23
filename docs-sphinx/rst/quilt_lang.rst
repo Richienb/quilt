@@ -8,3 +8,6 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+
+.. doctest::
+    :pyversion: >= 3.6
