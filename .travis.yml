@@ -103,7 +103,7 @@ jobs:
           - mkdocs build --verbose --clean --strict
           - cd docs-sphinx
           - sphinx-build -b html rst html
-          - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/* $TRAVIS_BUILD_DIR/site/commands
+          - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/.* $TRAVIS_BUILD_DIR/site/commands
 
       deploy:
           provider:         pages
