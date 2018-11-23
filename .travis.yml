@@ -14,7 +14,7 @@ if: tag IS blank
 jobs:
   include:
     - stage:                Testing
-    
+
       install:
           - pip install -r requirements.txt
 
@@ -97,13 +97,14 @@ jobs:
 
       install:
           - pip install -r requirements.txt
-          - pip install mkdocs mkdocs-material pymdown-extensions pygments
+          - pip install mkdocs mkdocs-material pymdown-extensions pygments sphinx sphinx_materialdesign_theme
 
       script:
           - mkdocs build --verbose --clean --strict
-          - cd src
-          - python -m pydoc -w quilt_lang
-          - mv quilt_lang.html $TRAVIS_BUILD_DIR/site/commands/index.html
+          - cd docs-sphinx
+          - sphinx-build -b html rst html
+          - cp $TRAVIS_BUILD_DIR/docs-sphinx/html/quilt_lang.html $TRAVIS_BUILD_DIR/docs-sphinx/html/index.html
+          - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/* $TRAVIS_BUILD_DIR/site/commands
 
       deploy:
           provider:         pages

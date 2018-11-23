@@ -111,6 +111,9 @@ instance/
 # Sphinx documentation
 docs/_build/
 
+# Custom Sphinx build directory
+docs-sphinx/html
+
 # PyBuilder
 target/
 

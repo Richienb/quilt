@@ -62,13 +62,11 @@ def shellinput(initialtext='>> ', splitpart=' '):
     """
     Give the user a shell-like interface to enter commands which are returned as a multi-part list containing the command and each of the arguments
 
-    initialtext:
-    Set the text to be displayed as the prompt. Default is: '>>'.
+    :type initialtext: string
+    :param initialtext: Set the text to be displayed as the prompt. Default is: '>>'.
 
-    splitpart:
-    The character to split when generating the list item.
-    The default is: ' '.
-    Set to '' or None to skip splitting.
+    :type splitpart: string
+    :param splitpart: The character to split when generating the list item. The default is: ' '. Set to '' or None to skip splitting.
     """
 
     try:
@@ -1686,6 +1684,8 @@ def getplatform():
     """
     Get the current system platform.
     """
+
+    # Return the system platform
     return sys.platform
 
 
@@ -2421,8 +2421,6 @@ def filedownload(source, destination):
 """
 Copyright
 """
-
-# License Information
 
 
 def about():
