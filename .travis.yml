@@ -103,7 +103,6 @@ jobs:
           - mkdocs build --verbose --clean --strict
           - cd docs-sphinx
           - sphinx-build -b html rst html
-          - cp $TRAVIS_BUILD_DIR/docs-sphinx/html/quilt_lang.html $TRAVIS_BUILD_DIR/docs-sphinx/html/index.html
           - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/* $TRAVIS_BUILD_DIR/site/commands
 
       deploy:
