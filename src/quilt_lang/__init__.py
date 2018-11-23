@@ -490,12 +490,16 @@ def comparenum(value1, value2, comparison):
         elif comparison == 'more than or equal to':
             return value1 >= value2
 
-
-# Throw A Runtime Error
-
-
 def throwerror(errortext):
-    raise RuntimeWarning("Forced Error: " + str(errortext))
+    """
+    Throw a Runtime Error
+    
+    :type errortext: string
+    :param errortext: The text to print in the error.
+    """
+    
+    # Throw the error
+    raise RuntimeError("Forced Error: " + str(errortext))
 
 
 # Delay For A Specific Amount Of Seconds
@@ -579,17 +583,39 @@ def happybirthday(person):
     print('Happy Birthday To You')
 
 
-# Find The Difference Between 2 Numbers
-
-
 def difference(num1, num2):
+    """
+    Find the difference between 2 numbers.
+    
+    :type num1: number
+    :param num1: The first number to use.
+    
+    :type num2: number
+    :param num2: The second number to use.
+    
+    >>> quilt_lang.difference(1, 4)
+    3
+    """
+    
+    # Return the calculated value
     return abs(num1 - num2)
 
 
-# Check If A Number Is Divisible By Another Number
-
-
 def divisable(num1, num2):
+    """
+    Check if a number is divisible by another number
+    
+    :type num1: number
+    :param num1: The first number to check.
+    
+    :type num2: number
+    :param num2: The second number to check.
+    
+    >>> quilt_lang.divisable(4, 2)
+    True
+    """
+    
+    # Return the calculated boolean
     return bool(num1 % num2 == 0)
 
 
