@@ -97,7 +97,7 @@ jobs:
 
       install:
           - pip install -r requirements.txt
-          - pip install mkdocs mkdocs-material pymdown-extensions pygments sphinx sphinx_materialdesign_theme
+          - pip install mkdocs mkdocs-material pymdown-extensions pygments sphinx sphinx_materialdesign_theme sphinxtogithub
 
       script:
           - mkdocs build --verbose --clean --strict
