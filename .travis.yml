@@ -103,6 +103,7 @@ jobs:
           - mkdocs build --verbose --clean --strict
           - cd docs-sphinx
           - sphinx-build -b html rst html
+          - touch $TRAVIS_BUILD_DIR/docs-sphinx/html/.nojekyll
           - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/* $TRAVIS_BUILD_DIR/site/commands
 
       deploy:
