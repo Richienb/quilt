@@ -103,8 +103,8 @@ jobs:
           - mkdocs build --verbose --clean --strict
           - cd docs-sphinx
           - sphinx-build -b html rst html
-          - cp $TRAVIS_BUILD_DIR/docs-sphinx/html/_static $TRAVIS_BUILD_DIR/docs-sphinx/html/static
-          - cp $TRAVIS_BUILD_DIR/docs-sphinx/html/_sources $TRAVIS_BUILD_DIR/docs-sphinx/html/sources
+          - cp --recursive $TRAVIS_BUILD_DIR/docs-sphinx/html/_static $TRAVIS_BUILD_DIR/docs-sphinx/html/static
+          - cp --recursive $TRAVIS_BUILD_DIR/docs-sphinx/html/_sources $TRAVIS_BUILD_DIR/docs-sphinx/html/sources
           - mv $TRAVIS_BUILD_DIR/docs-sphinx/html/* $TRAVIS_BUILD_DIR/site/commands
 
       deploy:
