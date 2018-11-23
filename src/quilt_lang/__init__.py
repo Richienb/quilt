@@ -2017,20 +2017,20 @@ def pyexec():
     return sys.executable
 
 
-# Set logging status dependant on if debug is enabled
-
-
 def loglevel(leveltype=None, isequal=False):
     """
-    Set the logging level of ROS Code
-    without arguments:
-    Gives you the logging level
-    leveltype:
-    Choose the logging level. Possible choices are none (0), debug (10), info (20), warning (30), error (40) and critical (50)
-    isequal:
-    Instead of setting the level, returns True if the level is equal to leveltype. Otherwise, returns False
+    Set or get the logging level of Quilt
+
+    :type leveltype: string or integer
+    :param leveltype: Choose the logging level. Possible choices are none (0), debug (10), info (20), warning (30), error (40) and critical (50).
+
+    :type isequal: boolean
+    :param isequal: If set to True, instead of setting the level, returns True if the level is equal to leveltype. Otherwise, returns False.
+
+    >>> quilt_lang.loglevel()
+    30
     """
-    leveltype = leveltype.lower()
+    leveltype = leveltype
     loglevels = {
         "none": 0,
         "debug": 10,
@@ -2047,7 +2047,7 @@ def loglevel(leveltype=None, isequal=False):
         elif leveltype in loglevels:
             return loglevels[leveltype] == logging.getEffectiveLevel()
         raise RuntimeWarning(
-            "Incorrect input provided. It should be none, debug, info, warning, error or critical"
+            "Incorrect input provided. It should be none, debug, info, warning, error or critical."
         )
     if leveltype in loglevels.values():
         logging.basicConfig(level=leveltype)
@@ -2055,13 +2055,13 @@ def loglevel(leveltype=None, isequal=False):
         logging.basicConfig(level=loglevels[leveltype])
     else:
         raise RuntimeWarning(
-            "Incorrect input provided. It should be none, debug, info, warning, error or critical"
+            "Incorrect input provided. It should be none, debug, info, warning, error or critical."
         )
 
 
 def logfile(targetfile="ros.log"):
     """
-    Set the file for ROS Code to log to
+    Set the file for Quilt to log to
     targetfile:
     Change the file to log to.
     """
