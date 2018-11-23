@@ -1261,7 +1261,8 @@ def less_or_equal(number):
     try:
         return math.floor(number)
     except RuntimeError:
-        raise RuntimeWarning('An Error Has Occured: Number Not Provided (0016)')
+        raise RuntimeWarning(
+            'An Error Has Occured: Number Not Provided (0016)')
 
 
 # Compare 2 Values
@@ -1667,6 +1668,19 @@ def case(text, casing_format='sentence'):
 """
 System
 """
+
+
+def absolutedir(relativedirectory):
+    """
+    Convert a relative directory to an absolute directory
+
+    relativedirectory:
+    The directory path to convert.
+    """
+
+    # Return the absolute version of the directory
+    return os.path.abspath(str(relativedirectory))
+
 
 # Get The Current Platform
 
@@ -2250,30 +2264,30 @@ def getdatetime(timedateformat='complete'):
         return ((str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-               ).split(':')[0]
+                ).split(':')[0]
     elif timedateformat == 'minute':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-               ).split(':')[1]
+                ).split(':')[1]
     elif timedateformat == 'second':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-               ).split(':')[2]
+                ).split(':')[2]
     elif timedateformat == 'millisecond':
         return (str(datetime.datetime.now())).split('.')[1]
     elif timedateformat == 'yearmonthday':
         return (str(datetime.datetime.now())).split(' ')[0]
     elif timedateformat == 'daymonthyear':
-        return ((str(datetime.datetime.now())).split(' ')[0]).split(
-            '-')[2] + '-' + ((str(
-                datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
-                    (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
+        return ((str(datetime.datetime.now(
+        ))).split(' ')[0]).split('-')[2] + '-' + ((str(
+            datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
+                (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hourminutesecond':
         return ((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
     elif timedateformat == 'secondminutehour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-               ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
-                   ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
-                       ((str(datetime.datetime.now())).split(' ')[1]
-                       ).split('.')[0]).split(':')[0]
+                ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
+                    ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
+                        ((str(datetime.datetime.now())).split(' ')[1]
+                         ).split('.')[0]).split(':')[0]
     elif timedateformat == 'complete':
         return str(datetime.datetime.now())
     elif timedateformat == 'datetime':
@@ -2437,7 +2451,8 @@ def quiltlicense(raw=False):
             u'\u2714' +
             ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
         )
-        print(u'\u274c' + ' Limitations: Trademark use, Liability And Warranty')
+        print(u'\u274c' +
+              ' Limitations: Trademark use, Liability And Warranty')
         print(u'\u2139' +
               ' Conditions: License and copyright notice And State changes')
         print('To view the full license, go to https://git.io/fp4x2')
