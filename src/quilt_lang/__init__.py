@@ -2030,6 +2030,7 @@ def loglevel(leveltype=None, isequal=False):
     >>> quilt_lang.loglevel()
     30
     """
+    log = logging.getLogger(__name__)
     leveltype = leveltype
     loglevels = {
         "none": 0,
@@ -2040,19 +2041,19 @@ def loglevel(leveltype=None, isequal=False):
         "critical": 50
     }
     if leveltype is None and isequal is False:
-        return logging.getEffectiveLevel()
+        return log.getEffectiveLevel()
     if leveltype is not None and isequal is True:
         if leveltype in loglevels.values():
-            return leveltype == logging.getEffectiveLevel()
+            return leveltype == log.getEffectiveLevel()
         elif leveltype in loglevels:
-            return loglevels[leveltype] == logging.getEffectiveLevel()
+            return loglevels[leveltype] == log.getEffectiveLevel()
         raise RuntimeWarning(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical."
         )
     if leveltype in loglevels.values():
-        logging.basicConfig(level=leveltype)
+        log.basicConfig(level=leveltype)
     elif leveltype in loglevels:
-        logging.basicConfig(level=loglevels[leveltype])
+        log.basicConfig(level=loglevels[leveltype])
     else:
         raise RuntimeWarning(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical."
@@ -2065,14 +2066,14 @@ def logfile(targetfile="ros.log"):
     targetfile:
     Change the file to log to.
     """
-
+    log = logging.getLogger(__name__)
     try:
         str(targetfile)
     except RuntimeError:
         raise RuntimeWarning("Cannot convert type " + str(type(targetfile)) +
                              "to str")
     try:
-        logging.basicConfig(filename=str(targetfile))
+        log.basicConfig(filename=str(targetfile))
     except RuntimeError:
         raise RuntimeWarning("Invalid target file specified")
 
