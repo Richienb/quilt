@@ -54,7 +54,9 @@ def userinput(prompttext=""):
 
 def shellinput(initialtext='>> ', splitpart=' '):
     """
-    Give the user a shell-like interface to enter commands which are returned as a multi-part list containing the command and each of the arguments
+    Give the user a shell-like interface to enter commands which
+    are returned as a multi-part list containing the command
+    and each of the arguments.
 
     :type initialtext: string
     :param initialtext: Set the text to be displayed as the prompt.
@@ -172,6 +174,9 @@ def changecolour(colourcode, action, amount=100):
 
     :type amount: integer
     :param amount: The percentage of the action to perform. For example, 100 means apply 100% of the colour (no change).
+
+    >>> quilt_lang.changecolour("#f44336", "blue", 80)
+    "#f443cc"
     """
 
     # Create a colour object
@@ -183,7 +188,7 @@ def changecolour(colourcode, action, amount=100):
         c.red = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     # If the lowercase version of the action is 'blue'
     elif action.lower() == 'blue':
@@ -191,7 +196,7 @@ def changecolour(colourcode, action, amount=100):
         c.blue = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     # If the lowercase version of the action is 'green'
     elif action.lower() == 'green':
@@ -199,7 +204,7 @@ def changecolour(colourcode, action, amount=100):
         c.green = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     # If the lowercase version of the action is 'hue'
     elif action.lower() == 'hue':
@@ -207,7 +212,7 @@ def changecolour(colourcode, action, amount=100):
         c.hue = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     # If the lowercase version of the action is 'sat'
     elif action.lower() == 'sat':
@@ -215,7 +220,7 @@ def changecolour(colourcode, action, amount=100):
         c.saturation = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     # If the lowercase version of the action is 'lum'
     elif action.lower() == 'lum':
@@ -223,7 +228,7 @@ def changecolour(colourcode, action, amount=100):
         c.luminance = amount / 100
 
         # Return the result
-        return c
+        return str(c)
 
     raise RuntimeWarning("Invalid action specified.")
 
@@ -371,8 +376,11 @@ def binboolflip(item):
     - 1 > True
     - True > 1
 
-    item:
-    The item to convert.
+    :type item: integer or boolean
+    :param item: The item to convert.
+
+    >>> quilt_lang.binboolflip(0)
+    False
     """
 
     # Set the keys for coversion
@@ -381,6 +389,7 @@ def binboolflip(item):
     try:
         # Try to return the converted value
         return keys[item]
+
     except RuntimeError:
         # Raise a warning
         raise RuntimeWarning("Invalid item specified.")
@@ -600,7 +609,7 @@ def length(value):
     except OverflowError:
         raise RuntimeWarning(
             'An Error Has Occured: The length of the object exceeds \
-        the limit of {0}'.format(str((charlimit()))))
+        the limit of ' + str(sys.maxsize))
 
 
 # Simulate A Cow Saying Text
@@ -1195,28 +1204,68 @@ def fracsimplify(numerator, denominator):
     return str(int(numerator)) + '/' + str(int(denominator))
 
 
-# Convert A Circle Measurement
-
-
 def circleconvert(amount, currentformat, newformat):
-    currentformat = currentformat.lower()
-    newformat = newformat.lower()
-    if currentformat == newformat:
+    """
+    Convert a circle measurement.
+
+    :type amount: number
+    :param amount: The number to convert.
+
+    :type currentformat: string
+    :param currentformat: The format of the provided value.
+
+    :type newformat: string
+    :param newformat: The intended format of the value.
+
+    >>> quilt_lang.circleconvert(45, "radius", "diameter")
+    90
+    """
+
+    # If the same format was provided
+    if currentformat.lower() == newformat.lower():
+        # Return the provided value
         return amount
-    if currentformat == 'radius':
-        if newformat == 'diameter':
+
+    # If the lowercase version of the current format is 'radius'
+    if currentformat.lower() == 'radius':
+        # If the lowercase version of the new format is 'diameter'
+        if newformat.lower() == 'diameter':
+            # Return the converted value
             return amount * 2
-        elif newformat == 'circumference':
+
+        # If the lowercase version of the new format is 'circumference'
+        elif newformat.lower() == 'circumference':
+            # Return the converted value
             return amount * 2 * math.pi
-    elif currentformat == 'diameter':
-        if newformat == 'radius':
+
+        # Raise a warning
+        raise RuntimeWarning("Invalid new format provided.")
+
+    # If the lowercase version of the current format is 'diameter'
+    elif currentformat.lower() == 'diameter':
+        # If the lowercase version of the new format is 'radius'
+        if newformat.lower() == 'radius':
+            # Return the converted value
             return amount / 2
-        elif newformat == 'circumference':
+
+        # If the lowercase version of the new format is 'circumference'
+        elif newformat.lower() == 'circumference':
+            # Return the converted value
             return amount * math.pi
-    elif currentformat == 'circumference':
-        if newformat == 'radius':
+
+        # Raise a warning
+        raise RuntimeWarning("Invalid new format provided.")
+
+    # If the lowercase version of the current format is 'circumference'
+    elif currentformat.lower() == 'circumference':
+        # If the lowercase version of the new format is 'radius'
+        if newformat.lower() == 'radius':
+            # Return the converted value
             return amount / math.pi / 2
-        elif newformat == 'diameter':
+
+        # If the lowercase version of the new format is 'diameter'
+        elif newformat.lower() == 'diameter':
+            # Return the converted value
             return amount / math.pi
 
 
@@ -1702,12 +1751,16 @@ def dictflip(dictionary):
 
 def catwalk(text):
     """
-    Replace multiple spaces with a single space
-    For example replace 'this  is    a long  sentence' with 'this is a long sentence'
-    text:
-    Specify the text to fix
+    Replace multiple spaces in a string with a single space.
+
+    :type text: string
+    :param text: The text to fix.
+
+    >>> quilt_lang.catwalk("this  is    a long  sentence")
+    'this is a long sentence'
     """
 
+    # Return the fixed version
     return ' '.join(text.split())
 
 
@@ -1780,28 +1833,42 @@ def randomstr(valuelist):
         raise RuntimeWarning('An Error Has Occured: List Not Specified (0018)')
 
 
-def case(text, casing_format='sentence'):
+def case(text, casingformat='sentence'):
+    """
+    Change the casing of some text.
+
+    :type text: string
+    :param text: The text to change the casing of.
+
+    :type casingformat: string
+    :param casingformat: The format of casing to apply to the text. Can be 'uppercase', 'lowercase', 'sentence' or 'caterpillar'.
+
+    >>> quilt_lang.case("HELLO world", "uppercase")
+    "HELLO WORLD"
     """
 
-    Change the casing of some text
-
-    text:
-    The text to change the casing of
-
-    casing_format:
-    The format of casing to apply to the text.
-
-    """
-    if casing_format == 'uppercase':
+    # If the lowercase version of the casing format is 'uppercase'
+    if casingformat.lower() == 'uppercase':
+        # Return the uppercase version
         return str(text.upper())
-    elif casing_format == 'lowercase':
+
+    # If the lowercase version of the casing format is 'lowercase'
+    elif casingformat.lower() == 'lowercase':
+        # Return the lowercase version
         return str(text.lower())
-    elif casing_format == 'sentence':
+
+    # If the lowercase version of the casing format is 'sentence'
+    elif casingformat.lower() == 'sentence':
+        # Return the sentence case version
         return str(text[0].upper()) + str(text[1:])
-    elif casing_format == 'caterpillar':
+
+    # If the lowercase version of the casing format is 'caterpillar'
+    elif casingformat.lower() == 'caterpillar':
+        # Return the caterpillar case version
         return str(text.lower().replace(" ", "_"))
-    else:
-        raise RuntimeWarning("Invalid text format specified")
+
+    # Raise a warning
+    raise RuntimeWarning("Invalid text format specified.")
 
 
 """
@@ -1815,6 +1882,9 @@ def absolutedir(relativedirectory):
 
     :type relativedirectory: string
     :param relativedirectory: The directory path to convert.
+
+    >>> quilt_lang.absolutedir("src") # doctest: +SKIP
+    "C:/Users/richi/Documents/GitHub/quilt/src"
     """
 
     # Return the absolute version of the directory
@@ -1912,10 +1982,15 @@ def exitexec(arguments=0):
     sys.exit(arguments)
 
 
-# Get The Character Limit
-
-
 def charlimit():
+    """
+    Get the maximum amount of characters allowed by your system.
+
+    >>> quilt_lang.charlimit() # doctest: +SKIP
+    9223372036854775807
+    """
+
+    # Return the value
     return sys.maxsize
 
 
@@ -2002,10 +2077,13 @@ def logfile(targetfile="ros.log"):
         raise RuntimeWarning("Invalid target file specified")
 
 
-# Gets, sets, appends or preceeds the clipboard contents
-
-
 def clipaction(action='get', text=None):
+    """
+    Gets, sets, appends or preceeds the clipboard contents.
+
+    :type action: string
+    :param action: The action to perform on the clipboard. Can be 'get', 'set' or 'append'.
+    """
     if action == 'get':
         return clipboard.paste()
     elif action == 'set':
@@ -2390,7 +2468,9 @@ def getdatetime(timedateformat='complete'):
 
     timedateformat:
     The type of date to query for.
-    Can be: day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.
+    Can be: day, month, year, hour, minute, second, millisecond, yearmonthday,
+    daymonthyear, hourminutesecond, secondminutehour, complete,
+    datetime or timedate.
     """
     timedateformat = timedateformat.lower()
     if timedateformat == 'day':
@@ -2577,7 +2657,8 @@ def quiltlicense(raw=False):
     Print the Quilt Lang license.
 
     raw:
-    Set to True in order to print the raw text only leveraging ASCII charactersself.
+    Set to True in order to print the raw text while
+    only leveraging ASCII characters.
     """
     if raw is False:
         print('Quilt is licensed under the Apache License 2.0')
