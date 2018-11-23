@@ -2636,25 +2636,30 @@ def filedownload(source, destination):
 
 
 class DictObject(object):
-    def __init__(self, _dict):
-        """
-        Fancier way of converting nested dictionary to an object!
+    """
+    Fancier way of converting nested dictionary to an object!
 
-        Parameters
-        ----------
-        _dict: dictionary
-            Already defined dictionary
-        Returns
-        -------
-        object: dictionary object
-        """
+    :type _dict: dictionary
+    :param _dict: Already defined dictionary
+
+    >>> d = {'a': 1, 'b': {'c': 2}, 'd': ["hi", {'foo': "bar"}]}
+    >>> x = DictObject(d)
+    >>> x.b.c
+    2
+    >>> x.d[1].foo
+    'bar'
+    """
+
+    def __init__(self, _dict):
         for key, value in _dict.items():
             if isinstance(value, (list, tuple)):
-                setattr(self, key,
-                        [obj(x) if isinstance(x, dict) else x for x in value])
+                setattr(self, key, [
+                    DictObject(x) if isinstance(x, dict) else x for x in value
+                ])
             else:
-                setattr(self, key,
-                        obj(value) if isinstance(value, dict) else value)
+                setattr(
+                    self, key,
+                    DictObject(value) if isinstance(value, dict) else value)
 
 
 """
