@@ -112,7 +112,7 @@ instance/
 docs/_build/
 
 # Custom Sphinx build directory
-docs-sphinx/html
+docs-sphinx/html/
 
 # PyBuilder
 target/
