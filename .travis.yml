@@ -14,6 +14,9 @@ if: tag IS blank
 jobs:
   include:
     - stage:                Testing
+    
+      install:
+          - pip install -r requirements.txt
 
       script:
           - python src/test.py
@@ -24,7 +27,7 @@ jobs:
           - bumpversion patch
           - git add .bumpversion.cfg src/setup.py
           - git commit -m "Bump version [skip ci]"
-          - until git push origin HEAD:master; do git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
+          - until git push origin HEAD:master; do git fetch; git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
 
     - stage:                Deployment
 
@@ -76,13 +79,12 @@ jobs:
           - tar -zcvf zips/quilt.min.tar.gz quilt_lang
 
       before_deploy:
-          - echo Deployment tag: $(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')
+          - export TRAVIS_TAG=$(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')
 
       deploy:
           provider:         releases
           api_key:          "$github_token"
           name:             "Edge Release"
-          tag_name:         "$(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')"
           file_glob:        true
           file:             "$TRAVIS_BUILD_DIR/src/zips/*"
           skip_cleanup:     true
@@ -94,10 +96,14 @@ jobs:
       if:                   type != pull_request
 
       install:
+          - pip install -r requirements.txt
           - pip install mkdocs mkdocs-material pymdown-extensions pygments
 
       script:
           - mkdocs build --verbose --clean --strict
+          - cd src
+          - python -m pydoc -w quilt_lang
+          - mv quilt_lang.html $TRAVIS_BUILD_DIR/site/commands/index.html
 
       deploy:
           provider:         pages
