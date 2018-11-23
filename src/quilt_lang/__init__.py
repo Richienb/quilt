@@ -1672,7 +1672,7 @@ System
 
 def absolutedir(relativedirectory):
     """
-    Convert a relative directory to an absolute directory
+    Convert a relative directory to an absolute directory.
 
     relativedirectory:
     The directory path to convert.
@@ -1682,10 +1682,10 @@ def absolutedir(relativedirectory):
     return os.path.abspath(str(relativedirectory))
 
 
-# Get The Current Platform
-
-
 def getplatform():
+    """
+    Get the current system platform.
+    """
     return sys.platform
 
 
