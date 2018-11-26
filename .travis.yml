@@ -104,7 +104,7 @@ jobs:
           - cd docs-sphinx
           - sphinx-build -b html rst html
           - ls -1
-          - cp -r "$TRAVIS_BUILD_DIR/docs-sphinx/html/*" "$TRAVIS_BUILD_DIR/site/commands"
+          - cp -a $TRAVIS_BUILD_DIR/docs-sphinx/html/. $TRAVIS_BUILD_DIR/site/commands
           - touch $TRAVIS_BUILD_DIR/site/.nojekyll
           - cd $TRAVIS_BUILD_DIR/site && ls -1
 
