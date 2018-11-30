@@ -2110,6 +2110,9 @@ def clipaction(action='get', text=None):
 
     :type action: string
     :param action: The action to perform on the clipboard. Can be 'get', 'set' or 'append'.
+    
+    >>> quilt_lang.clipaction("get") # doctest: +SKIP
+    "Sample text"
     """
     if action == 'get':
         return clipboard.paste()
@@ -2194,10 +2197,13 @@ def leapyear(year):
 
 def closeyear(year):
     """
-
-    Find how many years away was the closest leap year to a specific year
-
+    Find how many years away was the closest leap year to a specific year.
+    
+    :type year: number
+    :param year: The year to check for.
     """
+    
+    # Return the specific year
     return int(year % 4)
 
 
