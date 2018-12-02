@@ -73,9 +73,7 @@ jobs:
             server:         https://test.pypi.org/legacy/
             distributions:  "sdist bdist_wheel"
             on:
-                branches:
-                    only:    
-                        - master
+                all_branches: true
 
           - provider:       pypi
             user:           "Richienb"
@@ -83,4 +81,4 @@ jobs:
             skip_cleanup:   true
             distributions:  "sdist bdist_wheel"
             on:
-                branch:       master
+                all_branches: true
