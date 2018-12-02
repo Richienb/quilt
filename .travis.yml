@@ -21,7 +21,7 @@ jobs:
 
     - stage:                Deployment
 
-      if:                   type != pull_request
+      if:                   type != pull_request AND tag IS present AND branch = master
 
       install:
           - pip install pyminifier setuptools-git-version
@@ -39,20 +39,16 @@ jobs:
             skip_cleanup:   true
             server:         https://test.pypi.org/legacy/
             distributions:  "sdist bdist_wheel"
-            on:
-                branch:     master
 
           - provider:       pypi
             user:           "Richienb"
             password:       "$pypi_password"
             skip_cleanup:   true
             distributions:  "sdist bdist_wheel"
-            on:
-                branch:     master
 
     -
 
-      if:                   type != pull_request
+      if:                   type != pull_request AND branch = master
 
       install:
           - pip install -r requirements.txt
@@ -74,8 +70,6 @@ jobs:
           email:            "richiebendall@gmail.com"
           fqdn:             "quilt-lang.richie-bendall.ml"
           local_dir:        site
-          on:
-              branch:       master
 
       after_deploy:
           - |
