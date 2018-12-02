@@ -73,7 +73,9 @@ jobs:
             server:         https://test.pypi.org/legacy/
             distributions:  "sdist bdist_wheel"
             on:
-                branch:       master
+                branches:
+                    only:    
+                        - master
 
           - provider:       pypi
             user:           "Richienb"
