@@ -9,8 +9,6 @@ before_install:
     - git config --global user.name "ROS Bot"
     - git config --global user.email "richiebendall@gmail.com"
 
-if: tag IS blank
-
 jobs:
   include:
     - stage:                Testing
@@ -21,20 +19,12 @@ jobs:
       script:
           - python src/test.py
 
-      after_script:
-          - if [ $TRAVIS_PULL_REQUEST != false ]; then travis_terminate 0; fi
-          - pip install bumpversion
-          - bumpversion patch
-          - git add .bumpversion.cfg src/setup.py
-          - git commit -m "Bump version [skip ci]"
-          - until git push origin HEAD:master; do git fetch; git pull --no-edit; git commit --amend -m "$(git log -1 --pretty=%B)"; done
-
     - stage:                Deployment
 
       if:                   type != pull_request
 
       install:
-          - pip install pyminifier
+          - pip install pyminifier setuptools-git-version
 
       before_script:
           - cd src
@@ -59,37 +49,6 @@ jobs:
             distributions:  "sdist bdist_wheel"
             on:
                 branch:     master
-
-    -
-
-      if:                   type != pull_request
-
-      install:
-          - pip install pyminifier
-
-      before_script:
-          - cd src
-
-      script:
-          - mkdir zips
-          - zip -r zips/quilt.zip quilt_lang
-          - tar -zcvf zips/quilt.tar.gz quilt_lang
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
-          - zip -r zips/quilt.min.zip quilt_lang
-          - tar -zcvf zips/quilt.min.tar.gz quilt_lang
-
-      before_deploy:
-          - export TRAVIS_TAG=$(sed -n '2p' $TRAVIS_BUILD_DIR/.bumpversion.cfg | awk '{print $3}')
-
-      deploy:
-          provider:         releases
-          api_key:          "$github_token"
-          name:             "Edge Release"
-          file_glob:        true
-          file:             "$TRAVIS_BUILD_DIR/src/zips/*"
-          skip_cleanup:     true
-          on:
-              branch:       master
 
     -
 
