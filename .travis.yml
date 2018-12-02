@@ -21,7 +21,7 @@ jobs:
 
     - stage:                Deployment
     
-      if:                   type != pull_request AND branch = master
+      if:                   type != pull_request
 
       install:
           - pip install -r requirements.txt
@@ -54,7 +54,7 @@ jobs:
 
     -
 
-      if:                   type != pull_request AND tag = true AND branch = master
+      if:                   type != pull_request AND tag IS present
 
       install:
           - pip install pyminifier setuptools-git-version
