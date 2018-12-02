@@ -54,7 +54,7 @@ jobs:
 
     -
 
-      if:                   type != pull_request AND tag IS present AND branch = master
+      if:                   type != pull_request AND tag = true AND branch = master
 
       install:
           - pip install pyminifier setuptools-git-version
