@@ -20,35 +20,8 @@ jobs:
           - python src/test.py
 
     - stage:                Deployment
-
-      if:                   type != pull_request AND tag IS present AND branch = master
-
-      install:
-          - pip install pyminifier setuptools-git-version
-
-      before_script:
-          - cd src
-
-      script:
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
-
-      deploy:
-          - provider:       pypi
-            user:           "Richienb"
-            password:       $pypi_password
-            skip_cleanup:   true
-            server:         https://test.pypi.org/legacy/
-            distributions:  "sdist bdist_wheel"
-
-          - provider:       pypi
-            user:           "Richienb"
-            password:       "$pypi_password"
-            skip_cleanup:   true
-            distributions:  "sdist bdist_wheel"
-
-    -
-
-      if:                   type != pull_request AND branch = master
+    
+      if:                   type != pull_request
 
       install:
           - pip install -r requirements.txt
@@ -78,3 +51,34 @@ jobs:
              -H "X-Auth-Key: ${cf_api_key}" \
              -H "Content-Type: application/json" \
              --data '{"purge_everything":true}'
+
+    -
+
+      if:                   type != pull_request AND tag IS present
+
+      install:
+          - pip install pyminifier setuptools-git-version
+
+      before_script:
+          - cd src
+
+      script:
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
+
+      deploy:
+          - provider:       pypi
+            user:           "Richienb"
+            password:       $pypi_password
+            skip_cleanup:   true
+            server:         https://test.pypi.org/legacy/
+            distributions:  "sdist bdist_wheel"
+            on:
+                all_branches: true
+
+          - provider:       pypi
+            user:           "Richienb"
+            password:       $pypi_password
+            skip_cleanup:   true
+            distributions:  "sdist bdist_wheel"
+            on:
+                all_branches: true
