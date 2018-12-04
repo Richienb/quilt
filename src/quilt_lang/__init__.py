@@ -46,9 +46,11 @@ def userinput(prompttext=""):
     """
     Get the input of the user via a universally secure method
 
-    prompttext:
-    The text to display while receiving the data.
+    :type prompttext: string
+    :param prompttext: The text to display while receiving the data.
     """
+
+    # Return the result
     return input(str(prompttext))
 
 
@@ -536,39 +538,34 @@ def opposite(boolean):
             'An Error Has Occurred: Nor A Bool Or Len Was Provided (0014)')
 
 
-# Check If A Number Is A Decimal
+def typematch(variable, expectedtype):
+    """
+    Check if a variable is a specific type
+
+    :type variable: variable
+    :param variable: The variable to check the type of
+
+    :type expectedtype: type
+    :param expectedtype: The type to check against
+    """
+
+    # Return the result
+    return isinstance(variable, expectedtype)
 
 
-def isdecimal(value):
-    return bool(isinstance(value, float))
+def sametype(variable1, variable2):
+    """
+    Check if 2 variables have the same type
 
+    :type variable1: variable
+    :param variable1: The first variable to check
 
-# Check If A Variable Is A String
+    :type variable2: variable
+    :param variable2: The second variable to check
+    """
 
-
-def isstring(variable):
-    return bool(isinstance(variable, str))
-
-
-# Check If A Variable Is A Specific Type
-
-
-def istypematch(variable, typeexpected):
-    return bool(isinstance(variable, typeexpected))
-
-
-# Check If A Number Is An Integer (Full Number)
-
-
-def isinteger(value):
-    return bool(isinstance(value, int))
-
-
-# Check For A Boolean
-
-
-def isboolean(value):
-    return isinstance(value, bool)
+    # Return the result
+    return type(variable1) == type(variable2)
 
 
 # Sing Happy Birthday
@@ -618,13 +615,6 @@ def divisable(num1, num2):
 
     # Return the calculated boolean
     return bool(num1 % num2 == 0)
-
-
-# Check If A Variable Is Empty
-
-
-def isempty(variable):
-    return bool(variable == '')
 
 
 # Find The Length Of A Value
@@ -715,17 +705,26 @@ def convertbinary(value, argument):
             raise RuntimeWarning('Invalid Value (0016)')
 
 
-# Make The Text Forwards Or Backwards
+def reversetext(contenttoreverse, reconvert=True):
+    """
+    Reverse any content
 
+    :type contenttoreverse: string
+    :param contenttoreverse: The content to be reversed
 
-def reversetext(texttoreverse, ignoretype=False):
-    if ignoretype is False:
-        if isinteger(texttoreverse):
-            return int(str(texttoreverse)[::-1])
-        elif isdecimal(texttoreverse):
-            return float(str(texttoreverse)[::-1])
-        return str(texttoreverse)[::-1]
-    return str(texttoreverse)[::-1]
+    :type reeval: boolean
+    :param reeval: Wether or not to reconvert the object back into it's initial state. Default is "True".
+    """
+
+    # If reconvert is specified
+    if reconvert is True:
+        # Return the evalated form
+        return eval(
+            str(type(contenttoreverse)).split("'")[1] + "('" +
+            str(contenttoreverse)[::-1] + "')")
+
+    # Return the raw version
+    return contenttoreverse[::-1]
 
 
 # Reverse A List
@@ -849,8 +848,7 @@ def availchars(charactertype):
     # If the lowercase version of the character type is 'all'
     elif charactertype.lower() == 'all':
         # Return the result
-        return string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + \
-            string.digits + string.hexdigits + string.punctuation + string.printable + string.whitespace
+        return string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.hexdigits + string.punctuation + string.printable + string.whitespace
 
     # Raise a warning
     raise RuntimeWarning("Invalid character type provided.")
@@ -1470,24 +1468,28 @@ def isinfinite(variable):
     return bool(math.isfinite(variable))
 
 
-# Check if a variable is essetially "False"
-
-
 def isfalse(variable):
-    if variable in [0, 0.0, False, [], {}, math.nan, ""]:
-        return True
-    return False
+    """
+    Check if a variable is essentially "False"
+
+    :type variable: variable
+    :param variable: The variable to check
+    """
+
+    # Return the answer
+    return variable in [0, 0.0, False, [], {}, math.nan, "", ()]
 
 
-# Get The Largest Integer Less Than Or Equal To
+def rounddown(number):
+    """
+    Round down a number
 
+    :type number: number
+    :param number: The number to round down
+    """
 
-def lessorequal(number):
-    try:
-        return math.floor(number)
-    except RuntimeError:
-        raise RuntimeWarning(
-            'An Error Has Occured: Number Not Provided (0016)')
+    # Return the answer
+    return math.floor(number)
 
 
 # Compare 2 Values
@@ -1495,7 +1497,7 @@ def lessorequal(number):
 
 def compare(value1, value2, comparison):
     if not isinstance(comparison, str):
-        raise RuntimeWarning("ERROR: comparison argument must be a string.")
+        raise RuntimeWarning("Comparison argument must be a string.")
     if comparison == 'is':
         return value1 == value2
     elif comparison == 'or':
@@ -2127,23 +2129,36 @@ def clipaction(action='get', text=None):
     raise RuntimeWarning("Invalid clipboard action specified.")
 
 
-# Tools For Text Files
+def text(path, operation, content):
+    """
+    Perform changes on text files
 
+    :type path: string
+    :param path: The path to perform the action on
 
-def text(operation, path, argument):
-    operation = operation.lower()
-    if operation == 'write':
-        if os.path.isfile(path):
-            fh = open(path, 'w')
-            fh.write(argument)
-        else:
-            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
-    elif operation == 'append':
-        if os.path.isfile(path):
-            fh = open(path, 'a')
-            fh.write(argument)
-        else:
-            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
+    :type operation: string
+    :param operation: The operation to use on the file
+
+    :type content: string
+    :param content: The content to use with the operation
+    """
+
+    # If the operation is "write"
+    if operation.lower() == 'write':
+        # Open the file as "fh"
+        with open(path, 'w') as fh:
+            # Write to the file
+            fh.write(content)
+
+    # If the operation is "append"
+    elif operation.lower() == 'append':
+        # Open the file as "fh"
+        with open(path, 'a') as fh:
+            # Write to the file
+            fh.write(content)
+
+    # Raise a warning
+    raise RuntimeWarning("Invalid operation provided")
 
 
 """
@@ -2641,7 +2656,6 @@ def newtab(url):
         raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
 
 
-
 def getbrowser():
     """
     Get the name of the browser currently being used
@@ -2656,8 +2670,6 @@ def getbrowser():
     except RuntimeError:
         # Return nothing
         return None
-
-
 
 
 def filedownload(source, destination):
@@ -2726,15 +2738,17 @@ def about():
     print('Quilt is licensed under Apache License 2.0')
 
 
-def quiltlicense(raw=False):
+def quiltlicense(rich=True):
     """
     Print the Quilt Lang license.
 
-    raw:
-    Set to True in order to print the raw text while
-    only leveraging ASCII characters.
+    :type rich: boolean
+    :param rich: Wether or not to print the version with unicode symbols
     """
-    if raw is False:
+
+    # If rich variable is specified
+    if rich is True:
+        # Print rich version
         print('Quilt is licensed under the Apache License 2.0')
         print(
             u'\u2714' +
@@ -2745,6 +2759,8 @@ def quiltlicense(raw=False):
         print(u'\u2139' +
               ' Conditions: License and copyright notice And State changes')
         print('To view the full license, go to https://git.io/fp4x2')
+
+    # Otherwise print raw version
     else:
         print('Quilt Is licensed Under The Apache License 2.0')
         print(
