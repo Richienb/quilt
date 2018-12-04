@@ -2641,33 +2641,45 @@ def newtab(url):
         raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
 
 
-# Get The Name Of The Browser Currently Being Used
-
 
 def getbrowser():
+    """
+    Get the name of the browser currently being used
+    """
+
+    # Try to find the browser
     try:
+        # Get the browser name
         webbrowser.get(using=None)
+
+    # Catch an error
     except RuntimeError:
+        # Return nothing
         return None
 
 
-# Download A File
 
 
 def filedownload(source, destination):
-    if not isempty(source):
-        if not isempty(destination):
-            try:
-                urllib.request.urlretrieve(source, destination)
-            except RuntimeError:
-                raise RuntimeWarning(
-                    'An Error Has Occured: File Download Error (0010)')
-        else:
-            raise RuntimeWarning(
-                'An Error Has Occured: Source Or Destination Invalid (0011)')
-    else:
-        raise RuntimeWarning(
-            'An Error Has Occured: Source Or Destination Invalid (0011)')
+    """
+    Download a file and save it to a specific destination
+
+    :type source: string
+    :param source: The url to download from
+
+    :type destination: string
+    :param destination: The path to save the file to
+    """
+
+    # Try to download the file
+    try:
+        # Initiate the download
+        urllib.request.urlretrieve(source, destination)
+
+    # Catch a download error
+    except RuntimeError:
+        # Throw a warning
+        raise RuntimeWarning('Unable to download file')
 
 
 class DictObject(object):
