@@ -20,7 +20,7 @@ jobs:
           - python src/test.py
 
     - stage:                Deployment
-    
+
       if:                   type != pull_request
 
       install:
@@ -63,7 +63,7 @@ jobs:
           - cd src
 
       script:
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --lzma --obfuscate-variables --outfile="{}" "{}" \;
+          - find quilt_lang -type f -name "*.py" -exec pyminifier --gzip --obfuscate-variables --outfile="{}" "{}" \;
 
       deploy:
           - provider:       pypi
