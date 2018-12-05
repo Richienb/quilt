@@ -18,6 +18,7 @@ import os
 import sys
 import logging
 import pkg_resources
+import tempfile
 
 # Math modules
 import math
@@ -1928,6 +1929,15 @@ def getplatform():
 
     # Return the system platform
     return sys.platform
+
+
+def tempdir():
+    """
+    Generate and get a path to a temporary directory
+    """
+
+    # Create a directory and return the path
+    return tempfile.mkdtemp()
 
 
 def shellcommand(command):
