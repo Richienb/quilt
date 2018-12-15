@@ -1173,10 +1173,6 @@ def autohard(equation):
 
 
 def equation(operation, firstnum, secondnum):
-    if not isnum(firstnum) and isnum(secondnum):
-        raise RuntimeWarning(
-            'An Error Has Occured: One Of The Values Specified Is Not A Number (0002)'
-        )
     if operation == 'plus':
         return (firstnum + secondnum)
     elif operation == 'minus':
@@ -1186,9 +1182,7 @@ def equation(operation, firstnum, secondnum):
     elif operation == 'divide':
         if not secondnum == 0:
             return (firstnum / secondnum)
-    else:
-        raise RuntimeWarning(
-            'An Error Has Occured: You Entered An Invalid Operation (0003)')
+    raise RuntimeWarning('Invalid operation provided.')
 
 
 # Solve scientific operations manually (May be deprecated)
@@ -1967,20 +1961,11 @@ def dirtool(operation, directory):
     if operation == 'exists':
         return bool(os.path.exists(directory))
     if operation == 'create':
-        if os.path.exists(directory):
-            raise RuntimeWarning(
-                'An Error Has Occured: Directory Already Exists (0007)')
-        else:
-            os.makedirs(directory)
+        os.makedirs(directory)
     elif operation == 'delete':
-        if os.path.exists(directory):
-            os.rmdir(directory)
-        else:
-            raise RuntimeWarning(
-                'An Error Has Occured: Directory Doesn\'t Exist (0009)')
+        os.rmdir(directory)
     else:
-        raise RuntimeWarning(
-            'An Error Has Occured: Invalid Operation Entered (0008)')
+        raise RuntimeWarning('Invalid operation provided.')
 
 
 # Tools For Files (If Exists, Make And Delete)
@@ -1991,28 +1976,16 @@ def file(operation, path):
     if operation == 'exists':
         return bool(os.path.isfile(path))
     if operation == 'read':
-        if os.path.isfile(path):
-            with open(path, 'r') as f:
-                return [line.strip() for line in f]
-        raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
+        with open(path, 'r') as f:
+            return [line.strip() for line in f]
     elif operation == 'delete':
-        if os.path.isfile(path):
-            os.remove(path)
-        else:
-            raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
+        os.remove(path)
     elif operation == 'create':
-        if not file('exists', path):
-            open(path, 'w').close()
-        else:
-            raise RuntimeWarning(
-                'An Error Has Occured: File Already Exists (0013)')
+        open(path, 'w').close()
     elif operation == 'clear':
-        if os.path.isfile(path):
-            open(path, 'w').close()
-        raise RuntimeWarning('An Error Has Occured: File Not Found (0012)')
+        open(path, 'w').close()
     else:
-        raise RuntimeWarning(
-            'An Error Has Occured: Invalid Operation Entered (0008)')
+        raise RuntimeWarning('Invalid operation provided.')
 
 
 # Exit the current execution
