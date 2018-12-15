@@ -73,8 +73,8 @@ def shellinput(initialtext='>> ', splitpart=' '):
         shelluserinput = userinput(str(initialtext))
     except RuntimeError:
         # If it fails then raise a warning
-        raise RuntimeWarning("Cannot convert type " + str(type(initialtext)) +
-                             "to str")
+        raise RuntimeWarning(
+            "Cannot convert type " + str(type(initialtext)) + "to str")
 
     # If the part to split doesn't exist
     if splitpart == '' or splitpart is None:
@@ -470,24 +470,56 @@ def printmessage(text, amount=1):
         print(text)
 
 
-# Compare 2 Numbers
 
 
 def comparenum(value1, value2, comparison):
-    if isnum(value1) and isnum(value2):
-        comparison = comparison.lower()
-        if comparison == 'equal':
-            return value1 == value2
-        elif comparison == 'not equal':
-            return value1 != value2
-        elif comparison == 'less than':
-            return value1 < value2
-        elif comparison == ['greater than', 'more than']:
-            return value1 > value2
-        elif comparison == 'less than or equal to':
-            return value1 <= value2
-        elif comparison in ['greater than or equal to', 'more than or equal to']:
-            return value1 >= value2
+    """
+    Compare 2 numbers
+
+    :type value1: number
+    :param value1: The first number to check
+
+    :type value2: number
+    :param value2: The second number to check
+
+    :type comparison: string
+    :param comparison: The comparison to perform
+    """
+
+    # If comparison is 'equal'
+    if comparison.lower() == 'equal':
+        # Return if values are equal
+        return value1 == value2
+
+    # If comparison is 'not equal'
+    elif comparison.lower() == 'not equal':
+        # Return if values are not equal
+        return value1 != value2
+
+    # If comparison is 'less than'
+    elif comparison.lower() == 'less than':
+        # Return if values are less than
+        return value1 < value2
+
+    # If comparison is 'greater than' or 'more than'
+    elif comparison.lower() in ['greater than', 'more than']:
+        # Return if values are greater than
+        return value1 > value2
+
+    # If comparison is 'less than or equal to'
+    elif comparison.lower() == 'less than or equal to':
+        # Return if values are less than or equal to
+        return value1 <= value2
+
+    # If comparison is 'greater than or equal to' or 'more than or equal to'
+    elif comparison.lower() in [
+            'greater than or equal to', 'more than or equal to'
+    ]:
+        # Return if values are greater than or equal to
+        return value1 >= value2
+
+    # Raise runtime warning
+    raise RuntimeWarning("Invalid comparison provided.")
 
 
 def throwerror(errortext):
@@ -2072,8 +2104,8 @@ def logfile(targetfile="ros.log"):
     try:
         str(targetfile)
     except RuntimeError:
-        raise RuntimeWarning("Cannot convert type " + str(type(targetfile)) +
-                             "to str")
+        raise RuntimeWarning(
+            "Cannot convert type " + str(type(targetfile)) + "to str")
     try:
         log.basicConfig(filename=str(targetfile))
     except RuntimeError:
@@ -2417,30 +2449,30 @@ def getdatetime(timedateformat='complete'):
         return ((str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[0]
+               ).split(':')[0]
     elif timedateformat == 'minute':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[1]
+               ).split(':')[1]
     elif timedateformat == 'second':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[2]
+               ).split(':')[2]
     elif timedateformat == 'millisecond':
         return (str(datetime.datetime.now())).split('.')[1]
     elif timedateformat == 'yearmonthday':
         return (str(datetime.datetime.now())).split(' ')[0]
     elif timedateformat == 'daymonthyear':
-        return ((str(datetime.datetime.now(
-        ))).split(' ')[0]).split('-')[2] + '-' + ((str(
-            datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
-                (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
+        return ((str(datetime.datetime.now())).split(' ')[0]).split(
+            '-')[2] + '-' + ((str(
+                datetime.datetime.now())).split(' ')[0]).split('-')[1] + '-' + (
+                    (str(datetime.datetime.now())).split(' ')[0]).split('-')[0]
     elif timedateformat == 'hourminutesecond':
         return ((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
     elif timedateformat == 'secondminutehour':
         return (((str(datetime.datetime.now())).split(' ')[1]).split('.')[0]
-                ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
-                    ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
-                        ((str(datetime.datetime.now())).split(' ')[1]
-                         ).split('.')[0]).split(':')[0]
+               ).split(':')[2] + ':' + (((str(datetime.datetime.now())).split(
+                   ' ')[1]).split('.')[0]).split(':')[1] + ':' + (
+                       ((str(datetime.datetime.now())).split(' ')[1]
+                       ).split('.')[0]).split(':')[0]
     elif timedateformat == 'complete':
         return str(datetime.datetime.now())
     elif timedateformat == 'datetime':
@@ -2597,9 +2629,8 @@ class DictObject(object):
                     DictObject(x) if isinstance(x, dict) else x for x in value
                 ])
             else:
-                setattr(
-                    self, key,
-                    DictObject(value) if isinstance(value, dict) else value)
+                setattr(self, key,
+                        DictObject(value) if isinstance(value, dict) else value)
 
 
 """
@@ -2635,8 +2666,7 @@ def quiltlicense(rich=True):
             u'\u2714' +
             ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
         )
-        print(u'\u274c' +
-              ' Limitations: Trademark use, Liability And Warranty')
+        print(u'\u274c' + ' Limitations: Trademark use, Liability And Warranty')
         print(u'\u2139' +
               ' Conditions: License and copyright notice And State changes')
         print('To view the full license, go to https://git.io/fp4x2')
