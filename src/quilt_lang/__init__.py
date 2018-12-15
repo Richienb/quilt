@@ -2604,11 +2604,9 @@ Web
 # Generate And Run MailTo
 
 
-def mailto(to, cc, bcc, subject, body, autorun=True):
+def mailto(to, cc, bcc, subject, body):
     mailurl = 'mailto:' + str(to)
     if cc is None and bcc is None and subject is None and body is None:
-        if autorun is True:
-            webbrowser.open_new_tab(str(mailurl))
         return str(mailurl)
     mailurl += '?'
     if cc is not None:
@@ -2630,10 +2628,7 @@ def mailto(to, cc, bcc, subject, body, autorun=True):
             mailurl += '&'
         mailurl += 'body=' + str(body)
         added = True
-    if autorun is True:
-        webbrowser.open_new_tab(str(mailurl))
-    else:
-        return mailurl
+    return mailurl
 
 
 # Open A Link In A Web Browser
