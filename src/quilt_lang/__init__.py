@@ -2236,253 +2236,167 @@ def closeyear(year):
 
 def converttime(time, currentformat, newformat):
     """
+    Convert a specific time format to another type.
 
-    Convert a specific time format to another type
+    :type time: integer
+    :param time: The time to convert
 
-    time:
-    The time to convert
+    :type currentformat: string
+    :param currentformat: The current format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
 
-    currentformat:
-    The current format of the time.
-    Can be seconds, milliseconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
-
-    newformat:
-    The new format of the time.
-    Can be seconds, milliseconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
-
+    :type newformat: string
+    :param newformat: The new format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
     """
-    currentformat = currentformat.lower()
-    newformat = newformat.lower()
-    if currentformat == newformat:
-        return time
-    if currentformat == 'seconds':
-        if newformat == 'milliseconds':
-            return time * 1000
-        elif newformat == 'minutes':
-            return time / 60
-        elif newformat == 'hours':
-            return time / 60 / 60
-        elif newformat == 'days':
-            return time / 60 / 60 / 24
-        elif newformat == 'weeks':
-            return time / 60 / 60 / 24 / 7
-        elif newformat == 'fortnights':
-            return time / 60 / 60 / 24 / 14
-        elif newformat == 'years':
-            return time / 60 / 60 / 24 / 365
-        elif newformat == 'decades':
-            return time / 60 / 60 / 24 / 365 / 10
-        elif newformat == 'centuaries':
-            return time / 60 / 60 / 24 / 365 / 100
-        elif newformat == 'millenniums':
-            return time / 60 / 60 / 24 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'minutes':
-        if newformat == 'milliseconds':
-            return time * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 60
-        elif newformat == 'hours':
-            return time / 60
-        elif newformat == 'days':
-            return time / 60 / 24
-        elif newformat == 'weeks':
-            return time / 60 / 24 / 7
-        elif newformat == 'fortnights':
-            return time / 60 / 24 / 14
-        elif newformat == 'years':
-            return time / 60 / 24 / 365
-        elif newformat == 'decades':
-            return time / 60 / 24 / 365 / 10
-        elif newformat == 'centuaries':
-            return time / 60 / 24 / 365 / 100
-        elif newformat == 'millenniums':
-            return time / 60 / 24 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'hours':
-        if newformat == 'milliseconds':
-            return time * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 60 * 60
-        elif newformat == 'minutes':
-            return time / 60
-        elif newformat == 'days':
-            return time / 24
-        elif newformat == 'weeks':
-            return time / 24 / 7
-        elif newformat == 'fortnights':
-            return time / 24 / 14
-        elif newformat == 'years':
-            return time / 24 / 7 / 365
-        elif newformat == 'decades':
-            return time / 24 / 365 / 10
-        elif newformat == 'centuaries':
-            return time / 24 / 365 / 100
-        elif newformat == 'millenniums':
-            return time / 24 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'days':
-        if newformat == 'milliseconds':
-            return time * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 24 * 60
-        elif newformat == 'hours':
-            return time * 24
-        elif newformat == 'weeks':
-            return time / 24 / 7
-        elif newformat == 'fortnights':
-            return time / 60 / 24 / 14
-        elif newformat == 'years':
-            return time / 60 / 24 / 7 / 365
-        elif newformat == 'decades':
-            return time / 7 / 365 / 10
-        elif newformat == 'centuaries':
-            return time / 7 / 365 / 100
-        elif newformat == 'millenniums':
-            return time / 7 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'weeks':
-        if newformat == 'milliseconds':
-            return time * 7 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 7 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 7 * 24 * 60
-        elif newformat == 'hours':
-            return time * 7 * 24
-        elif newformat == 'fortnights':
-            return time * 7 / 14
-        elif newformat == 'years':
-            return time * 7 / 365
-        elif newformat == 'decades':
-            return time * 7 / 365 / 10
-        elif newformat == 'centuaries':
-            return time * 7 / 365 / 100
-        elif newformat == 'millenniums':
-            return time * 7 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'fortnights':
-        if newformat == 'milliseconds':
-            return time * 14 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 14 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 14 * 24 * 60
-        elif newformat == 'hours':
-            return time * 14 * 24
-        elif newformat == 'weeks':
-            return time * 14
-        elif newformat == 'years':
-            return time * 14 / 365
-        elif newformat == 'decades':
-            return time * 14 / 365 / 10
-        elif newformat == 'centuaries':
-            return time * 14 / 365 / 100
-        elif newformat == 'millenniums':
-            return time * 14 / 365 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'years':
-        if newformat == 'milliseconds':
-            return time * 365 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 365 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 365 * 24 * 60
-        elif newformat == 'hours':
-            return time * 365 * 24
-        elif newformat == 'days':
-            return time * 365
-        elif newformat == 'weeks':
-            return time * 365 / 7
-        elif newformat == 'fortnights':
-            return time * 365 / 14
-        elif newformat == 'decades':
-            return time / 10
-        elif newformat == 'centuaries':
-            return time / 100
-        elif newformat == 'millenniums':
-            return time / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'decades':
-        if newformat == 'milliseconds':
-            return time * 10 * 365 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 10 * 365 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 10 * 365 * 24 * 60
-        elif newformat == 'hours':
-            return time * 10 * 365 * 24
-        elif newformat == 'days':
-            return time * 10 * 365
-        elif newformat == 'weeks':
-            return time * 10 * 365 / 7
-        elif newformat == 'fortnights':
-            return time * 10 * 365 / 14
-        elif newformat == 'years':
-            return time * 10
-        elif newformat == 'centuaries':
-            return time * 10 / 100
-        elif newformat == 'millenniums':
-            return time * 10 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'centuaries':
-        if newformat == 'milliseconds':
-            return time * 100 * 365 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 100 * 365 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 100 * 365 * 24 * 60
-        elif newformat == 'hours':
-            return time * 100 * 365 * 24
-        elif newformat == 'days':
-            return time * 100 * 365
-        elif newformat == 'weeks':
-            return time * 100 * 365 / 7
-        elif newformat == 'fortnights':
-            return time * 100 * 365 / 14
-        elif newformat == 'years':
-            return time * 100
-        elif newformat == 'decades':
-            return time * 100 / 10
-        elif newformat == 'millenniums':
-            return time * 100 / 1000
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    elif currentformat == 'millenniums':
-        if newformat == 'milliseconds':
-            return time * 1000 * 365 * 24 * 60 * 60 * 1000
-        elif newformat == 'seconds':
-            return time * 1000 * 365 * 24 * 60 * 60
-        elif newformat == 'minutes':
-            return time * 1000 * 365 * 24 * 60
-        elif newformat == 'hours':
-            return time * 1000 * 365 * 24
-        elif newformat == 'days':
-            return time * 1000 * 365
-        elif newformat == 'weeks':
-            return time * 1000 * 365 / 7
-        elif newformat == 'fortnights':
-            return time * 1000 * 365 / 14
-        elif newformat == 'years':
-            return time * 1000
-        elif newformat == 'decades':
-            return time * 1000 / 10
-        elif newformat == 'centuaries':
-            return time * 1000 / 100
-        else:
-            raise RuntimeWarning("Incorrect new time format specified.")
-    else:
-        raise RuntimeWarning("Incorrect old time format specified.")
+
+    # Define conversion dictionary
+    conversions = {
+        "milliseconds": {
+            "milliseconds": "time",
+            "seconds": "time / 1000",
+            "minutes": "time / 1000 / 60",
+            "hours": "time / 1000 / 60 / 60",
+            "days": "time / 1000 / 60 / 60 / 24",
+            "weeks": "time / 1000 / 60 / 60 / 24 / 7",
+            "fortnights": "time / 1000 / 60 / 60 / 24 / 14",
+            "years": "time / 1000 / 60 / 60 / 24 / 365",
+            "decades": "time / 1000 / 60 / 60 / 24 / 365 / 10",
+            "centuaries": "time / 1000 / 60 / 60 / 24 / 365 / 100",
+            "millenniums": "time / 1000 / 60 / 60 / 24 / 365 / 1000"
+        },
+        "seconds": {
+            "milliseconds": "time * 1000",
+            "seconds": "time",
+            "minutes": "time / 60",
+            "hours": "time / 60 / 60",
+            "days": "time / 60 / 60 / 24",
+            "weeks": "time / 60 / 60 / 24 / 7",
+            "fortnights": "time / 60 / 60 / 24 / 14",
+            "years": "time / 60 / 60 / 24 / 365",
+            "decades": "time / 60 / 60 / 24 / 365 / 10",
+            "centuaries": "time / 60 / 60 / 24 / 365 / 100",
+            "millenniums": "time / 60 / 60 / 24 / 365 / 1000"
+        },
+        "minutes": {
+            "milliseconds": "time * 60 * 1000",
+            "seconds": "time * 60",
+            "minutes": "time",
+            "hours": "time / 60",
+            "days": "time / 60 / 24",
+            "weeks": "time / 60 / 24 / 7",
+            "fortnights": "time / 60 / 24 / 14",
+            "years": "time / 60 / 24 / 365",
+            "decades": "time / 60 / 24 / 365 / 10",
+            "centuaries": "time / 60 / 24 / 365 / 100",
+            "millenniums": "time / 60 / 24 / 365 / 1000"
+        },
+        "hours": {
+            "milliseconds": "time * 60 * 60 * 1000",
+            "seconds": "time * 60 * 60",
+            "minutes": "time * 60",
+            "hours": "time",
+            "days": "time / 24",
+            "weeks": "time / 24 / 7",
+            "fortnights": "time / 24 / 14",
+            "years": "time / 24 / 365",
+            "decades": "time / 24 / 365 / 10",
+            "centuaries": "time / 24 / 365 / 100",
+            "millenniums": "time / 24 / 365 / 1000"
+        },
+        "days": {
+            "milliseconds": "time * 24 * 60 * 60 * 1000",
+            "seconds": "time * 24 * 60 * 60",
+            "minutes": "time * 24 * 60",
+            "hours": "time * 24",
+            "days": "time",
+            "weeks": "time / 7",
+            "fortnights": "time / 14",
+            "years": "time / 365",
+            "decades": "time / 365 / 10",
+            "centuaries": "time / 365 / 100",
+            "millenniums": "time / 365 / 1000"
+        },
+        "weeks": {
+            "milliseconds": "time * 7 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 7 * 24 * 60 * 60",
+            "minutes": "time * 7 * 24 * 60",
+            "hours": "time * 7 * 24",
+            "days": "time * 7",
+            "weeks": "time",
+            "fortnights": "time / 2",
+            "years": "time / 52",
+            "decades": "time / 52 / 10",
+            "centuaries": "time / 52 / 100",
+            "millenniums": "time / 52 / 1000"
+        },
+        "fortnights": {
+            "milliseconds": "time * 14 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 14 * 24 * 60 * 60",
+            "minutes": "time * 14 * 24 * 60",
+            "hours": "time * 14 * 24",
+            "days": "time * 14",
+            "weeks": "time * 2",
+            "fortnights": "time",
+            "years": "time / 26",
+            "decades": "time / 26 / 10",
+            "centuaries": "time / 26 / 100",
+            "millenniums": "time / 26 / 1000"
+        },
+        "years": {
+            "milliseconds": "time * 256 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 256 * 24 * 60 * 60",
+            "minutes": "time * 256 * 24 * 60",
+            "hours": "time * 256 * 24",
+            "days": "time * 256",
+            "weeks": "time * 52",
+            "fortnights": "time * 26",
+            "years": "time",
+            "decades": "time / 10",
+            "centuaries": "time / 100",
+            "millenniums": "time / 1000"
+        },
+        "decades": {
+            "milliseconds": "time * 10 * 256 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 10 * 256 * 24 * 60 * 60",
+            "minutes": "time * 10 * 256 * 24 * 60",
+            "hours": "time * 10 * 256 * 24",
+            "days": "time * 10 * 256",
+            "weeks": "time * 10 * 52",
+            "fortnights": "time * 10 * 26",
+            "years": "time * 10",
+            "decades": "time",
+            "centuaries": "time / 10",
+            "millenniums": "time / 100"
+        },
+        "centuaries": {
+            "milliseconds": "time * 100 * 256 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 100 * 256 * 24 * 60 * 60",
+            "minutes": "time * 100 * 256 * 24 * 60",
+            "hours": "time * 100 * 256 * 24",
+            "days": "time * 100 * 256",
+            "weeks": "time * 100 * 52",
+            "fortnights": "time * 100 * 26",
+            "years": "time * 100",
+            "decades": "time * 10",
+            "centuaries": "time",
+            "millenniums": "time / 10"
+        },
+        "millenniums": {
+            "milliseconds": "time * 1000 * 256 * 24 * 60 * 60 * 1000",
+            "seconds": "time * 1000 * 256 * 24 * 60 * 60",
+            "minutes": "time * 1000 * 256 * 24 * 60",
+            "hours": "time * 1000 * 256 * 24",
+            "days": "time * 1000 * 256",
+            "weeks": "time * 1000 * 52",
+            "fortnights": "time * 1000 * 26",
+            "years": "time * 1000",
+            "decades": "time * 100",
+            "centuaries": "time * 10",
+            "millenniums": "time"
+        }
+    }
+
+    # Return evaluated value
+    return eval(conversions[currentformat][newformat])
 
 
 def minyear():
