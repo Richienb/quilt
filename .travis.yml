@@ -18,6 +18,7 @@ jobs:
           - pip install codecov
 
       script:
+          - cd src
           - coverage run test.py
 
       after_success:
