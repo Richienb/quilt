@@ -476,7 +476,7 @@ def printmessage(text, amount=1):
 def comparenum(value1, value2, comparison):
     if isnum(value1) and isnum(value2):
         comparison = comparison.lower()
-        if comparison == 'equals':
+        if comparison == 'equal':
             return value1 == value2
         elif comparison == 'not equal':
             return value1 != value2
