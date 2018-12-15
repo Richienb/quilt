@@ -2518,7 +2518,7 @@ Web
 # Generate And Run MailTo
 
 
-def mailto(to, cc, bcc, subject, body):
+def mailto(to, cc=None, bcc=None, subject=None, body=None):
     mailurl = 'mailto:' + str(to)
     if cc is None and bcc is None and subject is None and body is None:
         return str(mailurl)
