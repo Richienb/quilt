@@ -3,6 +3,8 @@ A Python library that lets you write less code to do more things. For more infor
 
 [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/quilt/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/quilt)
 [![CodeFactor Score](https://www.codefactor.io/repository/github/richienb/quilt/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/richienb/quilt)
+[![Codecov Score](https://img.shields.io/codecov/c/github/Richienb/quilt/master.svg?style=for-the-badge)](https://codecov.io/gh/Richienb/quilt)
+[![PyPI Status](https://img.shields.io/pypi/status/quilt-lang.svg?style=for-the-badge)](https://pypi.org/project/quilt-lang)
 
 ## How to use
 ### Install via pip
