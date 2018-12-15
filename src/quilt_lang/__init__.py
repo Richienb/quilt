@@ -313,7 +313,7 @@ def pykeyword(operation='list', keywordtotest=None):
 
     operation:
     Whether to list or check the keywords.
-    Possible options are 'list' and 'check'.
+    Possible options are 'list' and 'in'.
 
     keywordtotest:
     The keyword to check.
@@ -324,8 +324,8 @@ def pykeyword(operation='list', keywordtotest=None):
         # Return an array of keywords
         return str(keyword.kwlist)
 
-    # If the operation was 'check'
-    elif operation == 'check':
+    # If the operation was 'in'
+    elif operation == 'in':
         # Return a boolean for if the string was a keyword
         return keyword.iskeyword(str(keywordtotest))
 
