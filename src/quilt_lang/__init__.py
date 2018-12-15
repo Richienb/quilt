@@ -778,18 +778,11 @@ def pingtest(returntrue=False):
 def convertascii(value, command='to'):
     command = command.lower()
     if command == 'to':
-        try:
-            return chr(value)
-        except ValueError:
-            raise RuntimeWarning('Invalid Symbol Value (0014)')
+        return chr(value)
     elif command == 'from':
-        try:
-            return ord(value)
-        except ValueError:
-            raise RuntimeWarning('Invalid Symbol (0015)')
+        return ord(value)
     else:
-        raise RuntimeWarning(
-            'An Error Has Occurred: Invalid Operation Entered (0008)')
+        raise RuntimeWarning('Invalid operation provided.')
 
 
 # Get All Available Characters For A Type
@@ -1472,7 +1465,7 @@ def isfalse(variable):
     """
 
     # Return the answer
-    return variable in [0, 0.0, False, [], {}, math.nan, "", ()]
+    return variable in [0, 0.0, False, [], {}, math.nan, "", (), None]
 
 
 def rounddown(number):
