@@ -393,7 +393,7 @@ def binboolflip(item):
         # Try to return the converted value
         return keys[item]
 
-    except RuntimeError:
+    except KeyError:
         # Raise a warning
         raise RuntimeWarning("Invalid item specified.")
 
@@ -560,11 +560,10 @@ def convertstring(value):
 
 
 def opposite(boolean):
-    try:
+    if isinstance(boolean, bool):
         return not boolean
-    except RuntimeError:
-        raise RuntimeWarning(
-            'An Error Has Occurred: Nor A Bool Or Len Was Provided (0014)')
+    else:
+        raise RuntimeWarning('A bool was not provided.')
 
 
 def typematch(variable, expectedtype):

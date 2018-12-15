@@ -33,6 +33,8 @@ class TestMethods(unittest.TestCase):
         s.assertEqual(_.binboolflip(False), 0)
         s.assertTrue(_.binboolflip(1))
         s.assertEqual(_.binboolflip(True), 1)
+        with s.assertRaises(RuntimeWarning):
+            _.binboolflip("foo")
 
     def test_comparenum(s):
         s.assertTrue(_.comparenum(1, 1, "equal"))
@@ -56,6 +58,19 @@ class TestMethods(unittest.TestCase):
         s.assertFalse(_.comparenum(0, 1, "more than or equal to"))
         with s.assertRaises(RuntimeWarning):
             _.comparenum(1, 1, "foo")
+
+    def test_throwerror(s):
+        with s.assertRaises(RuntimeError):
+            _.throwerror("foo")
+
+    def test_convertstring(s):
+        s.assertEqual(_.convertstring(1), "1")
+
+    def test_opposite(s):
+        s.assertTrue(_.opposite(False))
+        s.assertFalse(_.opposite(True))
+        with s.assertRaises(RuntimeWarning):
+            _.opposite("foo")
 
 
 if __name__ == '__main__':
