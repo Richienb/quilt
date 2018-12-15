@@ -563,7 +563,7 @@ def opposite(boolean):
     if isinstance(boolean, bool):
         return not boolean
     else:
-        raise RuntimeWarning('A bool was not provided.')
+        raise RuntimeWarning('A boolean was not provided.')
 
 
 def typematch(variable, expectedtype):

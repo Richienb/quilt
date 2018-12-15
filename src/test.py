@@ -72,6 +72,15 @@ class TestMethods(unittest.TestCase):
         with s.assertRaises(RuntimeWarning):
             _.opposite("foo")
 
+    def test_typematch(s):
+        s.assertTrue(_.typematch(True, bool))
+        s.assertTrue(_.typematch("foo", str))
+        s.assertFalse(_.typematch(True, str))
+
+    def test_sametype(s):
+        s.assertTrue(_.sametype(True, False))
+        s.assertFalse(_.sametype(True, "foo"))
+
 
 if __name__ == '__main__':
     unittest.main()
