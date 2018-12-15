@@ -482,15 +482,11 @@ def comparenum(value1, value2, comparison):
             return value1 != value2
         elif comparison == 'less than':
             return value1 < value2
-        elif comparison == 'greater than':
-            return value1 > value2
-        elif comparison == 'more than':
+        elif comparison == ['greater than', 'more than']:
             return value1 > value2
         elif comparison == 'less than or equal to':
             return value1 <= value2
-        elif comparison == 'greater than or equal to':
-            return value1 >= value2
-        elif comparison == 'more than or equal to':
+        elif comparison in ['greater than or equal to', 'more than or equal to']:
             return value1 >= value2
 
 
