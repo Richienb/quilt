@@ -15,6 +15,7 @@ copyright:                'Copyright &copy; 2018 Richie Bendall'
 nav:
     - Home:               index.md
     - Commands:           commands.md
+    - Contributing:       CONTRIBUTING.md
     - Code Of Conduct:    CODE_OF_CONDUCT.md
 
 # Configuration
