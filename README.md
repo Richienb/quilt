@@ -30,3 +30,7 @@ For more commands, visit [this website](https://quilt-lang.richie-bendall.ml/com
 At the moment, you can help by
 - Adding more functions which you or someone else might find useful
 - Adding and maintaining the docstrings
+
+## License
+
+Quilt is licensed under the [Apache 2.0 License](LICENSE).
