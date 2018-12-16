@@ -2109,7 +2109,10 @@ def loglevel(leveltype=None, isequal=False):
     :param leveltype: Choose the logging level. Possible choices are none (0), debug (10), info (20), warning (30), error (40) and critical (50).
 
     :type isequal: boolean
-    :param isequal: If set to True, instead of setting the level, returns True if the level is equal to leveltype. Otherwise, returns False.
+    :param isequal: Check if level is equal to leveltype.
+
+    :return: If the level is equal to leveltype.
+    :rtype: boolean
 
     >>> quilt_lang.loglevel()
     30
