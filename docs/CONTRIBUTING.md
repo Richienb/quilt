@@ -4,6 +4,7 @@ At the moment, you can help by
 
 - Adding more functions which you or someone else might find useful
 - Adding and maintaining the docstrings
+- Adding and improving unit tests
 
 ## Testing Guide
 
