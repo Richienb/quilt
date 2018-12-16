@@ -19,6 +19,7 @@ import sys
 import logging
 import pkg_resources
 import tempfile
+import base64
 
 # Math modules
 import math
@@ -43,16 +44,36 @@ Uncatagorised
 """
 
 
-def userinput(prompttext=""):
+def userinput(prompttext="", times=1):
     """
-    Get the input of the user via a universally secure method
+    Get the input of the user via a universally secure method.
 
     :type prompttext: string
     :param prompttext: The text to display while receiving the data.
+
+    :type times: integer
+    :param times: The amount of times to ask the user. If value is not 1, a list will be returned. Default is 1.
+
+    :return: What the user typed in.
+    :rtype: string
     """
 
-    # Return the result
-    return input(str(prompttext))
+    # If times is 1
+    if times == 1:
+        # Return the result
+        return input(str(prompttext))
+
+    # Create new empty list
+    inputlist = []
+
+    # For each time in range
+    for _ in range(times):
+        # Append the result of another input request
+        inputlist.append(input(str(prompttext)))
+
+    # Return the final result
+    return inputlist
+
 
 
 def shellinput(initialtext='>> ', splitpart=' '):
@@ -66,32 +87,21 @@ def shellinput(initialtext='>> ', splitpart=' '):
 
     :type splitpart: string
     :param splitpart: The character to split when generating the list item.
+
+    :return: A string of the user's input or a list of the user's input split by the split character.
+    :rtype: string or list
     """
 
-    try:
-        # Convert shell user input to a string and set it to a variable
-        shelluserinput = userinput(str(initialtext))
-    except RuntimeError:
-        # If it fails then raise a warning
-        raise RuntimeWarning(
-            "Cannot convert type " + str(type(initialtext)) + "to str")
+    # Ask for the user input
+    shelluserinput = input(str(initialtext))
 
     # If the part to split doesn't exist
     if splitpart == '' or splitpart is None:
         # Return the text
         return shelluserinput
 
-    # Create en empty list object
-    commands = []
-
-    # For each item after splitting the output
-    for item in enumerate(shelluserinput.split(splitpart)):
-
-        # Append it to the list
-        commands.append(item[1])
-
-    # Return the command arguments
-    return commands
+    # Return a list of each item after splitting the output
+    return shelluserinput.split(splitpart)
 
 
 def colourcode(startcolourcode, destinationtype, longhex=False):
@@ -270,14 +280,14 @@ def splitstring(string, splitcharacter=' ', part=None):
     """
     Split a string based on a character and get the parts as a list.
 
-    string:
-    The string to split.
+    :type string: string
+    :param string: The string to split.
 
-    splitcharacter:
-    The character to split for the string.
+    :type splitcharacter: string
+    :param splitcharacter: The character to split for the string.
 
-    part:
-    Get a specific part of the list.
+    :type part: integer
+    :param part: Get a specific part of the list.
     """
 
     # If the part is empty
@@ -293,14 +303,14 @@ def sort(listtosort, key=None, reversesort=False):
     """
     Sort a list alphabetically.
 
-    listtosort:
-    The list which will be sorted.
+    :type listtosort: list
+    :param listtosort: The list which will be sorted.
 
-    key:
-    The key to use when sorting.
+    :type key: function
+    :param key: The key to use when sorting.
 
-    reverse:
-    If to sort backwards.
+    :type reverse: boolean
+    :param reverse: If to sort backwards.
     """
 
     # Return the sorted version of a list
@@ -311,12 +321,11 @@ def pykeyword(operation='list', keywordtotest=None):
     """
     Check if a keyword exists in the Python keyword dictionary.
 
-    operation:
-    Whether to list or check the keywords.
-    Possible options are 'list' and 'in'.
+    :type operation: string
+    :param operation: Whether to list or check the keywords. Possible options are 'list' and 'in'.
 
-    keywordtotest:
-    The keyword to check.
+    :type keywordtotest: string
+    :param keywordtotest: The keyword to check.
     """
 
     # If the operation was 'list'
@@ -337,20 +346,20 @@ def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
     """
     Pretty Print a list.
 
-    listtoprint:
-    The list to pretty print.
+    :type listtoprint: list
+    :param listtoprint: The list to pretty print.
 
-    stream:
-    The stream to use.
+    :type stream: object
+    :param stream: The stream to use.
 
-    indent:
-    The indention to use.
+    :type indent: integer
+    :param indent: The indention to use.
 
-    width:
-    The width to use.
+    :type width: integer
+    :param width: The width to use.
 
-    depth:
-    The depth to use.
+    :type depth: integer
+    :param depth: The depth to use.
     """
 
     # Pretty print the array
@@ -359,10 +368,10 @@ def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
 
 def genipsum(sentences=1):
     """
-    Generate an array of Lorem Ipsum
+    Generate an array of Lorem Ipsum.
 
-    sentences:
-    The amount of sentences to generate.
+    :type sentences: integer
+    :param sentences: The amount of sentences to generate.
     """
 
     # Return the generated ipsum
@@ -402,8 +411,8 @@ def modulereload(modulename):
     """
     Reload a module.
 
-    modulename:
-    Name of module to reload.
+    :type modulename: module
+    :param modulename: Name of module to reload.
     """
 
     # Reload the module
@@ -414,9 +423,8 @@ def warnconfig(action='default'):
     """
     Configure the Python warnings.
 
-    action:
-    The configuration to set.
-    Options are: 'default', 'error', 'ignore', 'always', 'module' and 'once'.
+    :type action: string
+    :param action: The configuration to set. Options are: 'default', 'error', 'ignore', 'always', 'module' and 'once'.
     """
 
     # If action is 'default'
@@ -457,19 +465,17 @@ def printmessage(text, amount=1):
     """
     Print out a console message.
 
-    text:
-    The text to print out.
+    :type text: string
+    :param text: The text to print out.
 
-    amount:
-    The amount of times to print it out.
+    :type amount: integer
+    :param amount: The amount of times to print it out.
     """
 
     # Repeat for value of amount
     for _ in range(amount):
         # Print the text
         print(text)
-
-
 
 
 def comparenum(value1, value2, comparison):
@@ -1868,14 +1874,20 @@ def paraspace(paragraphspaces=1):
         print('', end='\n')
 
 
-# Choose A Random Item From A List
 
 
 def randomstr(valuelist):
-    try:
-        return random.choice(valuelist)
-    except IndexError:
-        raise RuntimeWarning('An Error Has Occured: List Not Specified (0018)')
+    """
+    Choose a random item from a list.
+
+    :type valuelist: list
+    :param valuelist: The list to choose a random item from.
+
+    :raises IndexError: List not specified.
+    """
+
+    # Choose a random item and return it
+    return random.choice(valuelist)
 
 
 def case(text, casingformat='sentence'):
@@ -1943,6 +1955,45 @@ def getplatform():
 
     # Return the system platform
     return sys.platform
+
+
+def encryptstring(text, password):
+    """
+    Encrypt a string according to a specific password.
+
+    :type text: string
+    :param text: The text to encrypt.
+
+    :type pass: string
+    :param pass: The password to encrypt the text with.
+    """
+
+    enc = []
+    for i in range(len(text)):
+        key_c = password[i % len(password)]
+        enc_c = chr((ord(text[i]) + ord(key_c)) % 256)
+        enc.append(enc_c)
+    return base64.urlsafe_b64encode("".join(enc).encode()).decode()
+
+
+def decryptstring(enc, password):
+    """
+    Decrypt an encrypted string according to a specific password.
+
+    :type enc: string
+    :param enc: The encrypted text.
+
+    :type pass: string
+    :param pass: The password used to encrypt the text.
+    """
+
+    dec = []
+    enc = base64.urlsafe_b64decode(enc).decode()
+    for i in range(len(enc)):
+        key_c = password[i % len(password)]
+        dec_c = chr((256 + ord(enc[i]) - ord(key_c)) % 256)
+        dec.append(dec_c)
+    return "".join(dec)
 
 
 def tempdir():
@@ -2174,19 +2225,17 @@ def dayofweek(day, month, year, formatresult=True):
 
     Get the day of the week for a specific day
 
-    day:
-    The day to include in the search
+    :type day: integer
+    :param day: The day to include in the search
 
-    month:
-    The month to include in the search
+    :type month: integer
+    :param month: The month to include in the search
 
-    year:
-    The year to include in the search
+    :type year: integer
+    :param year: The year to include in the search
 
-    formatresult:
-    Whether or not to format the result.
-    A formatted date would look like: "Monday".
-    A non formatted date would look like: 1.
+    :type formatresult: boolean
+    :param formatresult: Whether or not to format the result. A formatted date would look like: "Monday". A non formatted date would look like: 1.
 
     """
     if formatresult is False:
@@ -2205,13 +2254,13 @@ def dayofweek(day, month, year, formatresult=True):
 
 def leapyear(year):
     """
-
     Check if a year in particular is a leap year
 
-    year:
-    The year to check for
-
+    :type year: integer
+    :param year: The year to check for
     """
+
+    # Return the answer
     return bool(calendar.isleap(year))
 
 
@@ -2538,34 +2587,51 @@ def mailto(to, cc=None, bcc=None, subject=None, body=None):
     return mailurl
 
 
-# Open A Link In A Web Browser
 
 
 def openurl(url):
-    try:
-        webbrowser.open(url)
-    except webbrowser.Error:
-        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
+    """
+    Open a URL in a web browser.
 
+    :type url: string
+    :param url: The url to open.
 
-# Open A Link In A New Window Of A Web Browser
+    :raises webbrowser.Error: Unable to open URL
+    """
+
+    # Open the URL
+    webbrowser.open(url)
+
 
 
 def newwindow(url):
-    try:
-        webbrowser.open_new(url)
-    except webbrowser.Error:
-        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
+    """
+    Open a URL in a new window of a web browser.
+
+    :type url: string
+    :param url: The url to open.
+
+    :raises webbrowser.Error: Unable to open URL
+    """
+
+    # Open the URL
+    webbrowser.open_new(url)
 
 
-# Open A Link In A New Tab Of A Web Browser
 
 
 def newtab(url):
-    try:
-        webbrowser.open_new_tab(url)
-    except webbrowser.Error:
-        raise RuntimeWarning('An Error Has Occured: Unable To Open URL (0017)')
+    """
+    Open a URL in a new tab of a web browser.
+
+    :type url: string
+    :param url: The url to open.
+
+    :raises webbrowser.Error: Unable to open URL
+    """
+
+    # Open the URL
+    webbrowser.open_new_tab(url)
 
 
 def getbrowser():
