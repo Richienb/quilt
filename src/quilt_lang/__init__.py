@@ -92,16 +92,9 @@ def shellinput(initialtext='>> ', splitpart=' '):
     :rtype: string or list
     """
 
-    # Ask for the user input
     shelluserinput = input(str(initialtext))
 
-    # If the part to split doesn't exist
-    if splitpart == '' or splitpart is None:
-        # Return the text
-        return shelluserinput
-
-    # Return a list of each item after splitting the output
-    return shelluserinput.split(splitpart)
+    return shelluserinput if splitpart in ('', None) else shelluserinput.split(splitpart)
 
 
 def colourcode(startcolourcode, destinationtype, longhex=False):
