@@ -917,7 +917,7 @@ def textbetween(variable,
 
 
 def letternum(letter):
-    if len(letter) == 1 and isstring(letter):
+    if len(letter) == 1 and isinstance(letter, src):
         letter = letter.lower()
         alphaletters = string.ascii_lowercase
         for i in range(len(alphaletters)):
@@ -1871,7 +1871,7 @@ def paraspace(paragraphspaces=1):
     """
 
     for _ in range(paragraphspaces):
-        print('', end='\n')
+        print('')
 
 
 
