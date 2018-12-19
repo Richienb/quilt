@@ -756,48 +756,70 @@ def reversetext(contenttoreverse, reconvert=True):
     return contenttoreverse[::-1]
 
 
-# Reverse A List
-
-
 def reverselist(listtoreverse):
+    """
+    Reverse a list.
+
+    :type listtoreverse: list
+    :param listtoreverse: The list to reverse
+    """
+
+    # Return the reversed list
     return listtoreverse.reverse()
 
 
-# Replace Text In A Variable
-
-
 def replacetext(string, texttofind, texttoreplace):
+    """
+    Replace text with other text.
+
+    :type string: string
+    :param string: The string with the text to replace.
+
+    :type texttofind: string
+    :param texttofind: The text to look for in the string.
+
+    :type texttoreplace: string
+    :param texttoreplace: The text to replace the matching text with.
+    """
+
+    # Return the replaced string
     return string.replace(texttofind, texttoreplace)
 
 
-# Evaluate A Expression Or Operation
-
-
 def evaluate(evaluation):
+    """
+    Evaluate an expression.
+
+    :type evaluation: string
+    :param evaluation: The expression to evaluate.
+    """
+
+    # Return the evaluation
     return eval(str(evaluation))
 
 
-# Execute A Line Of Python Code
-
-
 def execute(execution):
+    """
+    Execute a Python command
+
+    :type execution: string
+    :param execution: The string to execute.
+    """
+
+    # Execute the string
     exec(str(execution))
 
 
-# Get The Type Of A Value
-
-
 def gettype(value):
+    """
+    Get the type of an object
+
+    :type value: string
+    :param value: The object to check.
+    """
+
+    # Return the type
     return type(value)
-
-
-# Do a quick module test
-
-
-def pingtest(returntrue=False):
-    if returntrue:
-        return True
-    print("Pong!")
 
 
 # Convert A ASCII Value To A Symbol
@@ -876,9 +898,6 @@ def availchars(charactertype):
     raise RuntimeWarning("Invalid character type provided.")
 
 
-
-
-
 # Get the Range Of The Length
 
 
@@ -913,26 +932,25 @@ def letternum(letter):
                 return i + 1
 
 
-
-
 def wordvalue(word):
     """
     Get the value of each letter of a string's position in the alphabet added up
-    
+
     :type word: string
     :param word: The word to find the value of
     """
-    
+
     # Set total to 0
     total = 0
-    
+
     # For each character of word
     for i in enumerate(word):
         # Add it's letter value to total
         total += letternum(word[i[0]])
-        
+
     # Return the final value
     return total
+
 
 # Return The List Equally Spaced
 
@@ -2704,8 +2722,25 @@ class DictObject(object):
 
 
 """
-Copyright
+Copyright and Quilt Information
 """
+
+
+def pingtest(returntrue=False):
+    """
+    Perform a quick module test. Useful to check if Quilt has loaded properly.
+
+    :type returntrue: boolean
+    :param returntrue: If set to True then True will be returned. Otherwise, "Pong!" will be printed.
+    """
+
+    # If returntrue is True
+    if returntrue is True:
+        # Return True
+        return True
+
+    # Print "Pong!"
+    print("Pong!")
 
 
 def about():
