@@ -876,14 +876,7 @@ def availchars(charactertype):
     raise RuntimeWarning("Invalid character type provided.")
 
 
-# Get The Value Of A Word
 
-
-def wordvalue(word):
-    total = 0
-    for i in enumerate(word):
-        total += letternum(word[i])
-    return total
 
 
 # Get the Range Of The Length
@@ -916,9 +909,30 @@ def letternum(letter):
         letter = letter.lower()
         alphaletters = string.ascii_lowercase
         for i in range(len(alphaletters)):
-            if getletter(letter, 1) == getletter(alphaletters, i + 1):
+            if letter[0] == alphaletters[i]:
                 return i + 1
 
+
+
+
+def wordvalue(word):
+    """
+    Get the value of each letter of a string's position in the alphabet added up
+    
+    :type word: string
+    :param word: The word to find the value of
+    """
+    
+    # Set total to 0
+    total = 0
+    
+    # For each character of word
+    for i in enumerate(word):
+        # Add it's letter value to total
+        total += letternum(word[i[0]])
+        
+    # Return the final value
+    return total
 
 # Return The List Equally Spaced
 
