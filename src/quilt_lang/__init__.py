@@ -75,7 +75,6 @@ def userinput(prompttext="", times=1):
     return inputlist
 
 
-
 def shellinput(initialtext='>> ', splitpart=' '):
     """
     Give the user a shell-like interface to enter commands which
@@ -92,16 +91,12 @@ def shellinput(initialtext='>> ', splitpart=' '):
     :rtype: string or list
     """
 
-    # Ask for the user input
+    # Get the user's input
     shelluserinput = input(str(initialtext))
 
-    # If the part to split doesn't exist
-    if splitpart == '' or splitpart is None:
-        # Return the text
-        return shelluserinput
-
-    # Return a list of each item after splitting the output
-    return shelluserinput.split(splitpart)
+    # Return the computed result
+    return shelluserinput if splitpart in (
+        '', None) else shelluserinput.split(splitpart)
 
 
 def colourcode(startcolourcode, destinationtype, longhex=False):
@@ -1874,8 +1869,6 @@ def paraspace(paragraphspaces=1):
         print('')
 
 
-
-
 def randomstr(valuelist):
     """
     Choose a random item from a list.
@@ -2590,8 +2583,6 @@ def mailto(to, cc=None, bcc=None, subject=None, body=None):
     return mailurl
 
 
-
-
 def openurl(url):
     """
     Open a URL in a web browser.
@@ -2606,7 +2597,6 @@ def openurl(url):
     webbrowser.open(url)
 
 
-
 def newwindow(url):
     """
     Open a URL in a new window of a web browser.
@@ -2619,8 +2609,6 @@ def newwindow(url):
 
     # Open the URL
     webbrowser.open_new(url)
-
-
 
 
 def newtab(url):
