@@ -8,7 +8,7 @@ deps:
 
 # Minify the code (Linux only)
 min:
-    pip install -pyminifier
+    pip install pyminifier
     find quilt_lang -type f -name "*.py" -exec pyminifier --gzip --obfuscate-variables --outfile="{}" "{}" \;
 
 # Generate the Mkdocs documentation
