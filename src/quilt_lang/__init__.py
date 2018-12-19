@@ -594,7 +594,7 @@ def sametype(variable1, variable2):
     """
 
     # Return the result
-    return type(variable1) == type(variable2)
+    return isinstance(variable1, type(variable2))
 
 
 # Sing Happy Birthday
