@@ -1,26 +1,29 @@
-# Quilt - A programming library built for Python
-
 [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/quilt/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/quilt)
 [![CodeFactor Score](https://www.codefactor.io/repository/github/richienb/quilt/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/richienb/quilt)
+[![Codecov Score](https://img.shields.io/codecov/c/github/Richienb/quilt/master.svg?style=for-the-badge)](https://codecov.io/gh/Richienb/quilt)
+[![PyPI Status](https://img.shields.io/pypi/status/quilt-lang.svg?style=for-the-badge)](https://pypi.org/project/quilt-lang)
 
-Quilt is a Python library that lets you write less code to do more things. Here's how to use it:
+![Quilt Lang](https://a.icons8.com/aWyfnael/NMIoFa/artboard.svg)
 
-## Install Quilt via pip
+A Python library that lets you write less code to do more things.
 
+Documentation available [here](https://quilt-lang.richie-bendall.ml/).
+
+## Getting started
+
+### Install via pip
 ```sh
 pip install quilt-lang
 ```
 
-## Importing Quilt
-
+### Importing
 ```py
 import quilt_lang as _
 ```
 
-## Example usage
-
-The following code will execute a testing command which should print out `Pong!`
-
+### Example usage
 ```py
 _.pingtest()
 ```
+
+For more commands, visit [this website](https://quilt-lang.richie-bendall.ml/commands/quilt_lang.html).
