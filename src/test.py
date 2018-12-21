@@ -18,7 +18,7 @@ class TestMethods(unittest.TestCase):
         s.assertTrue("True" in _.pykeyword("list"))
         s.assertTrue(_.pykeyword("in", "True"))
         s.assertFalse(_.pykeyword("in", "foo"))
-        with s.assertRaises(RuntimeWarning):
+        with s.assertRaises(ValueError):
             _.pykeyword("foo", "foo")
 
     def test_binboolflip(s):
@@ -26,7 +26,7 @@ class TestMethods(unittest.TestCase):
         s.assertEqual(_.binboolflip(False), 0)
         s.assertTrue(_.binboolflip(1))
         s.assertEqual(_.binboolflip(True), 1)
-        with s.assertRaises(RuntimeWarning):
+        with s.assertRaises(ValueError):
             _.binboolflip("foo")
 
     def test_typematch(s):
