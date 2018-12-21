@@ -1,7 +1,7 @@
 # Force install the latest production version of Quilt
 inst:
 	pip install -U quilt_lang
-    
+
 # Install the dependencies
 deps:
     pip install -r requirements.txt

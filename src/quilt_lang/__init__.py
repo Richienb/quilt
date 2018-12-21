@@ -535,32 +535,32 @@ def throwerror(errortext):
     raise RuntimeError("Forced Error: " + str(errortext))
 
 
-# Delay For A Specific Amount Of Seconds
-
-
 def delay(seconds):
+    """
+    Delay For A Specific Amount Of Seconds
+    """
     time.sleep(seconds)
 
 
-# Waits For The User To Press Enter
-
-
 def waitenter(times=1):
+    """
+    Waits For The User To Press Enter
+    """
     for _ in range(times):
         userinput('')
 
 
-# Convert A Variable To A String
-
-
 def convertstring(value):
+    """
+    Convert A Variable To A String
+    """
     return str(value)
 
 
-# Return The Opposite Of A Boolean
-
-
 def opposite(boolean):
+    """
+    Return The Opposite Of A Boolean
+    """
     if isinstance(boolean, bool):
         return not boolean
     else:
@@ -597,10 +597,10 @@ def sametype(variable1, variable2):
     return isinstance(variable1, type(variable2))
 
 
-# Sing Happy Birthday
-
-
 def happybirthday(person):
+    """
+    Sing Happy Birthday
+    """
     print('Happy Birthday To You')
     time.sleep(2)
     print('Happy Birthday To You')
@@ -646,10 +646,10 @@ def divisable(num1, num2):
     return bool(num1 % num2 == 0)
 
 
-# Find The Length Of A Value
-
-
 def length(value):
+    """
+    Find The Length Of A Value
+    """
     try:
         return len(convertstring(value))
     except OverflowError:
@@ -658,10 +658,10 @@ def length(value):
         the limit of ' + str(sys.maxsize))
 
 
-# Simulate A Cow Saying Text
-
-
 def cowsay(text='', align='centre'):
+    """
+    Simulate A Cow Saying Text
+    """
     align = align.lower()
     cowtext = str(text)
     topbar = ' '
@@ -702,26 +702,26 @@ def onlist(listtocheck, item):
     return item in listtocheck
 
 
-# Join Two Strings
-
-
 def jointext(firststring, secondstring):
+    """
+    Join Two Strings
+    """
     return str(firststring) + str(secondstring)
 
 
-# Get the value of __name__
-
-
 def pyname(ifmain=False):
+    """
+    Get the value of __name__
+    """
     if ifmain is True:
         return __name__ == "__main__"
     return __name__
 
 
-# Convert Text To Binary Form
-
-
 def convertbinary(value, argument):
+    """
+    Convert Text To Binary Form
+    """
     if argument == 'to':
         try:
             return bin(value)
@@ -822,10 +822,10 @@ def gettype(value):
     return type(value)
 
 
-# Convert A ASCII Value To A Symbol
-
-
 def convertascii(value, command='to'):
+    """
+    Convert A ASCII Value To A Symbol
+    """
     command = command.lower()
     if command == 'to':
         return chr(value)
@@ -898,20 +898,20 @@ def availchars(charactertype):
     raise RuntimeWarning("Invalid character type provided.")
 
 
-# Get the Range Of The Length
-
-
 def enum(arguments):
+    """
+    Get the Range Of The Length
+    """
     return enumerate(arguments)
-
-
-# Get The Text Between Two Parts
 
 
 def textbetween(variable,
                 firstnum=None,
                 secondnum=None,
                 locationoftext='regular'):
+    """
+    Get The Text Between Two Parts
+    """
     if locationoftext == 'regular':
         return variable[firstnum:secondnum]
     elif locationoftext == 'toend':
@@ -920,10 +920,10 @@ def textbetween(variable,
         return variable[:secondnum]
 
 
-# Get The Number Corresponding To A Letter
-
-
 def letternum(letter):
+    """
+    Get The Number Corresponding To A Letter
+    """
     if len(letter) == 1 and isinstance(letter, str):
         letter = letter.lower()
         alphaletters = string.ascii_lowercase
@@ -952,10 +952,10 @@ def wordvalue(word):
     return total
 
 
-# Return The List Equally Spaced
-
-
 def spacelist(listtospace):
+    """
+    Return The List Equally Spaced
+    """
     output = ''
     space = ''
     output += str(listtospace[0])
@@ -966,10 +966,10 @@ def spacelist(listtospace):
     return output
 
 
-# List Or Count The Numbers Between Two Numbers
-
-
 def numlistbetween(num1, num2, option='list', listoption='string'):
+    """
+    List Or Count The Numbers Between Two Numbers
+    """
     if option == 'list':
         if listoption == 'string':
             output = ''
@@ -986,10 +986,10 @@ def numlistbetween(num1, num2, option='list', listoption='string'):
         return num2 - num1
 
 
-# Align Text When Given Full Length
-
-
 def textalign(text, maxlength, align='left'):
+    """
+    Align Text When Given Full Length
+    """
     spaces = ''
     if align == 'left':
         return text
@@ -1002,10 +1002,10 @@ def textalign(text, maxlength, align='left'):
     return spaces + text
 
 
-# Fix The Formatting Of Decimals And Integers
-
-
 def decintfix(decorint=0):
+    """
+    Fix The Formatting Of Decimals And Integers
+    """
     if str(decorint)[-2:] == '.0':
         return int(decorint)
     return float(decorint)
@@ -1222,10 +1222,10 @@ def autohard(equation):
     raise RuntimeWarning("Invalid operation entered.")
 
 
-# Solve a simple maths equation manually
-
-
 def equation(operation, firstnum, secondnum):
+    """
+    Solve a simple maths equation manually
+    """
     if operation == 'plus':
         return (firstnum + secondnum)
     elif operation == 'minus':
@@ -1238,10 +1238,10 @@ def equation(operation, firstnum, secondnum):
     raise RuntimeWarning('Invalid operation provided.')
 
 
-# Solve scientific operations manually (May be deprecated)
-
-
 def scientific(number, operation, number2=None, logbase=10):
+    """
+    Solve scientific operations manually
+    """
     if operation == 'log':
         return math.log(number, logbase)
     elif operation == 'acos':
@@ -1260,10 +1260,10 @@ def scientific(number, operation, number2=None, logbase=10):
         return math.tan(number)
 
 
-# Simplify A Fraction
-
-
 def fracsimplify(numerator, denominator):
+    """
+    Simplify A Fraction
+    """
     if numerator == denominator:
         return '1/1'
     elif numerator > denominator:
@@ -1374,10 +1374,10 @@ def amountdiv(number, minnum, maxnum):
     return amount
 
 
-# Get A Constant
-
-
 def constant(constanttype):
+    """
+    Get A Constant
+    """
     constanttype = constanttype.lower()
     if constanttype == 'pi':
         return math.pi
@@ -1393,24 +1393,24 @@ def constant(constanttype):
         return (1 + 5**0.5) / 2
 
 
-# Find The Power Of A Number
-
-
 def power(number, power):
+    """
+    Find The Power Of A Number
+    """
     return math.pow(number, power)
 
 
-# Find The Square Root Of A number
-
-
 def squareroot(number):
+    """
+    Find The Square Root Of A Number
+    """
     return math.sqrt(number)
 
 
-# Find the factorial of a number
-
-
 def factorial(n):
+    """
+    Find the factorial of a number
+    """
     if n == 0:
         return 1
     return n * factorial(n - 1)
@@ -1472,10 +1472,10 @@ def average(numbers, averagetype='mean'):
     raise RuntimeWarning('Invalid average type provided.')
 
 
-# Check If A Number Is A Type
-
-
 def numprop(value, propertyexpected):
+    """
+    Check If A Number Is A Type
+    """
     if propertyexpected == 'triangular':
         x = (math.sqrt(8 * value + 1) - 1) / 2
         return bool(x - int(x) > 0)
@@ -1497,10 +1497,10 @@ def numprop(value, propertyexpected):
         return bool(value == 0)
 
 
-# Toggle A Number Between Positive And Negative
-
-
 def posnegtoggle(number):
+    """
+    Toggle A Number Between Positive And Negative
+    """
     if bool(number > 0):
         return number - number * 2
     elif bool(number < 0):
@@ -1509,10 +1509,13 @@ def posnegtoggle(number):
         return number
 
 
-# Check If A Variable Is Infinite
+def isrealnum(variable):
+    """
+    Check if the variable resembles a rational number.
 
-
-def isinfinite(variable):
+    :type variable: integer
+    :type param: The variable to check.
+    """
     return bool(math.isfinite(variable))
 
 
@@ -1540,10 +1543,10 @@ def rounddown(number):
     return math.floor(number)
 
 
-# Compare 2 Values
-
-
 def compare(value1, value2, comparison):
+    """
+    Compare 2 Values
+    """
     if not isinstance(comparison, str):
         raise RuntimeWarning("Comparison argument must be a string.")
     if comparison == 'is':
@@ -1553,9 +1556,6 @@ def compare(value1, value2, comparison):
     elif comparison == 'and':
         return value1 and value2
     raise RuntimeWarning("Invalid comparison operator specified.")
-
-
-# Find all the factors of a number
 
 
 def factors(number):
@@ -1797,10 +1797,10 @@ def randstring(length=1):
     return newpass
 
 
-# Return A Random String In Hexadecimal
-
-
 def tokhex(length=10, urlsafe=False):
+    """
+    Return A Random String In Hexadecimal
+    """
     if urlsafe is True:
         return secrets.token_urlsafe(length)
     return secrets.token_hex(length)
@@ -2049,10 +2049,10 @@ def pipupdate():
     subprocess.call('pip install --upgrade ' + ' '.join(packages))
 
 
-# Tools For Directories (If Exists, Make And Delete)
-
-
 def dirtool(operation, directory):
+    """
+    Tools For Directories (If Exists, Make And Delete)
+    """
     operation = operation.lower()
     if operation == 'exists':
         return bool(os.path.exists(directory))
@@ -2064,10 +2064,10 @@ def dirtool(operation, directory):
         raise RuntimeWarning('Invalid operation provided.')
 
 
-# Tools For Files (If Exists, Make And Delete)
-
-
 def file(operation, path):
+    """
+    Tools For Files (If Exists, Make And Delete)
+    """
     operation = operation.lower()
     if operation == 'exists':
         return bool(os.path.isfile(path))
@@ -2084,10 +2084,10 @@ def file(operation, path):
         raise RuntimeWarning('Invalid operation provided.')
 
 
-# Exit the current execution
-
-
 def exitexec(arguments=0):
+    """
+    Exit the current execution
+    """
     sys.exit(arguments)
 
 
@@ -2103,26 +2103,26 @@ def charlimit():
     return sys.maxsize
 
 
-# Get The Highest Unicode Value
-
-
 def unilimit():
+    """
+    Get The Highest Unicode Value
+    """
     return sys.maxunicode
 
 
-# Get the version of Python
-
-
 def pyversion(part=None):
+    """
+    Get the version of Python
+    """
     if part is None:
         return sys.version_info
     return sys.version_info[part]
 
 
-# Get the executable used by Python
-
-
 def pyexec():
+    """
+    Get the executable used by Python
+    """
     return sys.executable
 
 
@@ -2471,37 +2471,31 @@ def converttime(time, currentformat, newformat):
 
 def minyear():
     """
-
     Get the minimum year allowed by the current OS.
-
     """
+
     return datetime.MINYEAR
 
 
 def maxyear():
     """
-
     Get the maxiumum year allowed by the current OS.
-
     """
+
     return datetime.MAXYEAR
 
 
 def timezone():
     """
-
     Get the current timezone code.
-
     """
     return time.timezone
 
 
 def timesince():
     """
-
     Get the amount of time since 00:00 on 1 January 1970,
     the raw date before formatting by computers.
-
     """
     return time.time()
 
@@ -2585,10 +2579,11 @@ def timeit(command, round_result=True):
 Web
 """
 
-# Generate And Run MailTo
-
 
 def mailto(to, cc=None, bcc=None, subject=None, body=None):
+    """
+    Generate And Run MailTo
+    """
     mailurl = 'mailto:' + str(to)
     if cc is None and bcc is None and subject is None and body is None:
         return str(mailurl)
