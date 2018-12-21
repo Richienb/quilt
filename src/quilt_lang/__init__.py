@@ -18,6 +18,7 @@ import os
 import sys
 import logging
 import pkg_resources
+import pip
 import tempfile
 import base64
 
@@ -167,7 +168,7 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
         return c.luminance
 
     # If nothing matches raise a warning
-    raise RuntimeWarning("Invalid destination code specified.")
+    raise ValueError("Invalid destination code specified.")
 
 
 def changecolour(colourcode, action, amount=100):
@@ -238,7 +239,7 @@ def changecolour(colourcode, action, amount=100):
         # Return the result
         return str(c)
 
-    raise RuntimeWarning("Invalid action specified.")
+    raise ValueError("Invalid action specified.")
 
 
 def leadingzero(number, minlength):
@@ -334,7 +335,7 @@ def pykeyword(operation='list', keywordtotest=None):
         return keyword.iskeyword(str(keywordtotest))
 
     # Raise a warning
-    raise RuntimeWarning("Invalid operation specified.")
+    raise ValueError("Invalid operation specified.")
 
 
 def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
@@ -399,7 +400,7 @@ def binboolflip(item):
 
     except KeyError:
         # Raise a warning
-        raise RuntimeWarning("Invalid item specified.")
+        raise ValueError("Invalid item specified.")
 
 
 def modulereload(modulename):
@@ -453,7 +454,7 @@ def warnconfig(action='default'):
         warnings.filterwarnings('once')
 
     # Raise runtime warning
-    raise RuntimeWarning("Invalid action specified.")
+    raise ValueError("Invalid action specified.")
 
 
 def printmessage(text, amount=1):
@@ -520,7 +521,7 @@ def comparenum(value1, value2, comparison):
         return value1 >= value2
 
     # Raise runtime warning
-    raise RuntimeWarning("Invalid comparison provided.")
+    raise ValueError("Invalid comparison provided.")
 
 
 def throwerror(errortext):
@@ -537,24 +538,25 @@ def throwerror(errortext):
 
 def delay(seconds):
     """
-    Delay For A Specific Amount Of Seconds
+    Delay for a specific amount of seconds.
     """
+    
+    # Perform the delay
     time.sleep(seconds)
 
 
 def waitenter(times=1):
     """
-    Waits For The User To Press Enter
+    Wait for the user to press enter.
+    
+    :type times: integer
+    :param times: The times to ask for the user to press enter.
     """
+    
+    # For each time
     for _ in range(times):
-        userinput('')
-
-
-def convertstring(value):
-    """
-    Convert A Variable To A String
-    """
-    return str(value)
+        # Ask for user input
+        input("")
 
 
 def opposite(boolean):
@@ -564,7 +566,7 @@ def opposite(boolean):
     if isinstance(boolean, bool):
         return not boolean
     else:
-        raise RuntimeWarning('A boolean was not provided.')
+        raise TypeError('A boolean was not provided.')
 
 
 def typematch(variable, expectedtype):
@@ -648,39 +650,68 @@ def divisable(num1, num2):
 
 def length(value):
     """
-    Find The Length Of A Value
+    Find the length of a value
+    
+    :type value: variable
+    :param value: The value to find the length of
     """
-    try:
-        return len(convertstring(value))
-    except OverflowError:
-        raise RuntimeWarning(
-            'An Error Has Occured: The length of the object exceeds \
-        the limit of ' + str(sys.maxsize))
+    
+    # Try to return the length
+    return len(value)
 
 
 def cowsay(text='', align='centre'):
     """
-    Simulate A Cow Saying Text
+    Simulate an ASCII cow saying text.
+    
+    :type text: string
+    :param text: The text to print out.
+    
+    :type align: string
+    :param algin: Where to align the cow. Can be 'left', 'centre' or 'right'
     """
+
+    # Make align lowercase
     align = align.lower()
+    
+    # Set the cowtext
     cowtext = str(text)
-    topbar = ' '
-    bottombar = ' '
-    spacing = ''
-    for _ in range(len(text) + 2):
-        topbar = topbar + '_'
-        bottombar = bottombar + '-'
+    
+    # Set top part of speech bubble to the length of the text plus 2
+    topbar = ' ' * (len(text) + 2)
+    
+    # Set bottom part of speech bubble to the length of the text plus 2
+    bottombar = ' ' * (len(text) + 2)
+        
+    # If align is centre
     if align in ["center", "centre"]:
-        for _ in range((int(len(topbar) / 2)) + 1):
-            spacing = spacing + ' '
+        # Set the spacing before the cow to the length of half of the length of topbar plus 1
+        spacing = " " * (int(len(topbar) / 2) + 1)
+            
+    # If align is left
     elif align == 'left':
+        # Set spacing to a single space
         spacing = ' '
+        
+    # If align is right
     elif align == 'right':
-        for _ in range(len(text) + 2):
-            spacing = spacing + ' '
+        # Set the spacing to the length of the text plus 2
+        spacing = " " * (len(text) + 2)
+
+    else:
+        # Raise a runtime warning
+        raise ValueError("Invalid alignment provided.")
+        
+    # Print the top bar
     print(topbar)
-    print('( ' + cowtext + ' )')
+    
+    # Print the text
+    print('( ' + repr(str(cowtext)) + ' )')
+    
+    # Print the bottom bar
     print(bottombar)
+    
+    # Print the cow with the spacing
     print(spacing + r'o   ^__^ ')
     print(spacing + r' o  (oO)\_______')
     print(spacing + r'    (__)\       )\/\ ')
@@ -688,17 +719,21 @@ def cowsay(text='', align='centre'):
     print(spacing + r'        ||     || ')
 
 
-# Get The Corresponding Letter In A String
-
-
 def getletter(variable, letternumber):
+    """
+    Get the corresponding item in a object
+    """
+    
+    # Get the corresponding letter
     return str(variable)[letternumber - 1]
 
 
-# Check If Something Is On The List
-
-
 def onlist(listtocheck, item):
+    """
+    Check if something is on a list
+    """
+    
+    # Return the result
     return item in listtocheck
 
 
@@ -706,6 +741,7 @@ def jointext(firststring, secondstring):
     """
     Join Two Strings
     """
+    
     return str(firststring) + str(secondstring)
 
 
@@ -713,6 +749,7 @@ def pyname(ifmain=False):
     """
     Get the value of __name__
     """
+    
     if ifmain is True:
         return __name__ == "__main__"
     return __name__
@@ -722,16 +759,12 @@ def convertbinary(value, argument):
     """
     Convert Text To Binary Form
     """
+    
     if argument == 'to':
-        try:
-            return bin(value)
-        except RuntimeError:
-            raise RuntimeWarning('Invalid Value (0016)')
+        return bin(value)
     elif argument == 'from':
-        try:
-            return format(value)
-        except RuntimeError:
-            raise RuntimeWarning('Invalid Value (0016)')
+        return format(value)
+    raise ValueError("Invalid argument specified.")
 
 
 def reversetext(contenttoreverse, reconvert=True):
@@ -832,7 +865,7 @@ def convertascii(value, command='to'):
     elif command == 'from':
         return ord(value)
     else:
-        raise RuntimeWarning('Invalid operation provided.')
+        raise ValueError('Invalid operation provided.')
 
 
 # Get All Available Characters For A Type
@@ -895,7 +928,7 @@ def availchars(charactertype):
         return string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.hexdigits + string.punctuation + string.printable + string.whitespace
 
     # Raise a warning
-    raise RuntimeWarning("Invalid character type provided.")
+    raise ValueError("Invalid character type provided.")
 
 
 def enum(arguments):
@@ -924,12 +957,15 @@ def letternum(letter):
     """
     Get The Number Corresponding To A Letter
     """
-    if len(letter) == 1 and isinstance(letter, str):
-        letter = letter.lower()
-        alphaletters = string.ascii_lowercase
-        for i in range(len(alphaletters)):
-            if letter[0] == alphaletters[i]:
-                return i + 1
+    if not isinstance(letter, str):
+        raise TypeError("Invalid letter provided.")
+    if not len(letter) == 1:
+        raise ValueError("Invalid letter length provided.")
+    letter = letter.lower()
+    alphaletters = string.ascii_lowercase
+    for i in range(len(alphaletters)):
+        if letter[0] == alphaletters[i]:
+            return i + 1
 
 
 def wordvalue(word):
@@ -1087,7 +1123,7 @@ def shapesides(inputtocheck, inputtype='shape'):
         return sidestoshapes['ngon']
 
     # Raise a warning
-    raise RuntimeWarning("Invalid input type.")
+    raise ValueError("Invalid input type.")
 
 
 def autosolve(equation):
@@ -1148,7 +1184,7 @@ def autosolve(equation):
         return num1 % num2
 
     # Raise a warning
-    raise RuntimeWarning("Invalid operation provided.")
+    raise ValueError("Invalid operation provided.")
 
 
 def autohard(equation):
@@ -1219,7 +1255,7 @@ def autohard(equation):
         return math.tan(num1)
 
     # Raise a warning
-    raise RuntimeWarning("Invalid operation entered.")
+    raise ValueError("Invalid operation entered.")
 
 
 def equation(operation, firstnum, secondnum):
@@ -1235,7 +1271,7 @@ def equation(operation, firstnum, secondnum):
     elif operation == 'divide':
         if not secondnum == 0:
             return (firstnum / secondnum)
-    raise RuntimeWarning('Invalid operation provided.')
+    raise ValueError('Invalid operation provided.')
 
 
 def scientific(number, operation, number2=None, logbase=10):
@@ -1313,7 +1349,7 @@ def circleconvert(amount, currentformat, newformat):
             return amount * 2 * math.pi
 
         # Raise a warning
-        raise RuntimeWarning("Invalid new format provided.")
+        raise ValueError("Invalid new format provided.")
 
     # If the lowercase version of the current format is 'diameter'
     elif currentformat.lower() == 'diameter':
@@ -1328,7 +1364,7 @@ def circleconvert(amount, currentformat, newformat):
             return amount * math.pi
 
         # Raise a warning
-        raise RuntimeWarning("Invalid new format provided.")
+        raise ValueError("Invalid new format provided.")
 
     # If the lowercase version of the current format is 'circumference'
     elif currentformat.lower() == 'circumference':
@@ -1436,7 +1472,7 @@ def average(numbers, averagetype='mean'):
 
     except RuntimeError:
         # Raise a warning
-        raise RuntimeWarning('Unable to parse the list.')
+        raise ValueError('Unable to parse the list.')
 
     # If the lowercase version of the average type is 'mean'
     if averagetype.lower() == 'mean':
@@ -1469,7 +1505,7 @@ def average(numbers, averagetype='mean'):
         return max(numbers) - min(numbers)
 
     # Raise a warning
-    raise RuntimeWarning('Invalid average type provided.')
+    raise ValueError('Invalid average type provided.')
 
 
 def numprop(value, propertyexpected):
@@ -1548,14 +1584,14 @@ def compare(value1, value2, comparison):
     Compare 2 Values
     """
     if not isinstance(comparison, str):
-        raise RuntimeWarning("Comparison argument must be a string.")
+        raise TypeError("Comparison argument must be a string.")
     if comparison == 'is':
         return value1 == value2
     elif comparison == 'or':
         return value1 or value2
     elif comparison == 'and':
         return value1 and value2
-    raise RuntimeWarning("Invalid comparison operator specified.")
+    raise ValueError("Invalid comparison operator specified.")
 
 
 def factors(number):
@@ -1598,8 +1634,8 @@ def randomnum(minimum=1, maximum=2):
     if isnum(minimum):
         if isnum(maximum):
             return random.randint(minimum, maximum)
-        raise RuntimeWarning("Maximum number is not a number.")
-    raise RuntimeWarning('Minimum number is not a number.')
+        raise ValueError("Maximum number is not a number.")
+    raise ValueError('Minimum number is not a number.')
 
 
 def isfib(number):
@@ -1625,8 +1661,8 @@ def isfib(number):
 def isprime(number):
     """
     Check if a number is a prime number
-    number:
-    The number to check
+    :type number:
+    :param number: The number to check
     """
 
     if number == 1:
@@ -1640,10 +1676,12 @@ def isprime(number):
 def convertbase(number, base=10):
     """
     Convert a number in base 10 to another base
-    number:
-    The number to convert
-    base:
-    The base to convert to.
+
+    :type number: number
+    :param number: The number to convert
+
+    :type base: integer
+    :param base: The base to convert to.
     """
 
     integer = number
@@ -1712,7 +1750,7 @@ def flipcoords(xcoord, ycoord, axis):
             return str(xcoord + abs(xcoord) * 2) + ', ' + str(ycoord)
         elif xcoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
-        raise RuntimeWarning(
+        raise ValueError(
             "The X coordinate is neither larger, smaller or the same as 0.")
 
     elif axis == 'x':
@@ -1722,9 +1760,9 @@ def flipcoords(xcoord, ycoord, axis):
             return str(ycoord + abs(ycoord) * 2) + ', ' + str(xcoord)
         elif ycoord == 0:
             return str(xcoord) + ', ' + str(ycoord)
-        raise RuntimeWarning(
+        raise ValueError(
             "The Y coordinate is neither larger, smaller or the same as 0.")
-    raise RuntimeWarning("Invalid axis. Neither x nor y was specified.")
+    raise ValueError("Invalid axis. Neither x nor y was specified.")
 
 
 def lcm(num1, num2):
@@ -1950,7 +1988,7 @@ def case(text, casingformat='sentence'):
         return str(text.lower().replace(" ", "_"))
 
     # Raise a warning
-    raise RuntimeWarning("Invalid text format specified.")
+    raise ValueError("Invalid text format specified.")
 
 
 """
@@ -2039,6 +2077,29 @@ def shellcommand(command):
 
     subprocess.call(str(command))
 
+def pipinstall(packages):
+    """
+    Install one or more pip packages.
+
+    :type packages: string or list
+    :param packages: The package or list of packages to install.
+    """
+
+    if isinstance(packages, str):
+        if hasattr(pip, 'main'):
+            pip.main(['install', packages])
+        else:
+            pip._internal.main(['install', packages])
+    elif isinstance(packages, list):
+        for i in enumerate(packages):
+            if hasattr(pip, 'main'):
+                pip.main(['install', i[1]])
+            else:
+                pip._internal.main(['install', i[1]])
+    else:
+        raise TypeError("Nor a string or a list was provided.")
+
+
 
 def pipupdate():
     """
@@ -2061,7 +2122,7 @@ def dirtool(operation, directory):
     elif operation == 'delete':
         os.rmdir(directory)
     else:
-        raise RuntimeWarning('Invalid operation provided.')
+        raise ValueError('Invalid operation provided.')
 
 
 def file(operation, path):
@@ -2081,7 +2142,7 @@ def file(operation, path):
     elif operation == 'clear':
         open(path, 'w').close()
     else:
-        raise RuntimeWarning('Invalid operation provided.')
+        raise ValueError('Invalid operation provided.')
 
 
 def exitexec(arguments=0):
@@ -2159,7 +2220,7 @@ def loglevel(leveltype=None, isequal=False):
             return leveltype == log.getEffectiveLevel()
         elif leveltype in loglevels:
             return loglevels[leveltype] == log.getEffectiveLevel()
-        raise RuntimeWarning(
+        raise ValueError(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical."
         )
     if leveltype in loglevels.values():
@@ -2167,7 +2228,7 @@ def loglevel(leveltype=None, isequal=False):
     elif leveltype in loglevels:
         log.basicConfig(level=loglevels[leveltype])
     else:
-        raise RuntimeWarning(
+        raise ValueError(
             "Incorrect input provided. It should be none, debug, info, warning, error or critical."
         )
 
@@ -2179,15 +2240,7 @@ def logfile(targetfile="ros.log"):
     Change the file to log to.
     """
     log = logging.getLogger(__name__)
-    try:
-        str(targetfile)
-    except RuntimeError:
-        raise RuntimeWarning(
-            "Cannot convert type " + str(type(targetfile)) + "to str")
-    try:
-        log.basicConfig(filename=str(targetfile))
-    except RuntimeError:
-        raise RuntimeWarning("Invalid target file specified")
+    log.basicConfig(filename=str(targetfile))
 
 
 def clipaction(action='get', text=None):
@@ -2208,7 +2261,7 @@ def clipaction(action='get', text=None):
         clipboard.copy(str(clipboard.paste) + str(text))
     elif action == 'preceed':
         clipboard.copy(str(text) + str(clipboard.paste))
-    raise RuntimeWarning("Invalid clipboard action specified.")
+    raise ValueError("Invalid clipboard action specified.")
 
 
 def text(path, operation, content):
@@ -2240,7 +2293,7 @@ def text(path, operation, content):
             fh.write(content)
 
     # Raise a warning
-    raise RuntimeWarning("Invalid operation provided")
+    raise ValueError("Invalid operation provided")
 
 
 """
@@ -2489,14 +2542,16 @@ def timezone():
     """
     Get the current timezone code.
     """
+    
     return time.timezone
 
 
 def timesince():
     """
     Get the amount of time since 00:00 on 1 January 1970,
-    the raw date before formatting by computers.
+    the raw date before formatting it.
     """
+
     return time.time()
 
 
@@ -2504,9 +2559,8 @@ def getdatetime(timedateformat='complete'):
     """
     Get the current date or time in a specific format
 
-    timedateformat:
-    The type of date to query for.
-    Can be: day, month, year, hour, minute, second, millisecond, yearmonthday,
+    :type timedateformat:
+    :param timedateformat: The type of date to query for. Can be: day, month, year, hour, minute, second, millisecond, yearmonthday,
     daymonthyear, hourminutesecond, secondminutehour, complete,
     datetime or timedate.
     """
@@ -2552,7 +2606,7 @@ def getdatetime(timedateformat='complete'):
             datetime.datetime.now())).split('.')[0]).split(' ')[1] + ' ' + (
                 (str(datetime.datetime.now())).split('.')[0]).split(' ')[0]
     else:
-        raise RuntimeWarning("Invalid time date format used.")
+        raise ValueError("Invalid time date format used.")
 
 
 def timeit(command, round_result=True):
@@ -2582,8 +2636,24 @@ Web
 
 def mailto(to, cc=None, bcc=None, subject=None, body=None):
     """
-    Generate And Run MailTo
+    Generate and run mailto.
+
+    :type to: string
+    :param to: The recipient email address.
+
+    :type cc: string
+    :param cc: The recipient to copy to.
+
+    :type bcc: string
+    :param bcc: The recipient to blind copy to.
+
+    :type subject: string
+    :param subject: The subject to use.
+
+    :type body: string
+    :param body: The body content to use.
     """
+
     mailurl = 'mailto:' + str(to)
     if cc is None and bcc is None and subject is None and body is None:
         return str(mailurl)
@@ -2679,15 +2749,8 @@ def filedownload(source, destination):
     :param destination: The path to save the file to
     """
 
-    # Try to download the file
-    try:
-        # Initiate the download
-        urllib.request.urlretrieve(source, destination)
-
-    # Catch a download error
-    except RuntimeError:
-        # Throw a warning
-        raise RuntimeWarning('Unable to download file')
+    # Initiate the download
+    urllib.request.urlretrieve(source, destination)
 
 
 class DictObject(object):
