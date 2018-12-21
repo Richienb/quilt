@@ -257,21 +257,6 @@ def leadingzero(number, minlength):
     return str(number).zfill(int(minlength))
 
 
-def absolutenum(number):
-    """
-    Get the absolute value for a number.
-
-    :type number: number
-    :param number: The number to get the absolute value for.
-
-    >>> quilt_lang.absolutenum(-1)
-    1
-    """
-
-    # Return the absolute number
-    return abs(number)
-
-
 def splitstring(string, splitcharacter=' ', part=None):
     """
     Split a string based on a character and get the parts as a list.
@@ -293,24 +278,6 @@ def splitstring(string, splitcharacter=' ', part=None):
 
     # Return an array of the splitted text with a specific part
     return str(string).split(splitcharacter)[part]
-
-
-def sort(listtosort, key=None, reversesort=False):
-    """
-    Sort a list alphabetically.
-
-    :type listtosort: list
-    :param listtosort: The list which will be sorted.
-
-    :type key: function
-    :param key: The key to use when sorting.
-
-    :type reverse: boolean
-    :param reverse: If to sort backwards.
-    """
-
-    # Return the sorted version of a list
-    return sorted(listtosort, key=key, reverse=reversesort)
 
 
 def pykeyword(operation='list', keywordtotest=None):
@@ -336,30 +303,6 @@ def pykeyword(operation='list', keywordtotest=None):
 
     # Raise a warning
     raise ValueError("Invalid operation specified.")
-
-
-def prettyprinter(listtoprint, stream=None, indent=1, width=80, depth=None):
-    """
-    Pretty Print a list.
-
-    :type listtoprint: list
-    :param listtoprint: The list to pretty print.
-
-    :type stream: object
-    :param stream: The stream to use.
-
-    :type indent: integer
-    :param indent: The indention to use.
-
-    :type width: integer
-    :param width: The width to use.
-
-    :type depth: integer
-    :param depth: The depth to use.
-    """
-
-    # Pretty print the array
-    pprint.pprint(listtoprint, stream, indent, width, depth)
 
 
 def genipsum(sentences=1):
@@ -474,68 +417,6 @@ def printmessage(text, amount=1):
         print(text)
 
 
-def comparenum(value1, value2, comparison):
-    """
-    Compare 2 numbers
-
-    :type value1: number
-    :param value1: The first number to check
-
-    :type value2: number
-    :param value2: The second number to check
-
-    :type comparison: string
-    :param comparison: The comparison to perform
-    """
-
-    # If comparison is 'equal'
-    if comparison.lower() == 'equal':
-        # Return if values are equal
-        return value1 == value2
-
-    # If comparison is 'not equal'
-    elif comparison.lower() == 'not equal':
-        # Return if values are not equal
-        return value1 != value2
-
-    # If comparison is 'less than'
-    elif comparison.lower() == 'less than':
-        # Return if values are less than
-        return value1 < value2
-
-    # If comparison is 'greater than' or 'more than'
-    elif comparison.lower() in ['greater than', 'more than']:
-        # Return if values are greater than
-        return value1 > value2
-
-    # If comparison is 'less than or equal to'
-    elif comparison.lower() == 'less than or equal to':
-        # Return if values are less than or equal to
-        return value1 <= value2
-
-    # If comparison is 'greater than or equal to' or 'more than or equal to'
-    elif comparison.lower() in [
-            'greater than or equal to', 'more than or equal to'
-    ]:
-        # Return if values are greater than or equal to
-        return value1 >= value2
-
-    # Raise runtime warning
-    raise ValueError("Invalid comparison provided.")
-
-
-def throwerror(errortext):
-    """
-    Throw a Runtime Error
-
-    :type errortext: string
-    :param errortext: The text to print in the error.
-    """
-
-    # Throw the error
-    raise RuntimeError("Forced Error: " + str(errortext))
-
-
 def delay(seconds):
     """
     Delay for a specific amount of seconds.
@@ -557,16 +438,6 @@ def waitenter(times=1):
     for _ in range(times):
         # Ask for user input
         input("")
-
-
-def opposite(boolean):
-    """
-    Return The Opposite Of A Boolean
-    """
-    if isinstance(boolean, bool):
-        return not boolean
-    else:
-        raise TypeError('A boolean was not provided.')
 
 
 def typematch(variable, expectedtype):
@@ -1026,15 +897,14 @@ def textalign(text, maxlength, align='left'):
     """
     Align Text When Given Full Length
     """
-    spaces = ''
     if align == 'left':
         return text
     elif align == 'centre' or align == 'center':
-        for _ in range(int((maxlength - len(text)) / 2)):
-            spaces += ' '
+        spaces = ' ' * (int((maxlength - len(text)) / 2))
     elif align == 'right':
-        for _ in range(maxlength - len(text)):
-            spaces += ' '
+        spaces = (maxlength - len(text))
+    else:
+        raise ValueError("Invalid alignment specified.")
     return spaces + text
 
 
@@ -1805,10 +1675,12 @@ def hcf(num1, num2):
 def pythrule(first, second):
     """
     Calculate the area of a right angled trangle based on Pythagoras' Theorem
-    first:
-    The length of the first axis (x or y)
-    second:
-    The length of the second axis (x or y)
+    
+    :type first: number
+    :param first: The length of the first axis (x or y)
+    
+    :type second: number
+    :param second: The length of the second axis (x or y)
     """
 
     return (first * second) / 2
@@ -1821,12 +1693,10 @@ Secure
 
 def randstring(length=1):
     """
-
     Generate a random string consisting of letters, digits and punctuation
 
-    length:
-    The length of the generated string.
-
+    :type length: integer
+    :param length: The length of the generated string.
     """
     charstouse = string.ascii_letters + string.digits + string.punctuation
     newpass = ''
@@ -1858,8 +1728,8 @@ def dictflip(dictionary):
     will be converted into this:
     {'value1': 'key1', 'value2': 'key2'}
 
-    dictionary:
-    The dictionary to flip.
+    :type dictionary: dictionary
+    :param dictionary: The dictionary to flip.
     """
 
     return {v: k for k, v in dictionary.items()}
@@ -1883,10 +1753,12 @@ def catwalk(text):
 def converttabs(text, spaces=4):
     """
     Convert all the tabs to a specific amount of spaces
-    text:
-    The text to convert tabs to spaces on
-    spaces:
-    The amount of spaces to replace tabs to.
+    
+    :type text: string
+    :param text: The text to convert tabs to spaces on
+    
+    :type spaces: integer
+    :param spaces: The amount of spaces to replace tabs to.
     """
 
     return text.replace('\t', ' ' * spaces)
@@ -1895,12 +1767,15 @@ def converttabs(text, spaces=4):
 def shortentext(text, minlength, placeholder='...'):
     """
     Shorten some text by replacing the last part with a placeholder (such as '...')
-    text:
-    The text to shorten
-    minlength:
-    The minimum length before a shortening will occur
-    placeholder:
-    The text to append after removing protruding text.
+    
+    :type text: string
+    :param text: The text to shorten
+    
+    :type minlength: integer
+    :param minlength: The minimum length before a shortening will occur
+    
+    :type placeholder: string
+    :param placeholder: The text to append after removing protruding text.
     """
 
     return textwrap.shorten(text, minlength, placeholder=str(placeholder))
@@ -1909,10 +1784,12 @@ def shortentext(text, minlength, placeholder='...'):
 def wraptext(text, maxlength):
     """
     Wrap text around the execution window according to a given size
-    text:
-    The text to be wraped
-    maxlength:
-    The amount of text until a wrap will be added
+    
+    :type text: string
+    :param text: The text to be wraped
+    
+    :type maxlength: integer
+    :param maxlength: The amount of text until a wrap will be added
     """
 
     return textwrap.wrap(text, maxlength)
@@ -1921,22 +1798,24 @@ def wraptext(text, maxlength):
 def unindent(text):
     """
     Remove indention for some text
-    text:
-    The text to unindent
+    
+    :type text: string
+    :param text: The text to unindent
     """
 
     return textwrap.dedent(text)
 
 
-def paraspace(paragraphspaces=1):
+def newline(lines=1):
     """
-    Print 1 or more paragraph spaces in the terminal output
-    paragraphspaces:
-    The amount of paragraph spaces to print.
+    Print 1 or more paragraph spaces in the terminal.
+    
+    :type lines: integer
+    :param lines: The amount of paragraph spaces to print.
     """
 
-    for _ in range(paragraphspaces):
-        print('')
+    # Print the new line iterated by the amount of new lines
+    print('\n' * lines)
 
 
 def randomstr(valuelist):
