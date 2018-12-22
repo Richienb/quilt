@@ -8,7 +8,6 @@ import importlib
 
 # String modules
 import string
-import pprint
 import secrets
 import textwrap
 
@@ -421,7 +420,7 @@ def delay(seconds):
     """
     Delay for a specific amount of seconds.
     """
-    
+
     # Perform the delay
     time.sleep(seconds)
 
@@ -429,11 +428,11 @@ def delay(seconds):
 def waitenter(times=1):
     """
     Wait for the user to press enter.
-    
+
     :type times: integer
     :param times: The times to ask for the user to press enter.
     """
-    
+
     # For each time
     for _ in range(times):
         # Ask for user input
@@ -522,11 +521,11 @@ def divisable(num1, num2):
 def length(value):
     """
     Find the length of a value
-    
+
     :type value: variable
     :param value: The value to find the length of
     """
-    
+
     # Try to return the length
     return len(value)
 
@@ -534,36 +533,36 @@ def length(value):
 def cowsay(text='', align='centre'):
     """
     Simulate an ASCII cow saying text.
-    
+
     :type text: string
     :param text: The text to print out.
-    
+
     :type align: string
     :param algin: Where to align the cow. Can be 'left', 'centre' or 'right'
     """
 
     # Make align lowercase
     align = align.lower()
-    
+
     # Set the cowtext
     cowtext = str(text)
-    
+
     # Set top part of speech bubble to the length of the text plus 2
     topbar = ' ' * (len(text) + 2)
-    
+
     # Set bottom part of speech bubble to the length of the text plus 2
     bottombar = ' ' * (len(text) + 2)
-        
+
     # If align is centre
     if align in ["center", "centre"]:
         # Set the spacing before the cow to the length of half of the length of topbar plus 1
         spacing = " " * (int(len(topbar) / 2) + 1)
-            
+
     # If align is left
     elif align == 'left':
         # Set spacing to a single space
         spacing = ' '
-        
+
     # If align is right
     elif align == 'right':
         # Set the spacing to the length of the text plus 2
@@ -572,16 +571,16 @@ def cowsay(text='', align='centre'):
     else:
         # Raise a runtime warning
         raise ValueError("Invalid alignment provided.")
-        
+
     # Print the top bar
     print(topbar)
-    
+
     # Print the text
     print('( ' + repr(str(cowtext)) + ' )')
-    
+
     # Print the bottom bar
     print(bottombar)
-    
+
     # Print the cow with the spacing
     print(spacing + r'o   ^__^ ')
     print(spacing + r' o  (oO)\_______')
@@ -594,7 +593,7 @@ def getletter(variable, letternumber):
     """
     Get the corresponding item in a object
     """
-    
+
     # Get the corresponding letter
     return str(variable)[letternumber - 1]
 
@@ -603,7 +602,7 @@ def onlist(listtocheck, item):
     """
     Check if something is on a list
     """
-    
+
     # Return the result
     return item in listtocheck
 
@@ -612,7 +611,7 @@ def jointext(firststring, secondstring):
     """
     Join Two Strings
     """
-    
+
     return str(firststring) + str(secondstring)
 
 
@@ -620,7 +619,7 @@ def pyname(ifmain=False):
     """
     Get the value of __name__
     """
-    
+
     if ifmain is True:
         return __name__ == "__main__"
     return __name__
@@ -630,7 +629,7 @@ def convertbinary(value, argument):
     """
     Convert Text To Binary Form
     """
-    
+
     if argument == 'to':
         return bin(value)
     elif argument == 'from':
@@ -1675,10 +1674,10 @@ def hcf(num1, num2):
 def pythrule(first, second):
     """
     Calculate the area of a right angled trangle based on Pythagoras' Theorem
-    
+
     :type first: number
     :param first: The length of the first axis (x or y)
-    
+
     :type second: number
     :param second: The length of the second axis (x or y)
     """
@@ -1753,10 +1752,10 @@ def catwalk(text):
 def converttabs(text, spaces=4):
     """
     Convert all the tabs to a specific amount of spaces
-    
+
     :type text: string
     :param text: The text to convert tabs to spaces on
-    
+
     :type spaces: integer
     :param spaces: The amount of spaces to replace tabs to.
     """
@@ -1767,13 +1766,13 @@ def converttabs(text, spaces=4):
 def shortentext(text, minlength, placeholder='...'):
     """
     Shorten some text by replacing the last part with a placeholder (such as '...')
-    
+
     :type text: string
     :param text: The text to shorten
-    
+
     :type minlength: integer
     :param minlength: The minimum length before a shortening will occur
-    
+
     :type placeholder: string
     :param placeholder: The text to append after removing protruding text.
     """
@@ -1784,10 +1783,10 @@ def shortentext(text, minlength, placeholder='...'):
 def wraptext(text, maxlength):
     """
     Wrap text around the execution window according to a given size
-    
+
     :type text: string
     :param text: The text to be wraped
-    
+
     :type maxlength: integer
     :param maxlength: The amount of text until a wrap will be added
     """
@@ -1798,7 +1797,7 @@ def wraptext(text, maxlength):
 def unindent(text):
     """
     Remove indention for some text
-    
+
     :type text: string
     :param text: The text to unindent
     """
@@ -1809,7 +1808,7 @@ def unindent(text):
 def newline(lines=1):
     """
     Print 1 or more paragraph spaces in the terminal.
-    
+
     :type lines: integer
     :param lines: The amount of paragraph spaces to print.
     """
@@ -2421,7 +2420,7 @@ def timezone():
     """
     Get the current timezone code.
     """
-    
+
     return time.timezone
 
 
