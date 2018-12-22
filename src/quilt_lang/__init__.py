@@ -111,6 +111,9 @@ def colourcode(startcolourcode, destinationtype, longhex=False):
 
     :type longhex: boolean
     :param longhex: If converting to hex, provided the long and unsimplified version.
+
+    :return: The converted colour
+    :rtype: string
     """
 
     # Create a colour object
@@ -183,6 +186,9 @@ def changecolour(colourcode, action, amount=100):
     :type amount: integer
     :param amount: The percentage of the action to perform. For example, 100 means apply 100% of the colour (no change).
 
+    :return: The changed colour
+    :rtype: string
+
     >>> quilt_lang.changecolour("#f44336", "blue", 80)
     "#f443cc"
     """
@@ -250,6 +256,9 @@ def leadingzero(number, minlength):
 
     :type minlength: integer
     :param minlength: If the number is shorter than this length than add leading zeros to make the length correct.
+
+    :return: The number with a leading zero
+    :rtype: string
     """
 
     # Return the number as a string with the filled number
@@ -268,6 +277,9 @@ def splitstring(string, splitcharacter=' ', part=None):
 
     :type part: integer
     :param part: Get a specific part of the list.
+
+    :return: The split string or a specific part of it
+    :rtype: list or string
     """
 
     # If the part is empty
@@ -288,6 +300,9 @@ def pykeyword(operation='list', keywordtotest=None):
 
     :type keywordtotest: string
     :param keywordtotest: The keyword to check.
+
+    :return: The list of keywords or if a keyword exists.
+    :rtype: list or boolean
     """
 
     # If the operation was 'list'
@@ -1841,6 +1856,8 @@ def case(text, casingformat='sentence'):
     :type casingformat: string
     :param casingformat: The format of casing to apply to the text. Can be 'uppercase', 'lowercase', 'sentence' or 'caterpillar'.
 
+    :raises ValueError: Invalid text format specified.
+
     >>> quilt_lang.case("HELLO world", "uppercase")
     "HELLO WORLD"
     """
@@ -1961,6 +1978,8 @@ def pipinstall(packages):
 
     :type packages: string or list
     :param packages: The package or list of packages to install.
+
+    :raises TypeError: Nor a string or a list was provided.
     """
 
     if isinstance(packages, str):
@@ -1991,6 +2010,8 @@ def pipupdate():
 def dirtool(operation, directory):
     """
     Tools For Directories (If Exists, Make And Delete)
+
+    :raises ValueError: Nor a string or a list was provided.
     """
     operation = operation.lower()
     if operation == 'exists':
