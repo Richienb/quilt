@@ -1,6 +1,6 @@
 # Project information
-site_name:                'Quilt Programming Language'
-site_description:         'A Material Design theme for MkDocs'
+site_name:                'Quilt Programming Library'
+site_description:         'A Python library that lets you write less code to do more things.'
 site_author:              'Richie Bendall'
 site_url:                 'https://quilt-lang.richie-bendall.ml'
 
