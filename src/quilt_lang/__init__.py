@@ -816,13 +816,6 @@ def availchars(charactertype):
     raise ValueError("Invalid character type provided.")
 
 
-def enum(arguments):
-    """
-    Get the Range Of The Length
-    """
-    return enumerate(arguments)
-
-
 def textbetween(variable,
                 firstnum=None,
                 secondnum=None,
