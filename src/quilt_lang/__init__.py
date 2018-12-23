@@ -2233,10 +2233,10 @@ def converttime(time, currentformat, newformat):
     :param time: The time to convert
 
     :type currentformat: string
-    :param currentformat: The current format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
+    :param currentformat: The current format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuries or millenniums.
 
     :type newformat: string
-    :param newformat: The new format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuaries or millenniums.
+    :param newformat: The new format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuries or millenniums.
     """
 
     # Define conversion dictionary
@@ -2251,7 +2251,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 1000 / 60 / 60 / 24 / 14",
             "years": "time / 1000 / 60 / 60 / 24 / 365",
             "decades": "time / 1000 / 60 / 60 / 24 / 365 / 10",
-            "centuaries": "time / 1000 / 60 / 60 / 24 / 365 / 100",
+            "centuries": "time / 1000 / 60 / 60 / 24 / 365 / 100",
             "millenniums": "time / 1000 / 60 / 60 / 24 / 365 / 1000"
         },
         "seconds": {
@@ -2264,7 +2264,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 60 / 60 / 24 / 14",
             "years": "time / 60 / 60 / 24 / 365",
             "decades": "time / 60 / 60 / 24 / 365 / 10",
-            "centuaries": "time / 60 / 60 / 24 / 365 / 100",
+            "centuries": "time / 60 / 60 / 24 / 365 / 100",
             "millenniums": "time / 60 / 60 / 24 / 365 / 1000"
         },
         "minutes": {
@@ -2277,7 +2277,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 60 / 24 / 14",
             "years": "time / 60 / 24 / 365",
             "decades": "time / 60 / 24 / 365 / 10",
-            "centuaries": "time / 60 / 24 / 365 / 100",
+            "centuries": "time / 60 / 24 / 365 / 100",
             "millenniums": "time / 60 / 24 / 365 / 1000"
         },
         "hours": {
@@ -2290,7 +2290,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 24 / 14",
             "years": "time / 24 / 365",
             "decades": "time / 24 / 365 / 10",
-            "centuaries": "time / 24 / 365 / 100",
+            "centuries": "time / 24 / 365 / 100",
             "millenniums": "time / 24 / 365 / 1000"
         },
         "days": {
@@ -2303,7 +2303,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 14",
             "years": "time / 365",
             "decades": "time / 365 / 10",
-            "centuaries": "time / 365 / 100",
+            "centuries": "time / 365 / 100",
             "millenniums": "time / 365 / 1000"
         },
         "weeks": {
@@ -2316,7 +2316,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time / 2",
             "years": "time / 52",
             "decades": "time / 52 / 10",
-            "centuaries": "time / 52 / 100",
+            "centuries": "time / 52 / 100",
             "millenniums": "time / 52 / 1000"
         },
         "fortnights": {
@@ -2329,7 +2329,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time",
             "years": "time / 26",
             "decades": "time / 26 / 10",
-            "centuaries": "time / 26 / 100",
+            "centuries": "time / 26 / 100",
             "millenniums": "time / 26 / 1000"
         },
         "years": {
@@ -2342,7 +2342,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time * 26",
             "years": "time",
             "decades": "time / 10",
-            "centuaries": "time / 100",
+            "centuries": "time / 100",
             "millenniums": "time / 1000"
         },
         "decades": {
@@ -2355,10 +2355,10 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time * 10 * 26",
             "years": "time * 10",
             "decades": "time",
-            "centuaries": "time / 10",
+            "centuries": "time / 10",
             "millenniums": "time / 100"
         },
-        "centuaries": {
+        "centuries": {
             "milliseconds": "time * 100 * 256 * 24 * 60 * 60 * 1000",
             "seconds": "time * 100 * 256 * 24 * 60 * 60",
             "minutes": "time * 100 * 256 * 24 * 60",
@@ -2368,7 +2368,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time * 100 * 26",
             "years": "time * 100",
             "decades": "time * 10",
-            "centuaries": "time",
+            "centuries": "time",
             "millenniums": "time / 10"
         },
         "millenniums": {
@@ -2381,7 +2381,7 @@ def converttime(time, currentformat, newformat):
             "fortnights": "time * 1000 * 26",
             "years": "time * 1000",
             "decades": "time * 100",
-            "centuaries": "time * 10",
+            "centuries": "time * 10",
             "millenniums": "time"
         }
     }
