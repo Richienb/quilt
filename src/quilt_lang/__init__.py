@@ -704,30 +704,6 @@ def replacetext(string, texttofind, texttoreplace):
     return string.replace(texttofind, texttoreplace)
 
 
-def evaluate(evaluation):
-    """
-    Evaluate an expression.
-
-    :type evaluation: string
-    :param evaluation: The expression to evaluate.
-    """
-
-    # Return the evaluation
-    return eval(str(evaluation))
-
-
-def execute(execution):
-    """
-    Execute a Python command
-
-    :type execution: string
-    :param execution: The string to execute.
-    """
-
-    # Execute the string
-    exec(str(execution))
-
-
 def gettype(value):
     """
     Get the type of an object
