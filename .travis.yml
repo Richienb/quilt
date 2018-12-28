@@ -31,8 +31,6 @@ jobs:
           - codecov
 
     - stage:                Deployment
-    
-    `
 
       if:                   type != pull_request
 
