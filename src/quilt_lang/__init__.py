@@ -434,6 +434,9 @@ def printmessage(text, amount=1):
 def delay(seconds):
     """
     Delay for a specific amount of seconds.
+    
+    :type seconds: number
+    :param seconds: The amount of seconds to delay.
     """
 
     # Perform the delay
@@ -607,6 +610,12 @@ def cowsay(text='', align='centre'):
 def getletter(variable, letternumber):
     """
     Get the corresponding item in a object
+    
+    :type variable: string
+    :param variable: The string to get the letter from
+    
+    :type letternumber: integer
+    :param letternumber: The index of the letter to get
     """
 
     # Get the corresponding letter
@@ -615,7 +624,13 @@ def getletter(variable, letternumber):
 
 def onlist(listtocheck, item):
     """
-    Check if something is on a list
+    Check if something is on a list.
+    
+    :type listtocheck: list
+    :param listtocheck: The list to check.
+    
+    :type item: object
+    :param item: The item to check if on the list.
     """
 
     # Return the result
@@ -624,15 +639,28 @@ def onlist(listtocheck, item):
 
 def jointext(firststring, secondstring):
     """
-    Join Two Strings
+    Join two strings together
+    
+    :type firststring: string
+    :param firststring: The first string.
+    
+    :type secondstring: string
+    :param secondstring: The second string.
     """
 
+    # Return the joined strings
     return str(firststring) + str(secondstring)
 
 
 def pyname(ifmain=False):
     """
     Get the value of __name__
+    
+    :type ifmain: boolean
+    :param ifmain: If set to True then True will be returned if __name__ is equal to __main__
+    
+    :return: The value of __name__ or if ifmain is True, then if __name__ is equal to __main__
+    :rtype: string or boolean
     """
 
     if ifmain is True:
@@ -642,7 +670,13 @@ def pyname(ifmain=False):
 
 def convertbinary(value, argument):
     """
-    Convert Text To Binary Form
+    Convert text to binary form or backwards.
+    
+    :type value: string
+    :param value: The text or the binary text
+    
+    :type argument: string
+    :param argument: The action to perform on the value. Can be "to" or "from".
     """
 
     if argument == 'to':
@@ -718,7 +752,13 @@ def gettype(value):
 
 def convertascii(value, command='to'):
     """
-    Convert A ASCII Value To A Symbol
+    Convert an ASCII value to a symbol
+    
+    :type value: string
+    :param value: The text or the text in ascii form.
+    
+    :type argument: string
+    :param argument: The action to perform on the value. Can be "to" or "from".
     """
     command = command.lower()
     if command == 'to':
@@ -727,9 +767,6 @@ def convertascii(value, command='to'):
         return ord(value)
     else:
         raise ValueError('Invalid operation provided.')
-
-
-# Get All Available Characters For A Type
 
 
 def availchars(charactertype):
@@ -842,14 +879,20 @@ def wordvalue(word):
     return total
 
 
-def spacelist(listtospace):
+def spacelist(listtospace, spacechar=" "):
     """
-    Return The List Equally Spaced
+    Convert a list to a string with all of the list's items spaced out.
+    
+    :type listtospace: list
+    :param listtospace: The list to space out.
+    
+    :type spacechar: string
+    :param spacechar: The characters to insert between each list item. Default is: " ".
     """
     output = ''
     space = ''
     output += str(listtospace[0])
-    space += ' '
+    space += spacechar
     for listnum in range(1, len(listtospace)):
         output += space
         output += str(listtospace[listnum])
@@ -1388,7 +1431,15 @@ def numprop(value, propertyexpected):
 
 def posnegtoggle(number):
     """
-    Toggle A Number Between Positive And Negative
+    Toggle a number between positive and negative.
+    The converter works as follows:
+
+    - 1 > -1
+    - -1 > 1
+    - 0 > 0
+    
+    :type number: number
+    :param number: The number to toggle.
     """
     if bool(number > 0):
         return number - number * 2
@@ -1434,7 +1485,19 @@ def rounddown(number):
 
 def compare(value1, value2, comparison):
     """
-    Compare 2 Values
+    Compare 2 values
+    
+    :type value1: object
+    :param value1: The first value to compare.
+    
+    :type value2: object
+    :param value2: The second value to compare.
+    
+    :type comparison: string
+    :param comparison: The comparison to make. Can be "is", "or", "and".
+    
+    :return: If the value is, or, and of another value
+    :rtype: boolean
     """
     if not isinstance(comparison, str):
         raise TypeError("Comparison argument must be a string.")
@@ -1449,11 +1512,15 @@ def compare(value1, value2, comparison):
 
 def factors(number):
     """
-    Find all of the factors of a number and return it as a list
-    number:
-    The number to find the factors for
+    Find all of the factors of a number and return it as a list.
+    
+    :type number: integer
+    :param number: The number to find the factors for.
     """
 
+    if not(isinstance(number, int)):
+        raise TypeError("Incorrect number type provided. Only integers are accepted.")
+    
     factors = []
     for i in range(1, number + 1):
         if number % i == 0:
@@ -1463,25 +1530,31 @@ def factors(number):
 
 def eulercalc(faces, edges, verticies):
     """
-    Calculate the value of Euler's formula of a shape
-    faces:
-    The faces of the shape
-    edges:
-    The edges of the shape
-    verticies:
-    The verticies of the shape
+    Calculate the value of Euler's formula of a shape.
+    
+    :type faces: integer
+    :param faces: The faces of the shape
+    
+    :type edges: integer
+    :param edges: The edges of the shape
+    
+    :type verticies: integer
+    :param verticies: The verticies of the shape
     """
 
+    # Return the calculated value
     return verticies + edges - faces
 
 
 def randomnum(minimum=1, maximum=2):
     """
-    Generate a random number
-    minimum:
-    The minimum number to generate.
-    maximum:
-    The maximum number to generate.
+    Generate a random number.
+    
+    :type minimum: integer
+    :param minimum: The minimum number to generate.
+    
+    :type maximum: integer
+    :param maximum: The maximum number to generate.
     """
 
     if isnum(minimum):
@@ -1493,9 +1566,10 @@ def randomnum(minimum=1, maximum=2):
 
 def isfib(number):
     """
-    Check if a number is in the Fibonacci sequence
-    number:
-    Number to check
+    Check if a number is in the Fibonacci sequence.
+    
+    :type number: integer
+    :param number: Number to check
     """
 
     num1 = 1
@@ -1514,7 +1588,8 @@ def isfib(number):
 def isprime(number):
     """
     Check if a number is a prime number
-    :type number:
+    
+    :type number: integer
     :param number: The number to check
     """
 
@@ -1553,9 +1628,10 @@ def convertbase(number, base=10):
 
 def isnum(value):
     """
-    Check if a value is a type of number (decimal or integer)
-    value:
-    The value to check
+    Check if a value is a type of number (decimal or integer).
+    
+    :type value: object
+    :param value: The value to check.
     """
 
     try:
@@ -1567,10 +1643,12 @@ def isnum(value):
 def quadrant(xcoord, ycoord):
     """
     Find the quadrant a pair of coordinates are located in
-    xcoord:
-    The x coordinate to find the quadrant for
-    ycoord:
-    The y coordinate to find the quadrant for
+    
+    :type xcoord: integer
+    :param xcoord: The x coordinate to find the quadrant for
+    
+    :type ycoord: integer
+    :param ycoord: The y coordinate to find the quadrant for
     """
 
     xneg = bool(xcoord < 0)
@@ -1587,12 +1665,15 @@ def quadrant(xcoord, ycoord):
 def flipcoords(xcoord, ycoord, axis):
     """
     Flip the coordinates over a specific axis, to a different quadrant
-    xcoord:
-    The x coordinate to flip
-    ycoord:
-    The y coordinate to flip
-    axis:
-    The axis to flip across. Could be 'x' or 'y'
+    
+    :type xcoord: integer
+    :param xcoord: The x coordinate to flip
+    
+    :type ycoord: integer
+    :param ycoord: The y coordinate to flip
+    
+    :type axis: string
+    :param axis: The axis to flip across. Could be 'x' or 'y'
     """
 
     axis = axis.lower()
@@ -1621,10 +1702,12 @@ def flipcoords(xcoord, ycoord, axis):
 def lcm(num1, num2):
     """
     Find the lowest common multiple of 2 numbers
-    num1:
-    The first number to find the lcm for
-    num2:
-    The second number to find the lcm for
+    
+    :type num1: number
+    :param num1: The first number to find the lcm for
+    
+    :type num2: number
+    :param num2: The second number to find the lcm for
     """
 
     if num1 > num2:
@@ -1640,10 +1723,12 @@ def lcm(num1, num2):
 def hcf(num1, num2):
     """
     Find the highest common factor of 2 numbers
-    num1:
-    The first number to find the hcf for
-    num2:
-    The second number to find the hcf for
+
+    :type num1: number
+    :param num1: The first number to find the hcf for
+    
+    :type num2: number
+    :param num2: The second number to find the hcf for
     """
 
     if num1 > num2:
