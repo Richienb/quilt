@@ -24,7 +24,6 @@ script:
 after_success:
     - codecov
 
-
 jobs:
     include:
         - stage:                  deploy
