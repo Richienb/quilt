@@ -1,95 +1,94 @@
-dist:                       xenial
+dist:                             xenial
 
-language:                   python
+language:                         python
 
-python:                     3.7
-
-cache:                      pip
+python:
+    - 3.6
+    - 3.7
+    
+cache:                            pip
 
 before_install:
     - git remote set-url origin https://Richienb:${github_token}@github.com/Richienb/quilt.git
     - git config --global user.name "ROS Bot"
     - git config --global user.email "richiebendall@gmail.com"
+    
+install:
+    - pip install -r requirements.txt
+    - pip install codecov
+
+script:
+    - cd src
+    - coverage run test.py
+
+after_success:
+    - codecov
+
 
 jobs:
-  include:
-    - stage:                Testing
-    
-      python:
-          - 3.6
-          - 3.7
+    include:
+        - stage:                  deploy
+        
+          python:                 3.7
+        
+          if:                     type != pull_request
 
-      install:
-          - pip install -r requirements.txt
-          - pip install codecov
+          install:
+              - pip install -r requirements.txt
+              - pip install mkdocs mkdocs-material pymdown-extensions pygments sphinx sphinx_materialdesign_theme
 
-      script:
-          - cd src
-          - coverage run test.py
+          script:
+              - mkdocs build --verbose --clean --strict
+              - cd docs-sphinx
+              - sphinx-build -b html rst html
+              - cp -a $TRAVIS_BUILD_DIR/docs-sphinx/html/. $TRAVIS_BUILD_DIR/site/commands
+              - touch $TRAVIS_BUILD_DIR/site/.nojekyll
 
-      after_success:
-          - codecov
+          deploy:
+              provider:           pages
+              skip_cleanup:       true
+              github_commit:      "CI | Built documentation [skip ci]"
+              github_token:       $github_token
+              name:               "ROS Bot"
+              email:              "richiebendall@gmail.com"
+              fqdn:               "quilt-lang.richie-bendall.ml"
+              local_dir:          site
 
-    - stage:                Deployment
+          after_deploy:
+              - |
+                curl --request DELETE "https://api.cloudflare.com/client/v4/zones/${cf_zone_id}/purge_cache" \
+                 --header "X-Auth-Email: richiebendall@gmail.com" \
+                 --header "X-Auth-Key: ${cf_api_key}" \
+                 --header "Content-Type: application/json" \
+                 --data '{"purge_everything":true}'
+                 
+        -
 
-      if:                   type != pull_request
+          if:                     type != pull_request AND tag IS present
 
-      install:
-          - pip install -r requirements.txt
-          - pip install mkdocs mkdocs-material pymdown-extensions pygments sphinx sphinx_materialdesign_theme
+          install:
+              - pip install pyminifier setuptools-git-version
 
-      script:
-          - mkdocs build --verbose --clean --strict
-          - cd docs-sphinx
-          - sphinx-build -b html rst html
-          - cp -a $TRAVIS_BUILD_DIR/docs-sphinx/html/. $TRAVIS_BUILD_DIR/site/commands
-          - touch $TRAVIS_BUILD_DIR/site/.nojekyll
+          before_script:
+              - cd src
 
-      deploy:
-          provider:         pages
-          skip_cleanup:     true
-          github_commit:    "CI | Built documentation [skip ci]"
-          github_token:     $github_token
-          name:             "ROS Bot"
-          email:            "richiebendall@gmail.com"
-          fqdn:             "quilt-lang.richie-bendall.ml"
-          local_dir:        site
+          script:
+              - find quilt_lang -type f -name "*.py" -exec pyminifier --gzip --obfuscate-variables --outfile="{}" "{}" \;
 
-      after_deploy:
-          - |
-            curl -X DELETE "https://api.cloudflare.com/client/v4/zones/${cf_zone_id}/purge_cache" \
-             -H "X-Auth-Email: richiebendall@gmail.com" \
-             -H "X-Auth-Key: ${cf_api_key}" \
-             -H "Content-Type: application/json" \
-             --data '{"purge_everything":true}'
+          deploy:
+              - provider:         pypi
+                user:             "Richienb"
+                password:         $pypi_password
+                skip_cleanup:     true
+                server:           https://test.pypi.org/legacy/
+                distributions:    "sdist bdist_wheel"
+                on:
+                    all_branches: true
 
-    -
-
-      if:                   type != pull_request AND tag IS present
-
-      install:
-          - pip install pyminifier setuptools-git-version
-
-      before_script:
-          - cd src
-
-      script:
-          - find quilt_lang -type f -name "*.py" -exec pyminifier --gzip --obfuscate-variables --outfile="{}" "{}" \;
-
-      deploy:
-          - provider:       pypi
-            user:           "Richienb"
-            password:       $pypi_password
-            skip_cleanup:   true
-            server:         https://test.pypi.org/legacy/
-            distributions:  "sdist bdist_wheel"
-            on:
-                all_branches: true
-
-          - provider:       pypi
-            user:           "Richienb"
-            password:       $pypi_password
-            skip_cleanup:   true
-            distributions:  "sdist bdist_wheel"
-            on:
-                all_branches: true
+              - provider:         pypi
+                user:             "Richienb"
+                password:         $pypi_password
+                skip_cleanup:     true
+                distributions:    "sdist bdist_wheel"
+                on:
+                    all_branches: true
