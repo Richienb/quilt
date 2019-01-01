@@ -189,8 +189,8 @@ def changecolour(colourcode, action, amount=100):
     :return: The changed colour
     :rtype: string
 
-    >>> quilt_lang.changecolour("#f44336", "blue", 80)
-    "#f443cc"
+    >>> changecolour("#f44336", "blue", 80)
+    '#f443cc'
     """
 
     # Create a colour object
@@ -259,6 +259,9 @@ def leadingzero(number, minlength):
 
     :return: The number with a leading zero
     :rtype: string
+
+    >>> leadingzero(1, 2)
+    '01'
     """
 
     # Return the number as a string with the filled number
@@ -280,6 +283,19 @@ def splitstring(string, splitcharacter=' ', part=None):
 
     :return: The split string or a specific part of it
     :rtype: list or string
+
+    >>> splitstring('hello world !')
+    ['hello', 'world', '!']
+
+    >>> splitstring('hello world !', ' ', None)
+    ['hello', 'world', '!']
+
+    >>> splitstring('hello world !', ' ', None)
+    ['hello', 'world', '!']
+
+    >>> splitstring('hello world !', ' ', 0)
+    'hello'
+
     """
 
     # If the part is empty
@@ -303,6 +319,20 @@ def pykeyword(operation='list', keywordtotest=None):
 
     :return: The list of keywords or if a keyword exists.
     :rtype: list or boolean
+
+    >>> "True" in pykeyword("list")
+    True
+
+    >>> pykeyword("in", "True")
+    True
+
+    >>> pykeyword("in", "foo")
+    False
+
+    >>> pykeyword("foo", "foo")
+    Traceback (most recent call last):
+      ...
+    ValueError: Invalid operation specified.
     """
 
     # If the operation was 'list'
@@ -344,20 +374,29 @@ def binboolflip(item):
     :type item: integer or boolean
     :param item: The item to convert.
 
-    >>> quilt_lang.binboolflip(0)
+    >>> binboolflip(0)
     False
+
+    >>> binboolflip(False)
+    0
+
+    >>> binboolflip(1)
+    True
+
+    >>> binboolflip(True)
+    1
+
+    >>> binboolflip("foo")
+    Traceback (most recent call last):
+      ...
+    ValueError: Invalid item specified.
     """
 
-    # Set the keys for coversion
-    keys = {0: False, False: 0, 1: True, True: 1}
+    if item in [0, False, 1, True]:
+        return int(item) if isinstance(item, bool) else bool(item)
 
-    try:
-        # Try to return the converted value
-        return keys[item]
-
-    except KeyError:
-        # Raise a warning
-        raise ValueError("Invalid item specified.")
+    # Raise a warning
+    raise ValueError("Invalid item specified.")
 
 
 def modulereload(modulename):
@@ -434,7 +473,7 @@ def printmessage(text, amount=1):
 def delay(seconds):
     """
     Delay for a specific amount of seconds.
-    
+
     :type seconds: number
     :param seconds: The amount of seconds to delay.
     """
@@ -466,6 +505,20 @@ def typematch(variable, expectedtype):
 
     :type expectedtype: type
     :param expectedtype: The type to check against
+
+    >>> typematch(True, bool)
+    True
+
+    >>> typematch("foo", str)
+    True
+
+    >>> typematch(True, str)
+    False
+
+    >>> binboolflip("foo")
+    Traceback (most recent call last):
+      ...
+    ValueError: Invalid item specified.
     """
 
     # Return the result
@@ -481,6 +534,12 @@ def sametype(variable1, variable2):
 
     :type variable2: variable
     :param variable2: The second variable to check
+
+    >>> sametype(True, False)
+    True
+
+    >>> sametype(True, "foo")
+    False
     """
 
     # Return the result
@@ -510,7 +569,7 @@ def difference(num1, num2):
     :type num2: number
     :param num2: The second number to use.
 
-    >>> quilt_lang.difference(1, 4)
+    >>> difference(1, 4)
     3
     """
 
@@ -528,7 +587,7 @@ def divisable(num1, num2):
     :type num2: number
     :param num2: The second number to check.
 
-    >>> quilt_lang.divisable(4, 2)
+    >>> divisable(4, 2)
     True
     """
 
@@ -610,10 +669,10 @@ def cowsay(text='', align='centre'):
 def getletter(variable, letternumber):
     """
     Get the corresponding item in a object
-    
+
     :type variable: string
     :param variable: The string to get the letter from
-    
+
     :type letternumber: integer
     :param letternumber: The index of the letter to get
     """
@@ -625,10 +684,10 @@ def getletter(variable, letternumber):
 def onlist(listtocheck, item):
     """
     Check if something is on a list.
-    
+
     :type listtocheck: list
     :param listtocheck: The list to check.
-    
+
     :type item: object
     :param item: The item to check if on the list.
     """
@@ -640,10 +699,10 @@ def onlist(listtocheck, item):
 def jointext(firststring, secondstring):
     """
     Join two strings together
-    
+
     :type firststring: string
     :param firststring: The first string.
-    
+
     :type secondstring: string
     :param secondstring: The second string.
     """
@@ -655,10 +714,10 @@ def jointext(firststring, secondstring):
 def pyname(ifmain=False):
     """
     Get the value of __name__
-    
+
     :type ifmain: boolean
     :param ifmain: If set to True then True will be returned if __name__ is equal to __main__
-    
+
     :return: The value of __name__ or if ifmain is True, then if __name__ is equal to __main__
     :rtype: string or boolean
     """
@@ -671,10 +730,10 @@ def pyname(ifmain=False):
 def convertbinary(value, argument):
     """
     Convert text to binary form or backwards.
-    
+
     :type value: string
     :param value: The text or the binary text
-    
+
     :type argument: string
     :param argument: The action to perform on the value. Can be "to" or "from".
     """
@@ -753,10 +812,10 @@ def gettype(value):
 def convertascii(value, command='to'):
     """
     Convert an ASCII value to a symbol
-    
+
     :type value: string
     :param value: The text or the text in ascii form.
-    
+
     :type argument: string
     :param argument: The action to perform on the value. Can be "to" or "from".
     """
@@ -776,7 +835,7 @@ def availchars(charactertype):
     :type charactertype: string
     :param charactertype: The characters to get. Can be 'letters', 'lowercase, 'uppercase', 'digits', 'hexdigits', 'punctuation', 'printable', 'whitespace' or 'all'.
 
-    >>> quilt_lang.availchars("lowercase")
+    >>> availchars("lowercase")
     'abcdefghijklmnopqrstuvwxyz'
     """
 
@@ -882,10 +941,10 @@ def wordvalue(word):
 def spacelist(listtospace, spacechar=" "):
     """
     Convert a list to a string with all of the list's items spaced out.
-    
+
     :type listtospace: list
     :param listtospace: The list to space out.
-    
+
     :type spacechar: string
     :param spacechar: The characters to insert between each list item. Default is: " ".
     """
@@ -1029,7 +1088,7 @@ def autosolve(equation):
     :type equation: string
     :param equation: The equation to calculate.
 
-    >>> quilt_lang.autosolve("300 + 600")
+    >>> autosolve("300 + 600")
     900
     """
 
@@ -1090,7 +1149,7 @@ def autohard(equation):
     :type equation: string
     :param equation: The equation to solve.
 
-    >>> quilt_lang.autohard("log 10")
+    >>> autohard("log 10")
     2.302585092994046
     """
 
@@ -1223,7 +1282,7 @@ def circleconvert(amount, currentformat, newformat):
     :type newformat: string
     :param newformat: The intended format of the value.
 
-    >>> quilt_lang.circleconvert(45, "radius", "diameter")
+    >>> circleconvert(45, "radius", "diameter")
     90
     """
 
@@ -1288,7 +1347,7 @@ def amountdiv(number, minnum, maxnum):
     :type maxnum: integer
     :param maxnum: The maximum number to check.
 
-    >>> quilt_lang.amountdiv(20, 1, 15)
+    >>> amountdiv(20, 1, 15)
     5
     """
 
@@ -1358,7 +1417,7 @@ def average(numbers, averagetype='mean'):
     :type averagetype: string
     :param averagetype: The type of average to find.
 
-    >>> quilt_lang.average([1, 2, 3, 4, 5], 'median')
+    >>> average([1, 2, 3, 4, 5], 'median')
     3
     """
 
@@ -1437,7 +1496,7 @@ def posnegtoggle(number):
     - 1 > -1
     - -1 > 1
     - 0 > 0
-    
+
     :type number: number
     :param number: The number to toggle.
     """
@@ -1486,16 +1545,16 @@ def rounddown(number):
 def compare(value1, value2, comparison):
     """
     Compare 2 values
-    
+
     :type value1: object
     :param value1: The first value to compare.
-    
+
     :type value2: object
     :param value2: The second value to compare.
-    
+
     :type comparison: string
     :param comparison: The comparison to make. Can be "is", "or", "and".
-    
+
     :return: If the value is, or, and of another value
     :rtype: boolean
     """
@@ -1513,14 +1572,15 @@ def compare(value1, value2, comparison):
 def factors(number):
     """
     Find all of the factors of a number and return it as a list.
-    
+
     :type number: integer
     :param number: The number to find the factors for.
     """
 
-    if not(isinstance(number, int)):
-        raise TypeError("Incorrect number type provided. Only integers are accepted.")
-    
+    if not (isinstance(number, int)):
+        raise TypeError(
+            "Incorrect number type provided. Only integers are accepted.")
+
     factors = []
     for i in range(1, number + 1):
         if number % i == 0:
@@ -1531,13 +1591,13 @@ def factors(number):
 def eulercalc(faces, edges, verticies):
     """
     Calculate the value of Euler's formula of a shape.
-    
+
     :type faces: integer
     :param faces: The faces of the shape
-    
+
     :type edges: integer
     :param edges: The edges of the shape
-    
+
     :type verticies: integer
     :param verticies: The verticies of the shape
     """
@@ -1549,10 +1609,10 @@ def eulercalc(faces, edges, verticies):
 def randomnum(minimum=1, maximum=2):
     """
     Generate a random number.
-    
+
     :type minimum: integer
     :param minimum: The minimum number to generate.
-    
+
     :type maximum: integer
     :param maximum: The maximum number to generate.
     """
@@ -1567,7 +1627,7 @@ def randomnum(minimum=1, maximum=2):
 def isfib(number):
     """
     Check if a number is in the Fibonacci sequence.
-    
+
     :type number: integer
     :param number: Number to check
     """
@@ -1588,7 +1648,7 @@ def isfib(number):
 def isprime(number):
     """
     Check if a number is a prime number
-    
+
     :type number: integer
     :param number: The number to check
     """
@@ -1629,7 +1689,7 @@ def convertbase(number, base=10):
 def isnum(value):
     """
     Check if a value is a type of number (decimal or integer).
-    
+
     :type value: object
     :param value: The value to check.
     """
@@ -1643,10 +1703,10 @@ def isnum(value):
 def quadrant(xcoord, ycoord):
     """
     Find the quadrant a pair of coordinates are located in
-    
+
     :type xcoord: integer
     :param xcoord: The x coordinate to find the quadrant for
-    
+
     :type ycoord: integer
     :param ycoord: The y coordinate to find the quadrant for
     """
@@ -1665,13 +1725,13 @@ def quadrant(xcoord, ycoord):
 def flipcoords(xcoord, ycoord, axis):
     """
     Flip the coordinates over a specific axis, to a different quadrant
-    
+
     :type xcoord: integer
     :param xcoord: The x coordinate to flip
-    
+
     :type ycoord: integer
     :param ycoord: The y coordinate to flip
-    
+
     :type axis: string
     :param axis: The axis to flip across. Could be 'x' or 'y'
     """
@@ -1702,10 +1762,10 @@ def flipcoords(xcoord, ycoord, axis):
 def lcm(num1, num2):
     """
     Find the lowest common multiple of 2 numbers
-    
+
     :type num1: number
     :param num1: The first number to find the lcm for
-    
+
     :type num2: number
     :param num2: The second number to find the lcm for
     """
@@ -1726,7 +1786,7 @@ def hcf(num1, num2):
 
     :type num1: number
     :param num1: The first number to find the hcf for
-    
+
     :type num2: number
     :param num2: The second number to find the hcf for
     """
@@ -1810,7 +1870,7 @@ def catwalk(text):
     :type text: string
     :param text: The text to fix.
 
-    >>> quilt_lang.catwalk("this  is    a long  sentence")
+    >>> catwalk("this  is    a long  sentence")
     'this is a long sentence'
     """
 
@@ -1912,8 +1972,8 @@ def case(text, casingformat='sentence'):
 
     :raises ValueError: Invalid text format specified.
 
-    >>> quilt_lang.case("HELLO world", "uppercase")
-    "HELLO WORLD"
+    >>> case("HELLO world", "uppercase")
+    'HELLO WORLD'
     """
 
     # If the lowercase version of the casing format is 'uppercase'
@@ -1952,7 +2012,7 @@ def absolutedir(relativedirectory):
     :type relativedirectory: string
     :param relativedirectory: The directory path to convert.
 
-    >>> quilt_lang.absolutedir("src") # doctest: +SKIP
+    >>> absolutedir("src") # doctest: +SKIP
     "C:/Users/richi/Documents/GitHub/quilt/src"
     """
 
@@ -2026,6 +2086,7 @@ def shellcommand(command):
 
     subprocess.call(str(command))
 
+
 def pipinstall(packages):
     """
     Install one or more pip packages.
@@ -2049,7 +2110,6 @@ def pipinstall(packages):
                 pip._internal.main(['install', i[1]])
     else:
         raise TypeError("Nor a string or a list was provided.")
-
 
 
 def pipupdate():
@@ -2109,7 +2169,7 @@ def charlimit():
     """
     Get the maximum amount of characters allowed by your system.
 
-    >>> quilt_lang.charlimit() # doctest: +SKIP
+    >>> charlimit() # doctest: +SKIP
     9223372036854775807
     """
 
@@ -2153,7 +2213,7 @@ def loglevel(leveltype=None, isequal=False):
     :return: If the level is equal to leveltype.
     :rtype: boolean
 
-    >>> quilt_lang.loglevel()
+    >>> loglevel()
     30
     """
     log = logging.getLogger(__name__)
@@ -2203,7 +2263,7 @@ def clipaction(action='get', text=None):
     :type action: string
     :param action: The action to perform on the clipboard. Can be 'get', 'set' or 'append'.
 
-    >>> quilt_lang.clipaction("get") # doctest: +SKIP
+    >>> clipaction("get") # doctest: +SKIP
     "Sample text"
     """
     if action == 'get':
@@ -2510,13 +2570,12 @@ def timesince():
 
 def getdatetime(timedateformat='complete'):
     """
-    Get the current date or time in a specific format
+    Get the current date or time in a specific format.
 
-    :type timedateformat:
-    :param timedateformat: The type of date to query for. Can be: day, month, year, hour, minute, second, millisecond, yearmonthday,
-    daymonthyear, hourminutesecond, secondminutehour, complete,
-    datetime or timedate.
+    :type timedateformat: string
+    :param timedateformat: The type of date to query for. Can be: day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.
     """
+
     timedateformat = timedateformat.lower()
     if timedateformat == 'day':
         return ((str(datetime.datetime.now())).split(' ')[0]).split('-')[2]
@@ -2758,7 +2817,7 @@ def about():
     """
     Print the about information.
 
-    >>> quilt_lang.about()
+    >>> about()
     You are using the Quilt Lang Programming Library
     Quilt is licensed under Apache License 2.0
     """
@@ -2804,3 +2863,8 @@ def pycopyright():
     """
 
     return sys.copyright
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

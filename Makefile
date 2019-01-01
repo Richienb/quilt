@@ -2,6 +2,11 @@
 inst:
 	pip install -U quilt_lang
 
+# Test the code
+test:
+	cd src/quilt_lang
+	python __init__.py -v
+
 # Install the dependencies
 deps:
     pip install -r requirements.txt
@@ -17,7 +22,7 @@ mdoc:
     mkdocs build --verbose --clean --strict
 
 # Generate the Sphinx documentation
-cdoc:
+sdoc:
 	pip install sphinx sphinx_materialdesign_theme
 	cd docs-sphinx
 	sphinx-build -b html rst html

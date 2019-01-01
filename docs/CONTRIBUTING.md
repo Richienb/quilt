@@ -11,8 +11,9 @@ At the moment, you can help by
 Using **GNU Make**, you can execute multiple commands with a single one.
 
 - Force install the latest production version of Quilt: `make inst`
+- Test the code: `make test`
 - Install the dependencies: `make deps`
 - Minify the code (Linux only): `make min`
 - Generate the Mkdocs documentation: `make mdoc`
-- Generate the Sphinx documentation: `make cdoc`
+- Generate the Sphinx documentation: `make sdoc`
 - Build the PyPi package: `make pack`
