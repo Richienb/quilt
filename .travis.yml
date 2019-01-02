@@ -63,6 +63,8 @@ jobs:
 
         -
 
+          python:                 3.7
+
           if:                     type != pull_request AND tag IS present
 
           install:
