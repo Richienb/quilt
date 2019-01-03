@@ -1588,7 +1588,7 @@ def factors(number):
     return factors
 
 
-def eulercalc(faces, edges, verticies):
+def euler(faces, edges, verticies):
     """
     Calculate the value of Euler's formula of a shape.
 
@@ -1600,11 +1600,27 @@ def eulercalc(faces, edges, verticies):
 
     :type verticies: integer
     :param verticies: The verticies of the shape
+    
+    :return: The result of the euler operation
+    :rtype: number
     """
 
     # Return the calculated value
     return verticies + edges - faces
 
+def sigmoid(number):
+    """
+    Find the sigmoid of a number.
+
+    :type number: number
+    :param number: The number to find the sigmoid of
+
+    :return: The result of the sigmoid
+    :rtype: number
+    """
+    
+    # Return the calculated value
+    return 1 / (1 + math.exp(-x))
 
 def randomnum(minimum=1, maximum=2):
     """
