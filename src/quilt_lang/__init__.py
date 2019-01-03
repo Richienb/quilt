@@ -36,7 +36,6 @@ import webbrowser
 import urllib
 
 # External Modules
-import loremipsum
 import colour
 import clipboard
 """
@@ -347,18 +346,6 @@ def pykeyword(operation='list', keywordtotest=None):
 
     # Raise a warning
     raise ValueError("Invalid operation specified.")
-
-
-def genipsum(sentences=1):
-    """
-    Generate an array of Lorem Ipsum.
-
-    :type sentences: integer
-    :param sentences: The amount of sentences to generate.
-    """
-
-    # Return the generated ipsum
-    return loremipsum.get_sentences(int(sentences))
 
 
 def binboolflip(item):
