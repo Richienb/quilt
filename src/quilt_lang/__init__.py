@@ -8,6 +8,7 @@ import importlib
 
 # String modules
 import string
+import secrets
 import textwrap
 
 # System modules
@@ -1710,6 +1711,15 @@ def randstring(length=1):
     for _ in range(length):
         newpass += str(charstouse[random.randint(0, len(charstouse) - 1)])
     return newpass
+
+
+def tokhex(length=10, urlsafe=False):
+    """
+    Return A Random String In Hexadecimal
+    """
+    if urlsafe is True:
+        return secrets.token_urlsafe(length)
+    return secrets.token_hex(length)
 
 
 """
