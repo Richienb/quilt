@@ -35,9 +35,8 @@ import calendar
 import webbrowser
 import urllib
 
-# External Modules
-import colour
-import clipboard
+# Compatibility module
+from six import *
 """
 Uncatagorised
 """
@@ -96,154 +95,6 @@ def shellinput(initialtext='>> ', splitpart=' '):
     # Return the computed result
     return shelluserinput if splitpart in (
         '', None) else shelluserinput.split(splitpart)
-
-
-def colourcode(startcolourcode, destinationtype, longhex=False):
-    """
-    Convert a colour code from one format to another.
-
-    :type startcolourcode: string
-    :param startcolourcode: Set the colour code to convert from.
-
-    :type destinationtype: string
-    :param destinationtype: Set the colour code type to convert to. Possible options are HEX, HSL, RGB, red, blue, green, hue, sat and lum.
-
-    :type longhex: boolean
-    :param longhex: If converting to hex, provided the long and unsimplified version.
-
-    :return: The converted colour
-    :rtype: string
-    """
-
-    # Create a colour object
-    c = colour.Color(str(startcolourcode))
-
-    # If the lowercase version of the destination type is 'hex'
-    if destinationtype.lower() == 'hex':
-        # If the long hex variable is True
-        if longhex is True:
-            # Return the long hex
-            return c.hex_l
-
-        # Return the hex
-        return c.hex
-
-    # If the lowercase version of the destination type is 'hsl'
-    elif destinationtype.lower() == 'hsl':
-        # Return the HSL
-        return c.hsl
-
-    # If the lowercase version of the destination type is 'rgb'
-    elif destinationtype.lower() == 'rgb':
-        # Return the RGB
-        return c.rgb
-
-    # If the lowercase version of the destination type is 'red'
-    elif destinationtype.lower() == 'red':
-        # Return the red amount
-        return c.red
-
-    # If the lowercase version of the destination type is 'blue'
-    elif destinationtype.lower() == 'blue':
-        # Return the blue amount
-        return c.blue
-
-    # If the lowercase version of the destination type is 'green'
-    elif destinationtype.lower() == 'green':
-        # Return the green amount
-        return c.green
-
-    # If the lowercase version of the destination type is 'hue'
-    elif destinationtype.lower() == 'hue':
-        # Return the hue amount
-        return c.hue
-
-    # If the lowercase version of the destination type is 'sat'
-    elif destinationtype.lower() == 'sat':
-        # Return the saturation amount
-        return c.saturation
-
-    # If the lowercase version of the destination type is 'lum'
-    elif destinationtype.lower() == 'lum':
-        # Return the luminance amount
-        return c.luminance
-
-    # If nothing matches raise a warning
-    raise ValueError("Invalid destination code specified.")
-
-
-def changecolour(colourcode, action, amount=100):
-    """
-    Modify a parameter of a colour code.
-
-    :type colourcode: string
-    :param colourcode: The colour code representing the colour to convert from.
-
-    :type action: string
-    :param action: The action to perform on the colour. Possible options are red, blue, green, hue, sat and lum.
-
-    :type amount: integer
-    :param amount: The percentage of the action to perform. For example, 100 means apply 100% of the colour (no change).
-
-    :return: The changed colour
-    :rtype: string
-
-    >>> changecolour("#f44336", "blue", 80)
-    '#f443cc'
-    """
-
-    # Create a colour object
-    c = colour.Color(colourcode)
-
-    # If the lowercase version of the action is 'red'
-    if action.lower() == 'red':
-        # Modify the redness
-        c.red = amount / 100
-
-        # Return the result
-        return str(c)
-
-    # If the lowercase version of the action is 'blue'
-    elif action.lower() == 'blue':
-        # Modify the blueness
-        c.blue = amount / 100
-
-        # Return the result
-        return str(c)
-
-    # If the lowercase version of the action is 'green'
-    elif action.lower() == 'green':
-        # Modify the greenness
-        c.green = amount / 100
-
-        # Return the result
-        return str(c)
-
-    # If the lowercase version of the action is 'hue'
-    elif action.lower() == 'hue':
-        # Modify the hue
-        c.hue = amount / 100
-
-        # Return the result
-        return str(c)
-
-    # If the lowercase version of the action is 'sat'
-    elif action.lower() == 'sat':
-        # Modify the saturation
-        c.saturation = amount / 100
-
-        # Return the result
-        return str(c)
-
-    # If the lowercase version of the action is 'lum'
-    elif action.lower() == 'lum':
-        # Modify the luminance
-        c.luminance = amount / 100
-
-        # Return the result
-        return str(c)
-
-    raise ValueError("Invalid action specified.")
 
 
 def leadingzero(number, minlength):
@@ -2283,27 +2134,6 @@ def logfile(targetfile="ros.log"):
     """
     log = logging.getLogger(__name__)
     log.basicConfig(filename=str(targetfile))
-
-
-def clipaction(action='get', text=None):
-    """
-    Gets, sets, appends or preceeds the clipboard contents.
-
-    :type action: string
-    :param action: The action to perform on the clipboard. Can be 'get', 'set' or 'append'.
-
-    >>> clipaction("get") # doctest: +SKIP
-    "Sample text"
-    """
-    if action == 'get':
-        return clipboard.paste()
-    elif action == 'set':
-        clipboard.copy(str(text))
-    elif action == 'append':
-        clipboard.copy(str(clipboard.paste) + str(text))
-    elif action == 'preceed':
-        clipboard.copy(str(text) + str(clipboard.paste))
-    raise ValueError("Invalid clipboard action specified.")
 
 
 def text(path, operation, content):
