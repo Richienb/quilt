@@ -8,6 +8,7 @@ import importlib
 
 # String modules
 import string
+import secrets
 import textwrap
 
 # System modules
@@ -33,7 +34,6 @@ import calendar
 # Web modules
 import webbrowser
 import urllib
-
 """
 Uncatagorised
 """
@@ -1099,22 +1099,22 @@ def fracsimplify(numerator, denominator):
     :return: The simplified fraction
     :rtype: list
     """
-    
+
     # If the numerator is the same as the denominator
     if numerator == denominator:
         # Return the most simplified fraction
         return '1/1'
-    
+
     # If the numerator is larger than the denominator
     elif int(numerator) > int(denominator):
         # Set the limit to half of the numerator
         limit = int(numerator / 2)
-        
+
     elif int(numerator) < int(denominator):
 
         # Set the limit to half of the denominator
         limit = int(denominator / 2)
-    
+
     # For each item in range from 2 to the limit
     for i in range(2, limit):
         # Set the number to check as the limit minus i
@@ -1125,7 +1125,7 @@ def fracsimplify(numerator, denominator):
             numerator = numerator / checknum
             # Set the denominator to half of the number
             denominator = denominator / checknum
-    
+
     # Return the integer version of the numerator and denominator
     return [int(numerator), int(denominator)]
 
@@ -1469,6 +1469,7 @@ def euler(faces, edges, verticies):
     # Return the calculated value
     return verticies + edges - faces
 
+
 def sigmoid(number):
     """
     Find the sigmoid of a number.
@@ -1479,9 +1480,10 @@ def sigmoid(number):
     :return: The result of the sigmoid
     :rtype: number
     """
-    
+
     # Return the calculated value
     return 1 / (1 + math.exp(-x))
+
 
 def randomnum(minimum=1, maximum=2):
     """
@@ -1499,6 +1501,15 @@ def randomnum(minimum=1, maximum=2):
             return random.randint(minimum, maximum)
         raise ValueError("Maximum number is not a number.")
     raise ValueError('Minimum number is not a number.')
+
+
+def tokhex(length=10, urlsafe=False):
+    """
+    Return A Random String In Hexadecimal
+    """
+    if urlsafe is True:
+        return secrets.token_urlsafe(length)
+    return secrets.token_hex(length)
 
 
 def isfib(number):
