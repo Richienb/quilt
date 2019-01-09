@@ -34,6 +34,7 @@ import calendar
 # Web modules
 import webbrowser
 import urllib
+import http.client as httplib
 """
 Uncatagorised
 """
@@ -2524,6 +2525,19 @@ def timeit(command, round_result=True):
 Web
 """
 
+def isonline():
+    """
+    Check if you are currently connected to the internet.
+    """
+
+    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    try:
+        conn.request("HEAD", "/")
+        conn.close()
+        return True
+    except:
+        conn.close()
+        return False
 
 def mailto(to, cc=None, bcc=None, subject=None, body=None):
     """
