@@ -1479,6 +1479,9 @@ def sigmoid(number):
 
     :return: The result of the sigmoid
     :rtype: number
+
+    >>> sigmoid(1)
+    0.7310585786300049
     """
 
     # Return the calculated value
@@ -1503,6 +1506,9 @@ def randomnum(minimum=1, maximum=2, seed=None):
 
     :raises TypeError: Minimum number is not a number.
     :raises TypeError: Maximum number is not a number.
+
+    >>> randomnum(1, 100, 150)
+    42
     """
 
     if not (isnum(minimum)):
@@ -1520,7 +1526,7 @@ def randomnum(minimum=1, maximum=2, seed=None):
 
 def tokhex(length=10, urlsafe=False):
     """
-    Return A Random String In Hexadecimal
+    Return a random string in hexadecimal
     """
     if urlsafe is True:
         return secrets.token_urlsafe(length)
