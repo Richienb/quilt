@@ -1482,7 +1482,7 @@ def sigmoid(number):
     """
 
     # Return the calculated value
-    return 1 / (1 + math.exp(-x))
+    return 1 / (1 + math.exp(-number))
 
 
 def randomnum(minimum=1, maximum=2, seed=None):
