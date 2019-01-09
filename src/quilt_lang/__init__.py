@@ -1,8 +1,5 @@
 """
 This is the one and only Quilt Lang file.
-
->>> pingtest()
-Pong!
 """
 # Python modules
 import warnings
