@@ -16,10 +16,11 @@ before_install:
 
 install:
     - pip install -r requirements.txt
-    - pip install codecov
+    - pip install codecov vulture
 
 script:
     - cd src/quilt_lang
+    - find . -type f -name "*.py" -exec vulture {} --min-confidence 90 \;
     - coverage run __init__.py -v
 
 after_success:
