@@ -2688,75 +2688,12 @@ class DictObject(object):
 Copyright and Quilt Information
 """
 
-
-def pingtest(returntrue=False):
-    """
-    Perform a quick module test. Useful to check if Quilt has loaded properly.
-
-    :type returntrue: boolean
-    :param returntrue: If set to True then True will be returned. Otherwise, "Pong!" will be printed.
-    """
-
-    # If returntrue is True
-    if returntrue is True:
-        # Return True
-        return True
-
-    # Print "Pong!"
-    print("Pong!")
-
-
-def about():
-    """
-    Print the about information.
-
-    >>> about()
-    You are using the Quilt Lang Programming Library
-    Quilt is licensed under Apache License 2.0
-    """
-    print('You are using the Quilt Lang Programming Library')
-    print('Quilt is licensed under Apache License 2.0')
-
-
-def quiltlicense(rich=True):
-    """
-    Print the Quilt Lang license.
-
-    :type rich: boolean
-    :param rich: Wether or not to print the version with unicode symbols
-    """
-
-    # If rich variable is specified
-    if rich is True:
-        # Print rich version
-        print('Quilt is licensed under the Apache License 2.0')
-        print(
-            u'\u2714' +
-            ' Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
-        )
-        print(u'\u274c' + ' Limitations: Trademark use, Liability And Warranty')
-        print(u'\u2139' +
-              ' Conditions: License and copyright notice And State changes')
-        print('To view the full license, go to https://git.io/fp4x2')
-
-    # Otherwise print raw version
-    else:
-        print('Quilt Is licensed Under The Apache License 2.0')
-        print(
-            'Permissions: Commercial use, Modification, Distribution, Patent use And Private use'
-        )
-        print('Limitations: Trademark use, Liability And Warranty')
-        print('Conditions: License and copyright notice And State changes')
-        print('To view the full license, go to https://git.io/fp4x2')
-
-
-def pycopyright():
-    """
-    Return the Python copyright information.
-    """
-
-    return sys.copyright
-
+# About information in a constant
+about = """You are using the Quilt Lang Programming Library
+Quilt is licensed under the Apache License 2.0"""
+    
+# Set a constant which can be checked to verify if Quilt is ready.
+ready = True
 
 if __name__ == "__main__":
     import doctest
