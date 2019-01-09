@@ -1089,13 +1089,13 @@ def scientific(number, operation, number2=None, logbase=10):
 def fracsimplify(numerator, denominator):
     """
     Simplify a fraction.
-    
+
     :type numerator: integer
     :param numerator: The numerator of the fraction to simplify
-    
+
     :type denominator: integer
     :param denominator: The denominator of the fraction to simplify
-    
+
     :return: The simplified fraction
     :rtype: list
     """
@@ -1461,7 +1461,7 @@ def euler(faces, edges, verticies):
 
     :type verticies: integer
     :param verticies: The verticies of the shape
-    
+
     :return: The result of the euler operation
     :rtype: number
     """
@@ -1485,7 +1485,7 @@ def sigmoid(number):
     return 1 / (1 + math.exp(-x))
 
 
-def randomnum(minimum=1, maximum=2):
+def randomnum(minimum=1, maximum=2, seed=None):
     """
     Generate a random number.
 
@@ -1494,13 +1494,28 @@ def randomnum(minimum=1, maximum=2):
 
     :type maximum: integer
     :param maximum: The maximum number to generate.
+
+    :type seed: integer
+    :param seed: A seed to use when generating the random number.
+
+    :return: The randomized number.
+    :rtype: integer
+
+    :raises TypeError: Minimum number is not a number.
+    :raises TypeError: Maximum number is not a number.
     """
 
-    if isnum(minimum):
-        if isnum(maximum):
-            return random.randint(minimum, maximum)
-        raise ValueError("Maximum number is not a number.")
-    raise ValueError('Minimum number is not a number.')
+    if not (isnum(minimum)):
+        raise TypeError("Minimum number is not a number.")
+
+    if not (isnum(maximum)):
+        raise TypeError("Maximum number is not a number.")
+
+    if seed is None:
+        return random.randint(minimum, maximum)
+
+    random.seed(seed)
+    return random.randint(minimum, maximum)
 
 
 def tokhex(length=10, urlsafe=False):
