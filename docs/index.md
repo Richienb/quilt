@@ -23,7 +23,7 @@ import quilt_lang as _
 
 ### Example usage
 ```py
-_.pingtest()
+if _.ready: print("Quilt is ready.")
 ```
 
 For more commands, visit [this website](https://quilt-lang.richie-bendall.ml/commands/quilt_lang.html).
