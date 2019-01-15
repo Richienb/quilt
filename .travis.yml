@@ -62,7 +62,7 @@ jobs:
                  --header "X-Auth-Key: ${cf_api_key}" \
                  --header "Content-Type: application/json" \
                  --data '{"purge_everything":true}'
-                 
+
           after_success: true
 
         -
@@ -94,5 +94,5 @@ jobs:
                 distributions:    "sdist bdist_wheel"
                 on:
                     all_branches: true
-                    
+
           after_success: true
