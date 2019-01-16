@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>quilt_lang package &#8212; Quilt  documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/notosanscjkjp.css" />
+    <link rel="stylesheet" type="text/css" href="_static/roboto.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material-design-lite-1.3.0/material.indigo-red.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_materialdesign_theme.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="scripts" href="index.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout  "><header class="mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">quilt_lang package</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/quilt_lang.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">quilt_lang package</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">quilt_lang package</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <div class="section" id="quilt-lang-package">
+<h1>quilt_lang package<a class="headerlink" href="#quilt-lang-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-quilt_lang">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-quilt_lang" title="Permalink to this headline">¶</a></h2>
+<p>This is the one and only Quilt Lang file.</p>
+<dl class="class">
+<dt id="quilt_lang.DictObject">
+<em class="property">class </em><code class="descclassname">quilt_lang.</code><code class="descname">DictObject</code><span class="sig-paren">(</span><em>_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.DictObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Fancier way of converting nested dictionary to an object!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_dict</strong> (<em>dictionary</em>) – Already defined dictionary</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">DictObject</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">c</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">foo</span>
+<span class="go">&#39;bar&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.absolutedir">
+<code class="descclassname">quilt_lang.</code><code class="descname">absolutedir</code><span class="sig-paren">(</span><em>relativedirectory</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.absolutedir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a relative directory to an absolute directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>relativedirectory</strong> (<em>string</em>) – The directory path to convert.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">absolutedir</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span> <span class="c1"># doctest: +SKIP</span>
+<span class="go">&quot;C:/Users/richi/Documents/GitHub/quilt/src&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.amountdiv">
+<code class="descclassname">quilt_lang.</code><code class="descname">amountdiv</code><span class="sig-paren">(</span><em>number</em>, <em>minnum</em>, <em>maxnum</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.amountdiv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the amount of numbers divisable by a number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>number</strong> (<em>number</em>) – The number to use.</li>
+<li><strong>minnum</strong> (<em>integer</em>) – The minimum number to check.</li>
+<li><strong>maxnum</strong> (<em>integer</em>) – The maximum number to check.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amountdiv</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.autohard">
+<code class="descclassname">quilt_lang.</code><code class="descname">autohard</code><span class="sig-paren">(</span><em>equation</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.autohard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically solve a hard maths problem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>equation</strong> (<em>string</em>) – The equation to solve.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">autohard</span><span class="p">(</span><span class="s2">&quot;log 10&quot;</span><span class="p">)</span>
+<span class="go">2.302585092994046</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.autosolve">
+<code class="descclassname">quilt_lang.</code><code class="descname">autosolve</code><span class="sig-paren">(</span><em>equation</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.autosolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically solve an easy maths problem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>equation</strong> (<em>string</em>) – The equation to calculate.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">autosolve</span><span class="p">(</span><span class="s2">&quot;300 + 600&quot;</span><span class="p">)</span>
+<span class="go">900</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.availchars">
+<code class="descclassname">quilt_lang.</code><code class="descname">availchars</code><span class="sig-paren">(</span><em>charactertype</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.availchars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the available characters for a specific type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>charactertype</strong> (<em>string</em>) – The characters to get. Can be ‘letters’, ‘lowercase, ‘uppercase’, ‘digits’, ‘hexdigits’, ‘punctuation’, ‘printable’, ‘whitespace’ or ‘all’.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">availchars</span><span class="p">(</span><span class="s2">&quot;lowercase&quot;</span><span class="p">)</span>
+<span class="go">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.average">
+<code class="descclassname">quilt_lang.</code><code class="descname">average</code><span class="sig-paren">(</span><em>numbers</em>, <em>averagetype='mean'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.average" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the average of a list of numbers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>numbers</strong> (<em>list</em>) – The list of numbers to find the average of.</li>
+<li><strong>averagetype</strong> (<em>string</em>) – The type of average to find.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">average</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;median&#39;</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.binboolflip">
+<code class="descclassname">quilt_lang.</code><code class="descname">binboolflip</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.binboolflip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert 0 or 1 to False or True (or vice versa).
+The converter works as follows:</p>
+<ul class="simple">
+<li>0 &gt; False</li>
+<li>False &gt; 0</li>
+<li>1 &gt; True</li>
+<li>True &gt; 1</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> (<em>integer</em><em> or </em><em>boolean</em>) – The item to convert.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Invalid item specified.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.case">
+<code class="descclassname">quilt_lang.</code><code class="descname">case</code><span class="sig-paren">(</span><em>text</em>, <em>casingformat='sentence'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the casing of some text.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> (<em>string</em>) – The text to change the casing of.</li>
+<li><strong>casingformat</strong> (<em>string</em>) – The format of casing to apply to the text. Can be ‘uppercase’, ‘lowercase’, ‘sentence’ or ‘caterpillar’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> – Invalid text format specified.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">case</span><span class="p">(</span><span class="s2">&quot;HELLO world&quot;</span><span class="p">,</span> <span class="s2">&quot;uppercase&quot;</span><span class="p">)</span>
+<span class="go">&#39;HELLO WORLD&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.catwalk">
+<code class="descclassname">quilt_lang.</code><code class="descname">catwalk</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.catwalk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace multiple spaces in a string with a single space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>string</em>) – The text to fix.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">catwalk</span><span class="p">(</span><span class="s2">&quot;this  is    a long  sentence&quot;</span><span class="p">)</span>
+<span class="go">&#39;this is a long sentence&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.charlimit">
+<code class="descclassname">quilt_lang.</code><code class="descname">charlimit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.charlimit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the maximum amount of characters allowed by your system.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">charlimit</span><span class="p">()</span> <span class="c1"># doctest: +SKIP</span>
+<span class="go">9223372036854775807</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.circleconvert">
+<code class="descclassname">quilt_lang.</code><code class="descname">circleconvert</code><span class="sig-paren">(</span><em>amount</em>, <em>currentformat</em>, <em>newformat</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.circleconvert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a circle measurement.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>amount</strong> (<em>number</em>) – The number to convert.</li>
+<li><strong>currentformat</strong> (<em>string</em>) – The format of the provided value.</li>
+<li><strong>newformat</strong> (<em>string</em>) – The intended format of the value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circleconvert</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="s2">&quot;radius&quot;</span><span class="p">,</span> <span class="s2">&quot;diameter&quot;</span><span class="p">)</span>
+<span class="go">90</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.closeyear">
+<code class="descclassname">quilt_lang.</code><code class="descname">closeyear</code><span class="sig-paren">(</span><em>year</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.closeyear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find how many years away was the closest leap year to a specific year.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>year</strong> (<em>number</em>) – The year to check for.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.compare">
+<code class="descclassname">quilt_lang.</code><code class="descname">compare</code><span class="sig-paren">(</span><em>value1</em>, <em>value2</em>, <em>comparison</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare 2 values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value1</strong> (<em>object</em>) – The first value to compare.</li>
+<li><strong>value2</strong> (<em>object</em>) – The second value to compare.</li>
+<li><strong>comparison</strong> (<em>string</em>) – The comparison to make. Can be “is”, “or”, “and”.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the value is, or, and of another value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.constant">
+<code class="descclassname">quilt_lang.</code><code class="descname">constant</code><span class="sig-paren">(</span><em>constanttype</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get A Constant</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.convertascii">
+<code class="descclassname">quilt_lang.</code><code class="descname">convertascii</code><span class="sig-paren">(</span><em>value</em>, <em>command='to'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.convertascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an ASCII value to a symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>string</em>) – The text or the text in ascii form.</li>
+<li><strong>argument</strong> (<em>string</em>) – The action to perform on the value. Can be “to” or “from”.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.convertbase">
+<code class="descclassname">quilt_lang.</code><code class="descname">convertbase</code><span class="sig-paren">(</span><em>number</em>, <em>base=10</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.convertbase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a number in base 10 to another base</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>number</strong> (<em>number</em>) – The number to convert</li>
+<li><strong>base</strong> (<em>integer</em>) – The base to convert to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.convertbinary">
+<code class="descclassname">quilt_lang.</code><code class="descname">convertbinary</code><span class="sig-paren">(</span><em>value</em>, <em>argument</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.convertbinary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert text to binary form or backwards.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>string</em>) – The text or the binary text</li>
+<li><strong>argument</strong> (<em>string</em>) – The action to perform on the value. Can be “to” or “from”.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.converttabs">
+<code class="descclassname">quilt_lang.</code><code class="descname">converttabs</code><span class="sig-paren">(</span><em>text</em>, <em>spaces=4</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.converttabs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert all the tabs to a specific amount of spaces</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to convert tabs to spaces on</li>
+<li><strong>spaces</strong> (<em>integer</em>) – The amount of spaces to replace tabs to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.converttime">
+<code class="descclassname">quilt_lang.</code><code class="descname">converttime</code><span class="sig-paren">(</span><em>time</em>, <em>currentformat</em>, <em>newformat</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.converttime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a specific time format to another type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>integer</em>) – The time to convert</li>
+<li><strong>currentformat</strong> (<em>string</em>) – The current format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuries or millenniums.</li>
+<li><strong>newformat</strong> (<em>string</em>) – The new format of the time. Can be milliseconds, seconds, minutes, hours, days, weeks, fortnights, years, decades, centuries or millenniums.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.cowsay">
+<code class="descclassname">quilt_lang.</code><code class="descname">cowsay</code><span class="sig-paren">(</span><em>text=''</em>, <em>align='centre'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.cowsay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate an ASCII cow saying text.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to print out.</li>
+<li><strong>algin</strong> – Where to align the cow. Can be ‘left’, ‘centre’ or ‘right’</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.dayofweek">
+<code class="descclassname">quilt_lang.</code><code class="descname">dayofweek</code><span class="sig-paren">(</span><em>day</em>, <em>month</em>, <em>year</em>, <em>formatresult=True</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.dayofweek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the day of the week for a specific day</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>day</strong> (<em>integer</em>) – The day to include in the search</li>
+<li><strong>month</strong> (<em>integer</em>) – The month to include in the search</li>
+<li><strong>year</strong> (<em>integer</em>) – The year to include in the search</li>
+<li><strong>formatresult</strong> (<em>boolean</em>) – Whether or not to format the result. A formatted date would look like: “Monday”. A non formatted date would look like: 1.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.decintfix">
+<code class="descclassname">quilt_lang.</code><code class="descname">decintfix</code><span class="sig-paren">(</span><em>decorint=0</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.decintfix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix The Formatting Of Decimals And Integers</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.decryptstring">
+<code class="descclassname">quilt_lang.</code><code class="descname">decryptstring</code><span class="sig-paren">(</span><em>enc</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.decryptstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypt an encrypted string according to a specific password.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>enc</strong> (<em>string</em>) – The encrypted text.</li>
+<li><strong>pass</strong> (<em>string</em>) – The password used to encrypt the text.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.delay">
+<code class="descclassname">quilt_lang.</code><code class="descname">delay</code><span class="sig-paren">(</span><em>seconds</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delay for a specific amount of seconds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seconds</strong> (<em>number</em>) – The amount of seconds to delay.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.dictflip">
+<code class="descclassname">quilt_lang.</code><code class="descname">dictflip</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.dictflip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flip the names and keys in a dictionary.</p>
+<p>This means that this:
+{‘key1’: ‘value1’, ‘key2’: ‘value2’}
+will be converted into this:
+{‘value1’: ‘key1’, ‘value2’: ‘key2’}</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dictionary</strong> (<em>dictionary</em>) – The dictionary to flip.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.difference">
+<code class="descclassname">quilt_lang.</code><code class="descname">difference</code><span class="sig-paren">(</span><em>num1</em>, <em>num2</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the difference between 2 numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num1</strong> (<em>number</em>) – The first number to use.</li>
+<li><strong>num2</strong> (<em>number</em>) – The second number to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">difference</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.dirtool">
+<code class="descclassname">quilt_lang.</code><code class="descname">dirtool</code><span class="sig-paren">(</span><em>operation</em>, <em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.dirtool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tools For Directories (If Exists, Make And Delete)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>ValueError</strong> – Nor a string or a list was provided.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.divisable">
+<code class="descclassname">quilt_lang.</code><code class="descname">divisable</code><span class="sig-paren">(</span><em>num1</em>, <em>num2</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.divisable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a number is divisible by another number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num1</strong> (<em>number</em>) – The first number to check.</li>
+<li><strong>num2</strong> (<em>number</em>) – The second number to check.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">divisable</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.encryptstring">
+<code class="descclassname">quilt_lang.</code><code class="descname">encryptstring</code><span class="sig-paren">(</span><em>text</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.encryptstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypt a string according to a specific password.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to encrypt.</li>
+<li><strong>pass</strong> (<em>string</em>) – The password to encrypt the text with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.equation">
+<code class="descclassname">quilt_lang.</code><code class="descname">equation</code><span class="sig-paren">(</span><em>operation</em>, <em>firstnum</em>, <em>secondnum</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.equation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve a simple maths equation manually</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.euler">
+<code class="descclassname">quilt_lang.</code><code class="descname">euler</code><span class="sig-paren">(</span><em>faces</em>, <em>edges</em>, <em>verticies</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the value of Euler’s formula of a shape.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>faces</strong> (<em>integer</em>) – The faces of the shape</li>
+<li><strong>edges</strong> (<em>integer</em>) – The edges of the shape</li>
+<li><strong>verticies</strong> (<em>integer</em>) – The verticies of the shape</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The result of the euler operation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">number</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.exitexec">
+<code class="descclassname">quilt_lang.</code><code class="descname">exitexec</code><span class="sig-paren">(</span><em>arguments=0</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.exitexec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exit the current execution</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.factorial">
+<code class="descclassname">quilt_lang.</code><code class="descname">factorial</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.factorial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the factorial of a number</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.factors">
+<code class="descclassname">quilt_lang.</code><code class="descname">factors</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all of the factors of a number and return it as a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>integer</em>) – The number to find the factors for.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.file">
+<code class="descclassname">quilt_lang.</code><code class="descname">file</code><span class="sig-paren">(</span><em>operation</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tools For Files (If Exists, Make And Delete)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.filedownload">
+<code class="descclassname">quilt_lang.</code><code class="descname">filedownload</code><span class="sig-paren">(</span><em>source</em>, <em>destination</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.filedownload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a file and save it to a specific destination</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>string</em>) – The url to download from</li>
+<li><strong>destination</strong> (<em>string</em>) – The path to save the file to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.flipcoords">
+<code class="descclassname">quilt_lang.</code><code class="descname">flipcoords</code><span class="sig-paren">(</span><em>xcoord</em>, <em>ycoord</em>, <em>axis</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.flipcoords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flip the coordinates over a specific axis, to a different quadrant</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xcoord</strong> (<em>integer</em>) – The x coordinate to flip</li>
+<li><strong>ycoord</strong> (<em>integer</em>) – The y coordinate to flip</li>
+<li><strong>axis</strong> (<em>string</em>) – The axis to flip across. Could be ‘x’ or ‘y’</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.fracsimplify">
+<code class="descclassname">quilt_lang.</code><code class="descname">fracsimplify</code><span class="sig-paren">(</span><em>numerator</em>, <em>denominator</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.fracsimplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simplify a fraction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>numerator</strong> (<em>integer</em>) – The numerator of the fraction to simplify</li>
+<li><strong>denominator</strong> (<em>integer</em>) – The denominator of the fraction to simplify</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The simplified fraction</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.getbrowser">
+<code class="descclassname">quilt_lang.</code><code class="descname">getbrowser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.getbrowser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the browser currently being used</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.getdatetime">
+<code class="descclassname">quilt_lang.</code><code class="descname">getdatetime</code><span class="sig-paren">(</span><em>timedateformat='complete'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.getdatetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current date or time in a specific format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timedateformat</strong> (<em>string</em>) – The type of date to query for. Can be: day, month, year, hour, minute, second, millisecond, yearmonthday, daymonthyear, hourminutesecond, secondminutehour, complete, datetime or timedate.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.getletter">
+<code class="descclassname">quilt_lang.</code><code class="descname">getletter</code><span class="sig-paren">(</span><em>variable</em>, <em>letternumber</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.getletter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the corresponding item in a object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>variable</strong> (<em>string</em>) – The string to get the letter from</li>
+<li><strong>letternumber</strong> (<em>integer</em>) – The index of the letter to get</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.getplatform">
+<code class="descclassname">quilt_lang.</code><code class="descname">getplatform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.getplatform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current system platform.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.gettype">
+<code class="descclassname">quilt_lang.</code><code class="descname">gettype</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.gettype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the type of an object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>string</em>) – The object to check.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.happybirthday">
+<code class="descclassname">quilt_lang.</code><code class="descname">happybirthday</code><span class="sig-paren">(</span><em>person</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.happybirthday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sing Happy Birthday</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.hcf">
+<code class="descclassname">quilt_lang.</code><code class="descname">hcf</code><span class="sig-paren">(</span><em>num1</em>, <em>num2</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.hcf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the highest common factor of 2 numbers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num1</strong> (<em>number</em>) – The first number to find the hcf for</li>
+<li><strong>num2</strong> (<em>number</em>) – The second number to find the hcf for</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isfalse">
+<code class="descclassname">quilt_lang.</code><code class="descname">isfalse</code><span class="sig-paren">(</span><em>variable</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isfalse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a variable is essentially “False”</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variable</strong> (<em>variable</em>) – The variable to check</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isfib">
+<code class="descclassname">quilt_lang.</code><code class="descname">isfib</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isfib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a number is in the Fibonacci sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>integer</em>) – Number to check</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isnum">
+<code class="descclassname">quilt_lang.</code><code class="descname">isnum</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a value is a type of number (decimal or integer).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>object</em>) – The value to check.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isonline">
+<code class="descclassname">quilt_lang.</code><code class="descname">isonline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isonline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if you are currently connected to the internet.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isprime">
+<code class="descclassname">quilt_lang.</code><code class="descname">isprime</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isprime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a number is a prime number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>integer</em>) – The number to check</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.isrealnum">
+<code class="descclassname">quilt_lang.</code><code class="descname">isrealnum</code><span class="sig-paren">(</span><em>variable</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.isrealnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable resembles a rational number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.jointext">
+<code class="descclassname">quilt_lang.</code><code class="descname">jointext</code><span class="sig-paren">(</span><em>firststring</em>, <em>secondstring</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.jointext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Join two strings together</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>firststring</strong> (<em>string</em>) – The first string.</li>
+<li><strong>secondstring</strong> (<em>string</em>) – The second string.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.lcm">
+<code class="descclassname">quilt_lang.</code><code class="descname">lcm</code><span class="sig-paren">(</span><em>num1</em>, <em>num2</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.lcm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the lowest common multiple of 2 numbers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num1</strong> (<em>number</em>) – The first number to find the lcm for</li>
+<li><strong>num2</strong> (<em>number</em>) – The second number to find the lcm for</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.leadingzero">
+<code class="descclassname">quilt_lang.</code><code class="descname">leadingzero</code><span class="sig-paren">(</span><em>number</em>, <em>minlength</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.leadingzero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add leading zeros to a number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>number</strong> (<em>number</em>) – The number to add the leading zeros to.</li>
+<li><strong>minlength</strong> (<em>integer</em>) – If the number is shorter than this length than add leading zeros to make the length correct.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The number with a leading zero</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">leadingzero</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;01&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.leapyear">
+<code class="descclassname">quilt_lang.</code><code class="descname">leapyear</code><span class="sig-paren">(</span><em>year</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.leapyear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a year in particular is a leap year</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>year</strong> (<em>integer</em>) – The year to check for</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.length">
+<code class="descclassname">quilt_lang.</code><code class="descname">length</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the length of a value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>variable</em>) – The value to find the length of</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.letternum">
+<code class="descclassname">quilt_lang.</code><code class="descname">letternum</code><span class="sig-paren">(</span><em>letter</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.letternum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get The Number Corresponding To A Letter</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.logfile">
+<code class="descclassname">quilt_lang.</code><code class="descname">logfile</code><span class="sig-paren">(</span><em>targetfile='ros.log'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the file for Quilt to log to
+targetfile:
+Change the file to log to.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.loglevel">
+<code class="descclassname">quilt_lang.</code><code class="descname">loglevel</code><span class="sig-paren">(</span><em>leveltype=None</em>, <em>isequal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.loglevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set or get the logging level of Quilt</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>leveltype</strong> (<em>string</em><em> or </em><em>integer</em>) – Choose the logging level. Possible choices are none (0), debug (10), info (20), warning (30), error (40) and critical (50).</li>
+<li><strong>isequal</strong> (<em>boolean</em>) – Check if level is equal to leveltype.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the level is equal to leveltype.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">loglevel</span><span class="p">()</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.mailto">
+<code class="descclassname">quilt_lang.</code><code class="descname">mailto</code><span class="sig-paren">(</span><em>to</em>, <em>cc=None</em>, <em>bcc=None</em>, <em>subject=None</em>, <em>body=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.mailto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate and run mailto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<em>string</em>) – The recipient email address.</li>
+<li><strong>cc</strong> (<em>string</em>) – The recipient to copy to.</li>
+<li><strong>bcc</strong> (<em>string</em>) – The recipient to blind copy to.</li>
+<li><strong>subject</strong> (<em>string</em>) – The subject to use.</li>
+<li><strong>body</strong> (<em>string</em>) – The body content to use.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.maxyear">
+<code class="descclassname">quilt_lang.</code><code class="descname">maxyear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.maxyear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the maxiumum year allowed by the current OS.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.minyear">
+<code class="descclassname">quilt_lang.</code><code class="descname">minyear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.minyear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the minimum year allowed by the current OS.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.modulereload">
+<code class="descclassname">quilt_lang.</code><code class="descname">modulereload</code><span class="sig-paren">(</span><em>modulename</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.modulereload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload a module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>modulename</strong> (<em>module</em>) – Name of module to reload.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.newline">
+<code class="descclassname">quilt_lang.</code><code class="descname">newline</code><span class="sig-paren">(</span><em>lines=1</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.newline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print 1 or more paragraph spaces in the terminal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lines</strong> (<em>integer</em>) – The amount of paragraph spaces to print.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.newtab">
+<code class="descclassname">quilt_lang.</code><code class="descname">newtab</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.newtab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a URL in a new tab of a web browser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>string</em>) – The url to open.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>webbrowser.Error</strong> – Unable to open URL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.newwindow">
+<code class="descclassname">quilt_lang.</code><code class="descname">newwindow</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.newwindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a URL in a new window of a web browser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>string</em>) – The url to open.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>webbrowser.Error</strong> – Unable to open URL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.numlistbetween">
+<code class="descclassname">quilt_lang.</code><code class="descname">numlistbetween</code><span class="sig-paren">(</span><em>num1</em>, <em>num2</em>, <em>option='list'</em>, <em>listoption='string'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.numlistbetween" title="Permalink to this definition">¶</a></dt>
+<dd><p>List Or Count The Numbers Between Two Numbers</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.numprop">
+<code class="descclassname">quilt_lang.</code><code class="descname">numprop</code><span class="sig-paren">(</span><em>value</em>, <em>propertyexpected</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.numprop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check If A Number Is A Type</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.onlist">
+<code class="descclassname">quilt_lang.</code><code class="descname">onlist</code><span class="sig-paren">(</span><em>listtocheck</em>, <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.onlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if something is on a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>listtocheck</strong> (<em>list</em>) – The list to check.</li>
+<li><strong>item</strong> (<em>object</em>) – The item to check if on the list.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.openurl">
+<code class="descclassname">quilt_lang.</code><code class="descname">openurl</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.openurl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a URL in a web browser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>string</em>) – The url to open.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>webbrowser.Error</strong> – Unable to open URL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pipinstall">
+<code class="descclassname">quilt_lang.</code><code class="descname">pipinstall</code><span class="sig-paren">(</span><em>packages</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pipinstall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install one or more pip packages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>packages</strong> (<em>string</em><em> or </em><em>list</em>) – The package or list of packages to install.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>TypeError</strong> – Nor a string or a list was provided.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pipupdate">
+<code class="descclassname">quilt_lang.</code><code class="descname">pipupdate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pipupdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all currently installed pip packages</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.posnegtoggle">
+<code class="descclassname">quilt_lang.</code><code class="descname">posnegtoggle</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.posnegtoggle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle a number between positive and negative.
+The converter works as follows:</p>
+<ul class="simple">
+<li>1 &gt; -1</li>
+<li>-1 &gt; 1</li>
+<li>0 &gt; 0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>number</em>) – The number to toggle.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.power">
+<code class="descclassname">quilt_lang.</code><code class="descname">power</code><span class="sig-paren">(</span><em>number</em>, <em>power</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.power" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find The Power Of A Number</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.printmessage">
+<code class="descclassname">quilt_lang.</code><code class="descname">printmessage</code><span class="sig-paren">(</span><em>text</em>, <em>amount=1</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.printmessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out a console message.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to print out.</li>
+<li><strong>amount</strong> (<em>integer</em>) – The amount of times to print it out.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pyexec">
+<code class="descclassname">quilt_lang.</code><code class="descname">pyexec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pyexec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the executable used by Python</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pykeyword">
+<code class="descclassname">quilt_lang.</code><code class="descname">pykeyword</code><span class="sig-paren">(</span><em>operation='list'</em>, <em>keywordtotest=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pykeyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a keyword exists in the Python keyword dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>operation</strong> (<em>string</em>) – Whether to list or check the keywords. Possible options are ‘list’ and ‘in’.</li>
+<li><strong>keywordtotest</strong> (<em>string</em>) – The keyword to check.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The list of keywords or if a keyword exists.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list or boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;True&quot;</span> <span class="ow">in</span> <span class="n">pykeyword</span><span class="p">(</span><span class="s2">&quot;list&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pykeyword</span><span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pykeyword</span><span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pykeyword</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Invalid operation specified.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pyname">
+<code class="descclassname">quilt_lang.</code><code class="descname">pyname</code><span class="sig-paren">(</span><em>ifmain=False</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pyname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of __name__</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ifmain</strong> (<em>boolean</em>) – If set to True then True will be returned if __name__ is equal to __main__</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of __name__ or if ifmain is True, then if __name__ is equal to __main__</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string or boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pythrule">
+<code class="descclassname">quilt_lang.</code><code class="descname">pythrule</code><span class="sig-paren">(</span><em>first</em>, <em>second</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pythrule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the area of a right angled trangle based on Pythagoras’ Theorem</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>first</strong> (<em>number</em>) – The length of the first axis (x or y)</li>
+<li><strong>second</strong> (<em>number</em>) – The length of the second axis (x or y)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.pyversion">
+<code class="descclassname">quilt_lang.</code><code class="descname">pyversion</code><span class="sig-paren">(</span><em>part=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.pyversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the version of Python</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.quadrant">
+<code class="descclassname">quilt_lang.</code><code class="descname">quadrant</code><span class="sig-paren">(</span><em>xcoord</em>, <em>ycoord</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.quadrant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the quadrant a pair of coordinates are located in</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xcoord</strong> (<em>integer</em>) – The x coordinate to find the quadrant for</li>
+<li><strong>ycoord</strong> (<em>integer</em>) – The y coordinate to find the quadrant for</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.randomnum">
+<code class="descclassname">quilt_lang.</code><code class="descname">randomnum</code><span class="sig-paren">(</span><em>minimum=1</em>, <em>maximum=2</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.randomnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>minimum</strong> (<em>integer</em>) – The minimum number to generate.</li>
+<li><strong>maximum</strong> (<em>integer</em>) – The maximum number to generate.</li>
+<li><strong>seed</strong> (<em>integer</em>) – A seed to use when generating the random number.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The randomized number.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">integer</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> – Minimum number is not a number.</li>
+<li><strong>TypeError</strong> – Maximum number is not a number.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">randomnum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.randomstr">
+<code class="descclassname">quilt_lang.</code><code class="descname">randomstr</code><span class="sig-paren">(</span><em>valuelist</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.randomstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose a random item from a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>valuelist</strong> (<em>list</em>) – The list to choose a random item from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>IndexError</strong> – List not specified.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.randstring">
+<code class="descclassname">quilt_lang.</code><code class="descname">randstring</code><span class="sig-paren">(</span><em>length=1</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.randstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random string consisting of letters, digits and punctuation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>length</strong> (<em>integer</em>) – The length of the generated string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.replacetext">
+<code class="descclassname">quilt_lang.</code><code class="descname">replacetext</code><span class="sig-paren">(</span><em>string</em>, <em>texttofind</em>, <em>texttoreplace</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.replacetext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace text with other text.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>string</strong> (<em>string</em>) – The string with the text to replace.</li>
+<li><strong>texttofind</strong> (<em>string</em>) – The text to look for in the string.</li>
+<li><strong>texttoreplace</strong> (<em>string</em>) – The text to replace the matching text with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.reverselist">
+<code class="descclassname">quilt_lang.</code><code class="descname">reverselist</code><span class="sig-paren">(</span><em>listtoreverse</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.reverselist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>listtoreverse</strong> (<em>list</em>) – The list to reverse</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.reversetext">
+<code class="descclassname">quilt_lang.</code><code class="descname">reversetext</code><span class="sig-paren">(</span><em>contenttoreverse</em>, <em>reconvert=True</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.reversetext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse any content</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>contenttoreverse</strong> (<em>string</em>) – The content to be reversed</li>
+<li><strong>reeval</strong> (<em>boolean</em>) – Wether or not to reconvert the object back into it’s initial state. Default is “True”.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.rounddown">
+<code class="descclassname">quilt_lang.</code><code class="descname">rounddown</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.rounddown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round down a number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>number</em>) – The number to round down</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.sametype">
+<code class="descclassname">quilt_lang.</code><code class="descname">sametype</code><span class="sig-paren">(</span><em>variable1</em>, <em>variable2</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.sametype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if 2 variables have the same type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>variable1</strong> (<em>variable</em>) – The first variable to check</li>
+<li><strong>variable2</strong> (<em>variable</em>) – The second variable to check</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sametype</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sametype</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.scientific">
+<code class="descclassname">quilt_lang.</code><code class="descname">scientific</code><span class="sig-paren">(</span><em>number</em>, <em>operation</em>, <em>number2=None</em>, <em>logbase=10</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.scientific" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve scientific operations manually</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.shapesides">
+<code class="descclassname">quilt_lang.</code><code class="descname">shapesides</code><span class="sig-paren">(</span><em>inputtocheck</em>, <em>inputtype='shape'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.shapesides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the sides of a shape.</p>
+<p>inputtocheck:
+The amount of sides or the shape to be checked,
+depending on the value of inputtype.</p>
+<p>inputtype:
+The type of input provided.
+Can be: ‘shape’, ‘sides’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.shellcommand">
+<code class="descclassname">quilt_lang.</code><code class="descname">shellcommand</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.shellcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a command in the host’s terminal/shell/bash
+command:
+Specify the command to be executed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.shellinput">
+<code class="descclassname">quilt_lang.</code><code class="descname">shellinput</code><span class="sig-paren">(</span><em>initialtext='&gt;&gt; '</em>, <em>splitpart=' '</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.shellinput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give the user a shell-like interface to enter commands which
+are returned as a multi-part list containing the command
+and each of the arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>initialtext</strong> (<em>string</em>) – Set the text to be displayed as the prompt.</li>
+<li><strong>splitpart</strong> (<em>string</em>) – The character to split when generating the list item.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A string of the user’s input or a list of the user’s input split by the split character.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string or list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.shortentext">
+<code class="descclassname">quilt_lang.</code><code class="descname">shortentext</code><span class="sig-paren">(</span><em>text</em>, <em>minlength</em>, <em>placeholder='...'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.shortentext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shorten some text by replacing the last part with a placeholder (such as ‘…’)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to shorten</li>
+<li><strong>minlength</strong> (<em>integer</em>) – The minimum length before a shortening will occur</li>
+<li><strong>placeholder</strong> (<em>string</em>) – The text to append after removing protruding text.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.sigmoid">
+<code class="descclassname">quilt_lang.</code><code class="descname">sigmoid</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the sigmoid of a number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>number</em>) – The number to find the sigmoid of</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The result of the sigmoid</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">number</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sigmoid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">0.7310585786300049</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.spacelist">
+<code class="descclassname">quilt_lang.</code><code class="descname">spacelist</code><span class="sig-paren">(</span><em>listtospace</em>, <em>spacechar=' '</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.spacelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list to a string with all of the list’s items spaced out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>listtospace</strong> (<em>list</em>) – The list to space out.</li>
+<li><strong>spacechar</strong> (<em>string</em>) – The characters to insert between each list item. Default is: ” “.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.splitstring">
+<code class="descclassname">quilt_lang.</code><code class="descname">splitstring</code><span class="sig-paren">(</span><em>string</em>, <em>splitcharacter=' '</em>, <em>part=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.splitstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a string based on a character and get the parts as a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> (<em>string</em>) – The string to split.</li>
+<li><strong>splitcharacter</strong> (<em>string</em>) – The character to split for the string.</li>
+<li><strong>part</strong> (<em>integer</em>) – Get a specific part of the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The split string or a specific part of it</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list or string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitstring</span><span class="p">(</span><span class="s1">&#39;hello world !&#39;</span><span class="p">)</span>
+<span class="go">[&#39;hello&#39;, &#39;world&#39;, &#39;!&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitstring</span><span class="p">(</span><span class="s1">&#39;hello world !&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="go">[&#39;hello&#39;, &#39;world&#39;, &#39;!&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitstring</span><span class="p">(</span><span class="s1">&#39;hello world !&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="go">[&#39;hello&#39;, &#39;world&#39;, &#39;!&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitstring</span><span class="p">(</span><span class="s1">&#39;hello world !&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;hello&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.squareroot">
+<code class="descclassname">quilt_lang.</code><code class="descname">squareroot</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.squareroot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find The Square Root Of A Number</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.tempdir">
+<code class="descclassname">quilt_lang.</code><code class="descname">tempdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.tempdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate and get a path to a temporary directory</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.text">
+<code class="descclassname">quilt_lang.</code><code class="descname">text</code><span class="sig-paren">(</span><em>path</em>, <em>operation</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform changes on text files</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>string</em>) – The path to perform the action on</li>
+<li><strong>operation</strong> (<em>string</em>) – The operation to use on the file</li>
+<li><strong>content</strong> (<em>string</em>) – The content to use with the operation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.textalign">
+<code class="descclassname">quilt_lang.</code><code class="descname">textalign</code><span class="sig-paren">(</span><em>text</em>, <em>maxlength</em>, <em>align='left'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.textalign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align Text When Given Full Length</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.textbetween">
+<code class="descclassname">quilt_lang.</code><code class="descname">textbetween</code><span class="sig-paren">(</span><em>variable</em>, <em>firstnum=None</em>, <em>secondnum=None</em>, <em>locationoftext='regular'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.textbetween" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get The Text Between Two Parts</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.timeit">
+<code class="descclassname">quilt_lang.</code><code class="descname">timeit</code><span class="sig-paren">(</span><em>command</em>, <em>round_result=True</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.timeit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time how long a command takes to execute</p>
+<p>command:
+The command to time.</p>
+<p>round_result:
+Whether or not to round the number to an integer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.timesince">
+<code class="descclassname">quilt_lang.</code><code class="descname">timesince</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.timesince" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the amount of time since 00:00 on 1 January 1970,
+the raw date before formatting it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.timezone">
+<code class="descclassname">quilt_lang.</code><code class="descname">timezone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.timezone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current timezone code.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.tokhex">
+<code class="descclassname">quilt_lang.</code><code class="descname">tokhex</code><span class="sig-paren">(</span><em>length=10</em>, <em>urlsafe=False</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.tokhex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a random string in hexadecimal</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.typematch">
+<code class="descclassname">quilt_lang.</code><code class="descname">typematch</code><span class="sig-paren">(</span><em>variable</em>, <em>expectedtype</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.typematch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a variable is a specific type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>variable</strong> (<em>variable</em>) – The variable to check the type of</li>
+<li><strong>expectedtype</strong> (<em>type</em>) – The type to check against</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">typematch</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">typematch</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">typematch</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binboolflip</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Invalid item specified.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.unilimit">
+<code class="descclassname">quilt_lang.</code><code class="descname">unilimit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.unilimit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get The Highest Unicode Value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.unindent">
+<code class="descclassname">quilt_lang.</code><code class="descname">unindent</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.unindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove indention for some text</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>string</em>) – The text to unindent</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.userinput">
+<code class="descclassname">quilt_lang.</code><code class="descname">userinput</code><span class="sig-paren">(</span><em>prompttext=''</em>, <em>times=1</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.userinput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the input of the user via a universally secure method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prompttext</strong> (<em>string</em>) – The text to display while receiving the data.</li>
+<li><strong>times</strong> (<em>integer</em>) – The amount of times to ask the user. If value is not 1, a list will be returned. Default is 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">What the user typed in.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.waitenter">
+<code class="descclassname">quilt_lang.</code><code class="descname">waitenter</code><span class="sig-paren">(</span><em>times=1</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.waitenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for the user to press enter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>times</strong> (<em>integer</em>) – The times to ask for the user to press enter.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.warnconfig">
+<code class="descclassname">quilt_lang.</code><code class="descname">warnconfig</code><span class="sig-paren">(</span><em>action='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.warnconfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the Python warnings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<em>string</em>) – The configuration to set. Options are: ‘default’, ‘error’, ‘ignore’, ‘always’, ‘module’ and ‘once’.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.wordvalue">
+<code class="descclassname">quilt_lang.</code><code class="descname">wordvalue</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.wordvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of each letter of a string’s position in the alphabet added up</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>word</strong> (<em>string</em>) – The word to find the value of</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quilt_lang.wraptext">
+<code class="descclassname">quilt_lang.</code><code class="descname">wraptext</code><span class="sig-paren">(</span><em>text</em>, <em>maxlength</em><span class="sig-paren">)</span><a class="headerlink" href="#quilt_lang.wraptext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap text around the execution window according to a given size</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>text</strong> (<em>string</em>) – The text to be wraped</li>
+<li><strong>maxlength</strong> (<em>integer</em>) – The amount of text until a wrap will be added</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">quilt_lang.</span></code> <code class="docutils literal notranslate"><span class="pre">about</span></code></dt>
+<dd>About information</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">quilt_lang.</span></code> <code class="docutils literal notranslate"><span class="pre">ready</span></code></dt>
+<dd>A constant which can be checked to verify if Quilt is ready.</dd>
+</dl>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">quilt_lang package</a><ul>
+<li><a class="reference internal" href="#module-quilt_lang">Module contents</a></li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>scripts</div>
+         </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

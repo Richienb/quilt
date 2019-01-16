@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+     <loc>https://quilt-lang.richie-bendall.ml/</loc>
+     <lastmod>2019-01-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://quilt-lang.richie-bendall.ml/commands/</loc>
+     <lastmod>2019-01-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://quilt-lang.richie-bendall.ml/CONTRIBUTING/</loc>
+     <lastmod>2019-01-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://quilt-lang.richie-bendall.ml/CODE_OF_CONDUCT/</loc>
+     <lastmod>2019-01-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>
