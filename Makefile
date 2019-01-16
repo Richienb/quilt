@@ -11,11 +11,6 @@ test:
 deps:
     pip install -r requirements.txt
 
-# Minify the code (Linux only)
-min:
-    pip install pyminifier
-    find quilt_lang -type f -name "*.py" -exec pyminifier --gzip --obfuscate-variables --outfile="{}" "{}" \;
-
 # Generate the Mkdocs documentation
 mdoc:
     pip install mkdocs mkdocs-material pymdown-extensions pygments
